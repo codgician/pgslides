@@ -22,9 +22,7 @@ $G$ 是非空集合，且二元运算满足：
 
 ## 子群
 
-- 设 $(G, \cdot)$ 为群，$A$ 是 $G$ 的子集，若 $(A, \cdot)$ 成群，则称 $A$ 为 $G$ 的子群，记作 $A \le G$；
-- [进一步，若 $A \neq G$，则称 $A$ 为 $G$ 的真子群，记作 $A < G$。]{ .fragment }
-
+设 $(G, \cdot)$ 为群，$A$ 是 $G$ 的子集，若 $(A, \cdot)$ 成群，则称 $A$ 为 $G$ 的子群，记作 $A \le G$；
 
 # 置换
 
@@ -102,12 +100,48 @@ $$
 
 若存在两个轮换交集不为空，那么较大者一定还可以被进一步分解。
 
-## 轮换幂运算的性质
+## 轮换的幂运算
+
+$$
+(1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)
+$$
+
+---
+
+$$
+\begin{aligned}
+& (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^2 \\
+& = (1 \enspace 3 \enspace 5) \cdot (2 \enspace 4 \enspace 6)
+\end{aligned}
+$$
+
+---
+
+$$
+\begin{aligned}
+& (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^3 \\
+& =  (1 \enspace 4) \cdot (2 \enspace 5) \cdot (3 \enspace 6)
+\end{aligned}
+$$
+
+---
+
+$$
+\begin{aligned}
+& (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^4 \\
+& = (1 \enspace 5 \enspace 3) \cdot (2 \enspace 6 \enspace 4)
+\end{aligned}
+$$
+
+---
+
+### 性质
 
 若置换 $T$ 可表示为 $1$ 个长度为 $n$ 的轮换 $c$，可用如下算法求出 $T^e$ 轮换乘积形式：
 
 - $T^e$ 可表示为 $\gcd(n, e)$ 个长度为 $\frac{n}{\gcd(n, e)}$ 的轮换 $c'$；
-- 对于第 $i$ 个轮换 $c'_i$：$c'_i[j] = c[(ej + i) \bmod n]$。
+- 对于第 $i$ 个轮换 $c'_i$：$c'_i[j] = c[(i + ej) \bmod n]$。
+
 
 # 置换群
 
@@ -125,72 +159,6 @@ $n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元�
 - $\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)$
   
 则称 $G$ 在 $M$ 上有**群作用**。
-
-# 关系
-
-- 集合的笛卡尔积：
-$$
-A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
-$$
-- 设 $A$ 是集合，集合 $A \times A$ 的每个子集 $R$ 叫做集合 $A$ 上的一个关系。
-- 若 $(a, b) \in R$，则称 $a$ 和 $b$ 有关系 $R$，记作 $aRb$。
-
-## 等价关系
-
-若集合 $A$ 上的关系 $\sim$ 满足如下条件：
-
-- 自反性：$\forall a \in A$，$a \sim a$；
-- 对称性：$\forall a, b \in A$，若 $a \sim b$ 则 $b \sim a$；
-- 传递性：$\forall a, b \in A$，若 $a \sim b, \ b \sim c$，则 $a \sim c$；
-
-则称 $\sim$ 是**等价关系**。
-
-## 等价类
-
-设 $\sim$ 是 $A$ 上的等价关系，$\forall a \in A$，$[a]$ 表示 $A$ 中与 $a$ 等价的全部元素构成的集合：
-
-$$
-[a] = \left\{ b \in A \mid b \sim a \right\}
-$$
-
-称 $[a]$ 为 $a$ 所在的等价类。
-
-
-## 引理
-
-设 $G$ 是群，$A \leq G$，定义 $G$ 上的关系为：对于 $g, h \in G, \ g \sim h \Leftrightarrow gh^{-1} \in A$，则 $\sim$ 是 $G$ 上的等价关系；并且元素 $g$ 对此等价关系的**等价类**是 $Ag$。
-
-::: notes
-
-$$
-aA = \{ax \mid x \in A \}, \quad Aa = \{ xa \mid x \in A \} \\
-A^{-1} = \{a^{-1} \mid a \in A \}
-$$ 
-
-:::
-
-## 引理 - 证明
-
-- 自反性：$\forall g \in G, \ \because gg^{-1} \in A, \therefore g \sim g$；
-- 对称性：若 $g \sim h$，则 $gh^{-1} \in A$。由于 $A$ 是子群，故 $hg^{-1} = (gh^{-1})^{-1} \in A, \ \therefore h \sim g$；
-- 传递性：若 $g \sim h, \ h \sim l$，则 $gh^{-1}, hl^{-1} \in A, \ \therefore gl^{-1} = (gh^{-1})(hl^{-1}) \in A$；
-- 故是等价关系。
-
-## 陪集
-
-群 $G$ 拆分成形如 $Ag$ 的一些集合，每个等价类 $Ag$ 称作 $G$ 对于子群 $A$ 的**右陪集**。且：
-
-$$
-G = \bigcup\limits_{g \in R} Ag
-$$
-
-## 拉格朗日定理
-
-设 $G$ 为有限群，$A \leq G$，则：
-
-$$
-|G| = |A| \cdot [G : A]
-$$
 
 # Burnside 定理
 
@@ -295,6 +263,8 @@ $$
 
 故没有不动元
 
+---
+
 由于顺时针和逆时针旋转是等价的，因此：
 
 - 旋转 $60^\circ$ 与 旋转 $300^\circ$ 情形相似；
@@ -322,13 +292,13 @@ $n, m \le 10^9$
 ### 旋转
 
 $$
-G = \{ 0, \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n} \}
+G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 $$
 
 旋转 $i \cdot \frac{2\pi}{n}$ 时，可拆成 $\gcd(n, i)$ 个轮换，故：
 
 $$
-\sum\limits_{g \in G} |X^g| = \sum\limits_{i = 0}^{n - 1} m^{\gcd(n, i)}
+\sum\limits_{g \in G} |X^g| = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 $$
 
 ---
@@ -336,9 +306,9 @@ $$
 $$
 \begin{aligned}
 \sum\limits_{g \in G} |X^g| 
-& = \sum\limits_{i = 0}^{n - 1} m^{\gcd(n, i)} \\
-& = \sum\limits_{d \mid n} m^d \sum\limits_{i = 0}^{n - 1} [ \gcd(n, i) = d ] \\
-& =\sum\limits_{d \mid n} m^d \sum\limits_{i = 0}^{n - 1} [ \gcd(\frac{n}{d}, i) = 1 ] \\
+& = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)} \\
+& = \sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(n, i) = d ] \\
+& =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(\frac{n}{d}, i) = 1 ] \\
 & = \sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d})
 \end{aligned}
 $$
@@ -400,26 +370,87 @@ $n \le 60, \ m \le 10^3$
 
 ---
 
-对 $n$ 的每一种拆分方案：$n = \sum\limits_{i = 1}^{k} t_i a_i$，其中 $a_i$ 代表点轮换大小，$t_i$ 为该大小的点轮换个数。则满足上述条件的点置换个数为：
-
+- 对 $n$ 的每一种拆分方案：$n = \sum\limits_{i = 1}^{k} t_i a_i$，其中 $a_i$ 代表点轮换大小，$t_i$ 为该大小的点轮换个数。则满足上述条件的点置换个数为：
 $$
 \frac{n!}{\prod\limits_{i = 1}^{k} t_i! \cdot a_i^{t_i}}
 $$
 
 ---
 
-其中除去 $a_i^{t_i}$ 的原因是因为每个大小为 $a_i$ 的点轮换会被重复算 $a_i$ 次。
+- 其中除去 $a_i^{t_i}$ 的原因是因为每个大小为 $a_i$ 的点轮换会被重复算 $a_i$ 次。
+- 爆搜所有的拆分方案即可，同一边轮换内的边都应当同色，运用一下 Pólya 定理即可。
 
-爆搜所有的拆分方案即可，同一边轮换内的边都应当同色，运用一下 Pólya 定理即可。
-
-## 2019 南昌 Summon
+# 2019 南昌 Summon
 
 现要从 $4$ 种不同的水晶中取 $n$ 个围成一个圈，但有 $m$ 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 $998244353$）
 
+$n \le 10^5, m \le 256$
+
+
+## 分析
+
+- 由于带上了限制条件，无法直接通过 Pólya 计数法得到结果；
+- [若有 $m$ 个轮换，则只需要确定前 $m$ 个水晶的颜色即可！]{ .fragment }
+
 ---
 
-### 分析
+- 记 $a\langle i, j, k, l \rangle$ 代表是否允许 $i, j, k, l$ 四种颜色相邻；
+- 记 $dp\langle i, j, k, l \rangle$ 代表 $i$ 个水晶排成一排，最后三个元素的颜色分别为 $j, k, l$，则方案数：
+  $$
+  dp\langle i, j, k, l \rangle = \sum\limits_{s} dp \langle i - 1, s, j, k \rangle \cdot a \langle s, j, k, l \rangle
+  $$
+- 枚举前三个水晶的颜色 $\langle j, k, l \rangle$，则 $dp \langle i + 3, j, k, l \rangle$ 代表围成一圈时满足题目条件的不动点个数。
 
-由于带上了限制条件，无法直接通过 Pólya 计数法得到结果
+---
+
+$$
+  dp\langle i, j, k, l \rangle = \sum\limits_{s} dp \langle i - 1, s, j, k \rangle \cdot a \langle s, j, k, l \rangle
+$$
+
+$$
+\begin{aligned}
+  \begin{bmatrix}
+    dp \langle i, 1, 1, 1 \rangle \\
+    dp \langle i, 1, 1, 2 \rangle \\
+    \vdots \\
+    dp \langle i, 4, 4, 4 \rangle
+  \end{bmatrix}
+\end{aligned}
+=
+\begin{aligned}
+  \begin{bmatrix}
+    dp \langle i - 1, 1, 1, 1 \rangle \\
+    dp \langle i - 1, 1, 1, 2 \rangle \\
+    \vdots \\
+    dp \langle i - 1, 4, 4, 4 \rangle
+  \end{bmatrix}
+\end{aligned}
+\cdot T
+$$
+
+$$
+T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rangle
+$$
+
+---
+
+- 旋转 $i \cdot \frac{2\pi}{n}$ 下不动点个数：
+  $$
+  \sum\limits_{\langle a, b, c \rangle} dp \langle \gcd(n, i) + 3, a, b, c \rangle
+  $$
+- 接下来记之为 $f(\gcd(n, i))$
+- 做一次矩阵快速幂即可得解，复杂度：$\mathcal{O}(64^2\log{n})$
+
+---
+
+- 不动点个数：
+$$
+\begin{aligned}
+\sum\limits_{i = 1}^{n} f(\gcd(n, i)) 
+& = \sum\limits_{d \mid n} f(d) \cdot \sum\limits_{i = 1}^{n} [\gcd(n, i) = d] \\
+& = \sum\limits_{d \mid n} f(d) \cdot \varphi(\frac{n}{d})
+\end{aligned}
+$$
+- 复杂度就变成了 $\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})$
 
 # 谢谢大家
