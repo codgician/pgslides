@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="codgician">
+  <meta name="author" content="尚未完成">
   <title>浅谈置换群</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,7 +51,7 @@
 
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
-  <p class="author">codgician</p>
+  <p class="author">尚未完成</p>
   <p class="date">2020.03</p>
 </section>
 
@@ -64,7 +64,9 @@
 <li>单位元 <span class="math inline">e</span>：<span class="math inline">\forall a \in G, \ ea = ae = a</span></li>
 <li>存在逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ s.t. } ab = ba = e</span></li>
 </ul>
-<p><span class="fragment">若满足交换律，则为<strong>交换群</strong></span></p>
+<div class="fragment">
+<p>若满足交换律，则为<strong>交换群</strong></p>
+</div>
 <aside class="notes">
 <p>对于群中的运算，我们后面会较多地称其为乘法。</p>
 </aside>
@@ -195,6 +197,7 @@ a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
 </ul>
 </section>
 
+<section>
 <section id="群在集合上的作用" class="title-slide slide level1">
 <h1>群在集合上的作用</h1>
 <p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall a \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
@@ -204,7 +207,10 @@ a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
 </ul>
 <p>则称 <span class="math inline">G</span> 在 <span class="math inline">M</span> 上有<strong>群作用</strong>。</p>
 </section>
-
+<section id="轨道不动元" class="slide level2">
+<h2>轨道，不动元</h2>
+<p>待补充……</p>
+</section></section>
 <section>
 <section id="burnside-定理" class="title-slide slide level1">
 <h1>Burnside 定理</h1>
@@ -302,7 +308,7 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 <section id="pólya-计数法" class="title-slide slide level1">
 <h1>Pólya 计数法</h1>
 <ul>
-<li>将置换表示为若干轮换乘积，让每个轮换内元素的颜色都相等就成为不动点了……</li>
+<li>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动点……</li>
 <li>记颜色数量为 <span class="math inline">m</span>，<span class="math inline">c(g)</span> 为置换 <span class="math inline">g</span> 被分解为不交轮换乘积的个数：</li>
 </ul>
 <p><span class="math display">
@@ -311,7 +317,7 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 </section>
 <section id="项链染色" class="slide level2">
 <h2>项链染色</h2>
-<p>长为 <span class="math inline">n</span> 的环，<span class="math inline">m</span> 种颜色，可旋转可翻转</p>
+<p>长为 <span class="math inline">n</span> 的环，<span class="math inline">m</span> 种颜色对环上元素染色，经旋转或翻转都算作相同方案</p>
 <p><span class="math inline">n, m \le 10^9</span></p>
 </section>
 <section class="slide level2">
@@ -364,9 +370,14 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 </section>
 <section id="完全图同构计数" class="slide level2">
 <h2>完全图同构计数</h2>
-<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色，求本质不同无向完全图个数。</p>
+<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图个数。</p>
 <p><span class="math inline">n \le 60, \ m \le 10^3</span></p>
-<p><span class="fragment">两张图若对点重标号后可以重合即为同构</span></p>
+<div class="fragment">
+<ul>
+<li>两张图若<strong>对点重标号</strong>后可以重合即为同构；</li>
+<li>把边的不存在当作一种颜色可将其推广至一般无向图同构。</li>
+</ul>
+</div>
 </section>
 <section class="slide level2">
 
@@ -412,8 +423,8 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 </ul>
 </section></section>
 <section>
-<section id="南昌-summon" class="title-slide slide level1">
-<h1>2019 南昌 Summon</h1>
+<section id="南昌-j.-summon" class="title-slide slide level1">
+<h1>南昌 J. Summon</h1>
 <p>现要从 <span class="math inline">4</span> 种不同的水晶中取 <span class="math inline">n</span> 个围成一个圈，但有 <span class="math inline">m</span> 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 <span class="math inline">998244353</span>）</p>
 <p><span class="math inline">n \le 10^5, m \le 256</span></p>
 </section>
@@ -421,7 +432,7 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <h2>分析</h2>
 <ul>
 <li>由于带上了限制条件，无法直接通过 Pólya 计数法得到结果；</li>
-<li><span class="fragment">若有 <span class="math inline">m</span> 个轮换，则只需要确定前 <span class="math inline">m</span> 个水晶的颜色即可！</span></li>
+<li>若有 <span class="math inline">m</span> 个轮换，则只需要确定前 <span class="math inline">m</span> 个水晶的颜色即可！</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -484,6 +495,23 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 \end{aligned}
 </span></li>
 <li>复杂度就变成了 <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})</span></li>
+</ul>
+</section></section>
+<section>
+<section id="银川-m.-crazy-cake" class="title-slide slide level1">
+<h1>银川 M. Crazy Cake</h1>
+<p>圆周上均匀分布 <span class="math inline">n</span> 个点，现可连接若干点对，但要求连出的线段不可在圆内部相交（但可以在圆上相交）。经过旋转可相互得到的方案算作相同方案，有多少种本质不同方案数？（结果膜 <span class="math inline">10^9 + 7</span>）</p>
+<p><span class="math display">
+T \le 10^5, 2 \le n \le 10^6
+</span></p>
+<aside class="notes">
+<p>T 次询问</p>
+</aside>
+</section>
+<section id="分析-2" class="slide level2">
+<h2>分析</h2>
+<ul>
+<li>置换群中元素均为对点的置换；</li>
 </ul>
 </section></section>
 <section id="谢谢大家" class="title-slide slide level1">
