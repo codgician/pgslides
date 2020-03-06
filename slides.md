@@ -10,14 +10,26 @@ $G$ 是非空集合，且二元运算满足：
 
 - 结合律：$(a \cdot b) \cdot c = a \cdot (b \cdot c)$
 - 单位元 $e$：$\forall a \in G, \ ea = ae = a$ 
-- 存在逆元：$\forall a \in G, \ \exist b \in G \text{ s.t. } ab = ba = e$
+- 存在逆元：$\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e$
   
 ::: fragment
+
 若满足交换律，则为**交换群** 
+
 :::
 
 ::: notes
+
 对于群中的运算，我们后面会较多地称其为乘法。
+
+思考：不满足交换律时，若成群，左逆元一定等于右逆元吗？
+
+-- 先别看下面 qwq --
+
+设 x 是 a 的左逆元，y 是 a 的右逆元，有：
+
+x = xe = x(ay) = (xa)y = y
+
 :::
 
 ## 子群
@@ -38,6 +50,35 @@ $$
 
 复合运算: $(f \circ g)(x) = f(g(x))$
 
+## 例
+
+$$
+\left(\begin{array}{c} 
+1 & 2 & 3 & 4 & 5 & 6 \\ 
+4 & 5 & 1 & 3 & 6 & 2 
+\end{array}\right)
+$$
+
+::: fragment
+
+$$
+\begin{aligned}
+1 & \rightarrow 4 \rightarrow 3 \\
+2 & \rightarrow 5 \rightarrow 6
+\end{aligned}
+$$
+
+任意一个映射都能被划分成若干不相交的映射链……
+
+:::
+
+
+::: notes
+
+如果可以的话，这就意味着我们发现了一种能够更简单表示置换的方式（也就是后面要介绍的轮换表示法）。
+
+:::
+
 ## 轮换表示法
 
 $$ 
@@ -52,51 +93,47 @@ $$
 $$
 \left(\begin{array}{c} 
 1 & 2 & 3 & 4 & 5 & 6 \\ 
-3 & 1 & 2 & 5 & 4 & 6 
-\end{array}\right) = (1 \enspace 3 \enspace 2) \cdot (4 \enspace 5) \cdot (6)
+4 & 5 & 1 & 3 & 6 & 2 
+\end{array}\right)
+= (1 \enspace 4 \enspace 3) \cdot (2 \enspace 5 \enspace 6)
 $$
 
-## 性质
+::: fragment
 
-- 任 $n$ 元置换可表示为若不相交的轮换乘积
-- 若不计次序，这些轮换是**唯一决定**的
+**若不计轮换内外的次序，对于任意置换的不交轮换分解是唯一的吗？**
+
+:::
 
 ::: notes
-不相交指子集上不相交，即不包含相同元素
+
+显然不交的轮换在复合时是满足交换律的，但是如果两个轮换相交就不好说了，例如试试计算 (1 2 3) * (3 4) 是否等于 (3 4) * (1 2 3)。
+
 :::
 
 ---
 
-$$
-\begin{aligned}
-\sigma & = 
-\left(\begin{array}{c}
-a_1 & a_2 & \dots & a_{j - 1} & a_j & \dots \\
-a_2 & a_3 & \dots & a_j & a_1 & \dots
-\end{array}\right) \\
-& = (a_1 \enspace a_2 \enspace \dots \enspace a_j) \cdot 
-\left(\begin{array}{c}
- \dots \\
- \dots
-\end{array}\right) = \dots
-\end{aligned}
-$$
+### 证明
 
-递归进行下去，可得到：
+考虑一个 $n$ 元置换
 
-$$
-\sigma = (a_1 \enspace \dots \enspace a_j) \cdot (a_{j + 1} \enspace \dots \enspace a_e) \cdots (a_r \enspace \dots \enspace a_n)
-$$
-
+- 对于恒等置换，显然分解是唯一的；
+- 对于非恒等置换，$\exist i \text{ \ s.t. \ } \sigma(i) \neq i$。
+  
 ---
 
-借助反证法证明其唯一性，若它还可被表示成：
+- $i \rightarrow \sigma(i) \rightarrow \sigma^2(i) \rightarrow \dots$
+- 由抽屉原理，$\exist t_1 < t_2 \text{ \ s.t. \ } \sigma^{t_1}(i) = \sigma^{t_2}(i)$
+- 令 $t$ 为使得 $\sigma^t(i) = i$ 的最小正整数，则：
+  $$
+  (i \enspace \sigma(i) \enspace \dots \enspace \sigma^{t - 1}(i))
+  $$
+  是一个轮换。
 
-$$
-\sigma = (b_1 \enspace \dots \enspace b_i) \cdot (b_{i + 1} \enspace \dots \enspace b_t) \cdots (b_s \enspace \dots \enspace b_n)
-$$
+--- 
 
-若存在两个轮换交集不为空，那么较大者一定还可以被进一步分解。
+- 对于每个这样的 $i$ 都如此操作即可构造出一个唯一的不相交轮换分解式：
+  - 每个元素在分解式中恰好出现 $1$ 次；
+  - 每个元素所属于的轮换是固定的。
 
 ## 轮换的幂运算
 
@@ -145,14 +182,14 @@ $$
 $n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元对称群 $S_n$
 
 - 结合律：$(f \circ g) \circ h = f \circ (g \circ h)$
-- 单位元：恒等置换 $e$
-- 逆元显然存在
+- 单位元：恒等置换 $e$；
+- 逆元显然存在。
 
 # 群在集合上的作用
 
 设 $G$ 是一个群，$M$ 是一个集合。若 $G$ 中每个元 $\sigma$ 都对应于 $M$ 的一个变换，对 $\forall a \in M$ 记变换结果为 $\sigma \circ m$，且满足：
 
-- $\exist e \text{ s.t. } \forall m \in M, \ e \circ m = m$；
+- $\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m$；
 - $\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)$
   
 则称 $G$ 在 $M$ 上有**群作用**。
@@ -336,7 +373,7 @@ $$
 |X/G| = \frac{1}{|G| + |G'|} (\sum\limits_{g \in G} |X^g| + \sum\limits_{g' \in G'} |X^{g'}|)
 $$
 
-## 完全图同构计数
+# 完全图同构计数
 
 $n$ 个点无向完全图，$m$ 种颜色给边染色，求互不同构无向完全图个数。
 
@@ -347,7 +384,7 @@ $n \le 60, \ m \le 10^3$
 - 把边的不存在当作一种颜色可将其推广至一般无向图同构。
 :::
 
----
+## 分析
 
 - 对点的置换群即 $n$ 阶对称群 $S_n$，$|S_n| = n!$
 - 每个点置换可以被表示成若干点轮换的乘积，而该点置换下，边两端的两点有两种情况：
@@ -457,6 +494,10 @@ $$
 $$
 - 复杂度就变成了 $\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})$
 
+# 2018 多校. Kaleidoscope
+
+咕咕咕……
+
 # 银川 M. Crazy Cake
 
 圆周上均匀分布 $n$ 个点，现可连接若干点对，但要求连出的线段不可在圆内部相交（但可以在圆上相交）。经过旋转可相互得到的方案算作相同方案，有多少种本质不同方案数？（$T$ 次询问，结果模 $10^9 + 7$）
@@ -547,7 +588,28 @@ $d \neq n$ 的情形
 
 - 先对每个轮换单独考虑；
 - 轮换内部相邻两个点连线不会导致相交，故还是先考虑内部连边；
-- 
+- WIP
   
 
 # 谢谢大家
+
+# 推荐题目 - Lv1
+
+- [HDU 1817: Necklace of Beads](http://acm.hdu.edu.cn/showproblem.php?pid=1817)
+- [HDU 3547: DIY Cube](http://acm.hdu.edu.cn/showproblem.php?pid=3547)
+- [HDU 3441: Rotation](http://acm.hdu.edu.cn/showproblem.php?pid=3441)
+- [POJ 2888: Magic Bracelet](http://poj.org/problem?id=2888)
+- [洛谷 P1446: Cards](https://www.luogu.com.cn/problem/P1446)
+- [洛谷 P4727: 图的同构计数](https://www.luogu.com.cn/problem/P4727)
+
+
+# 推荐题目 - Lv2
+
+- [ICPC 2014 鞍山 K: Colorful Toy](http://acm.hdu.edu.cn/showproblem.php?pid=5080)
+- [HDU 6360: Kaleidoscope](http://acm.hdu.edu.cn/showproblem.php?pid=6360)
+- [ICPC 2019 南昌 J: Summon](https://nanti.jisuanke.com/t/42585)
+- [ICPC 2019 银川 M: Crazy Cake](https://nanti.jisuanke.com/t/42393)
+
+
+
+

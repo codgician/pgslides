@@ -62,13 +62,17 @@
 <ul>
 <li>结合律：<span class="math inline">(a \cdot b) \cdot c = a \cdot (b \cdot c)</span></li>
 <li>单位元 <span class="math inline">e</span>：<span class="math inline">\forall a \in G, \ ea = ae = a</span></li>
-<li>存在逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ s.t. } ab = ba = e</span></li>
+<li>存在逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e</span></li>
 </ul>
 <div class="fragment">
 <p>若满足交换律，则为<strong>交换群</strong></p>
 </div>
 <aside class="notes">
 <p>对于群中的运算，我们后面会较多地称其为乘法。</p>
+<p>思考：不满足交换律时，若成群，左逆元一定等于右逆元吗？</p>
+<p>– 先别看下面 qwq –</p>
+<p>设 x 是 a 的左逆元，y 是 a 的右逆元，有：</p>
+<p>x = xe = x(ay) = (xa)y = y</p>
 </aside>
 </section>
 <section id="子群" class="slide level2">
@@ -88,6 +92,27 @@
 </span></p>
 <p>复合运算: <span class="math inline">(f \circ g)(x) = f(g(x))</span></p>
 </section>
+<section id="例" class="slide level2">
+<h2>例</h2>
+<p><span class="math display">
+\left(\begin{array}{c} 
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
+4 &amp; 5 &amp; 1 &amp; 3 &amp; 6 &amp; 2 
+\end{array}\right)
+</span></p>
+<div class="fragment">
+<p><span class="math display">
+\begin{aligned}
+1 &amp; \rightarrow 4 \rightarrow 3 \\
+2 &amp; \rightarrow 5 \rightarrow 6
+\end{aligned}
+</span></p>
+<p>任意一个映射都能被划分成若干不相交的映射链……</p>
+</div>
+<aside class="notes">
+<p>如果可以的话，这就意味着我们发现了一种能够更简单表示置换的方式（也就是后面要介绍的轮换表示法）。</p>
+</aside>
+</section>
 <section id="轮换表示法" class="slide level2">
 <h2>轮换表示法</h2>
 <p><span class="math display"> 
@@ -97,53 +122,50 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 \end{array}\right) \xRightarrow{\text{记作}} (a_1 \enspace a_2 \enspace \dots \enspace a_n)
 </span></p>
 </section>
-<section id="例" class="slide level2">
+<section id="例-1" class="slide level2">
 <h2>例</h2>
 <p><span class="math display">
 \left(\begin{array}{c} 
 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
-3 &amp; 1 &amp; 2 &amp; 5 &amp; 4 &amp; 6 
-\end{array}\right) = (1 \enspace 3 \enspace 2) \cdot (4 \enspace 5) \cdot (6)
+4 &amp; 5 &amp; 1 &amp; 3 &amp; 6 &amp; 2 
+\end{array}\right)
+= (1 \enspace 4 \enspace 3) \cdot (2 \enspace 5 \enspace 6)
 </span></p>
-</section>
-<section id="性质" class="slide level2">
-<h2>性质</h2>
-<ul>
-<li>任 <span class="math inline">n</span> 元置换可表示为若不相交的轮换乘积</li>
-<li>若不计次序，这些轮换是<strong>唯一决定</strong>的</li>
-</ul>
+<div class="fragment">
+<p><strong>若不计轮换内外的次序，对于任意置换的不交轮换分解是唯一的吗？</strong></p>
+</div>
 <aside class="notes">
-<p>不相交指子集上不相交，即不包含相同元素</p>
+<p>显然不交的轮换在复合时是满足交换律的，但是如果两个轮换相交就不好说了，例如试试计算 (1 2 3) * (3 4) 是否等于 (3 4) * (1 2 3)。</p>
 </aside>
 </section>
 <section class="slide level2">
 
-<p><span class="math display">
-\begin{aligned}
-\sigma &amp; = 
-\left(\begin{array}{c}
-a_1 &amp; a_2 &amp; \dots &amp; a_{j - 1} &amp; a_j &amp; \dots \\
-a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
-\end{array}\right) \\
-&amp; = (a_1 \enspace a_2 \enspace \dots \enspace a_j) \cdot 
-\left(\begin{array}{c}
- \dots \\
- \dots
-\end{array}\right) = \dots
-\end{aligned}
-</span></p>
-<p>递归进行下去，可得到：</p>
-<p><span class="math display">
-\sigma = (a_1 \enspace \dots \enspace a_j) \cdot (a_{j + 1} \enspace \dots \enspace a_e) \cdots (a_r \enspace \dots \enspace a_n)
-</span></p>
+<h3 id="证明">证明</h3>
+<p>考虑一个 <span class="math inline">n</span> 元置换</p>
+<ul>
+<li>对于恒等置换，显然分解是唯一的；</li>
+<li>对于非恒等置换，<span class="math inline">\exist i \text{ \ s.t. \ } \sigma(i) \neq i</span>。</li>
+</ul>
 </section>
 <section class="slide level2">
 
-<p>借助反证法证明其唯一性，若它还可被表示成：</p>
-<p><span class="math display">
-\sigma = (b_1 \enspace \dots \enspace b_i) \cdot (b_{i + 1} \enspace \dots \enspace b_t) \cdots (b_s \enspace \dots \enspace b_n)
-</span></p>
-<p>若存在两个轮换交集不为空，那么较大者一定还可以被进一步分解。</p>
+<ul>
+<li><span class="math inline">i \rightarrow \sigma(i) \rightarrow \sigma^2(i) \rightarrow \dots</span></li>
+<li>由抽屉原理，<span class="math inline">\exist t_1 &lt; t_2 \text{ \ s.t. \ } \sigma^{t_1}(i) = \sigma^{t_2}(i)</span></li>
+<li>令 <span class="math inline">t</span> 为使得 <span class="math inline">\sigma^t(i) = i</span> 的最小正整数，则： <span class="math display">
+(i \enspace \sigma(i) \enspace \dots \enspace \sigma^{t - 1}(i))
+</span> 是一个轮换。</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>对于每个这样的 <span class="math inline">i</span> 都如此操作即可构造出一个唯一的不相交轮换分解式：
+<ul>
+<li>每个元素在分解式中恰好出现 <span class="math inline">1</span> 次；</li>
+<li>每个元素所属于的轮换是固定的。</li>
+</ul></li>
+</ul>
 </section>
 <section id="轮换的幂运算" class="slide level2">
 <h2>轮换的幂运算</h2>
@@ -180,7 +202,7 @@ a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
 </section>
 <section class="slide level2">
 
-<h3 id="性质-1">性质</h3>
+<h3 id="性质">性质</h3>
 <p>若置换 <span class="math inline">T</span> 可表示为 <span class="math inline">1</span> 个长度为 <span class="math inline">n</span> 的轮换 <span class="math inline">c</span>，可用如下算法求出 <span class="math inline">T^e</span> 轮换乘积形式：</p>
 <ul>
 <li><span class="math inline">T^e</span> 可表示为 <span class="math inline">\gcd(n, e)</span> 个长度为 <span class="math inline">\frac{n}{\gcd(n, e)}</span> 的轮换 <span class="math inline">c&#39;</span>；</li>
@@ -192,8 +214,8 @@ a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
 <p><span class="math inline">n</span> 个元的所有置换，在复合运算 <span class="math inline">\circ</span> 下成群，称作 <span class="math inline">n</span> 元对称群 <span class="math inline">S_n</span></p>
 <ul>
 <li>结合律：<span class="math inline">(f \circ g) \circ h = f \circ (g \circ h)</span></li>
-<li>单位元：恒等置换 <span class="math inline">e</span></li>
-<li>逆元显然存在</li>
+<li>单位元：恒等置换 <span class="math inline">e</span>；</li>
+<li>逆元显然存在。</li>
 </ul>
 </section>
 
@@ -202,7 +224,7 @@ a_2 &amp; a_3 &amp; \dots &amp; a_j &amp; a_1 &amp; \dots
 <h1>群在集合上的作用</h1>
 <p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall a \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
 <ul>
-<li><span class="math inline">\exist e \text{ s.t. } \forall m \in M, \ e \circ m = m</span>；</li>
+<li><span class="math inline">\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m</span>；</li>
 <li><span class="math inline">\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)</span></li>
 </ul>
 <p>则称 <span class="math inline">G</span> 在 <span class="math inline">M</span> 上有<strong>群作用</strong>。</p>
@@ -367,9 +389,10 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <p><span class="math display">
 |X/G| = \frac{1}{|G| + |G&#39;|} (\sum\limits_{g \in G} |X^g| + \sum\limits_{g&#39; \in G&#39;} |X^{g&#39;}|)
 </span></p>
-</section>
-<section id="完全图同构计数" class="slide level2">
-<h2>完全图同构计数</h2>
+</section></section>
+<section>
+<section id="完全图同构计数" class="title-slide slide level1">
+<h1>完全图同构计数</h1>
 <p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图个数。</p>
 <p><span class="math inline">n \le 60, \ m \le 10^3</span></p>
 <div class="fragment">
@@ -379,8 +402,8 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 </ul>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="分析-1" class="slide level2">
+<h2>分析</h2>
 <ul>
 <li>对点的置换群即 <span class="math inline">n</span> 阶对称群 <span class="math inline">S_n</span>，<span class="math inline">|S_n| = n!</span></li>
 <li>每个点置换可以被表示成若干点轮换的乘积，而该点置换下，边两端的两点有两种情况：
@@ -428,7 +451,7 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <p>现要从 <span class="math inline">4</span> 种不同的水晶中取 <span class="math inline">n</span> 个围成一个圈，但有 <span class="math inline">m</span> 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 <span class="math inline">998244353</span>）</p>
 <p><span class="math inline">n \le 10^5, m \le 256</span></p>
 </section>
-<section id="分析-1" class="slide level2">
+<section id="分析-2" class="slide level2">
 <h2>分析</h2>
 <ul>
 <li>由于带上了限制条件，无法直接通过 Pólya 计数法得到结果；</li>
@@ -497,6 +520,11 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 <li>复杂度就变成了 <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})</span></li>
 </ul>
 </section></section>
+<section id="多校.-kaleidoscope" class="title-slide slide level1">
+<h1>2018 多校. Kaleidoscope</h1>
+<p>咕咕咕……</p>
+</section>
+
 <section>
 <section id="银川-m.-crazy-cake" class="title-slide slide level1">
 <h1>银川 M. Crazy Cake</h1>
@@ -505,7 +533,7 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 T \le 10^5, 2 \le n \le 10^6
 </span></p>
 </section>
-<section id="分析-2" class="slide level2">
+<section id="分析-3" class="slide level2">
 <h2>分析</h2>
 <ul>
 <li>置换群？顺时针旋转 <span class="math inline">\frac{2\pi}{n}, 2 \times \frac{2\pi}{n}, \dots, 2\pi</span>；</li>
@@ -585,6 +613,28 @@ f(n) &amp; = 2f(n - 1) \\
 <section id="谢谢大家" class="title-slide slide level1">
 <h1>谢谢大家</h1>
 
+</section>
+
+<section id="推荐题目---lv1" class="title-slide slide level1">
+<h1>推荐题目 - Lv1</h1>
+<ul>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1817">HDU 1817: Necklace of Beads</a></li>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3547">HDU 3547: DIY Cube</a></li>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3441">HDU 3441: Rotation</a></li>
+<li><a href="http://poj.org/problem?id=2888">POJ 2888: Magic Bracelet</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1446">洛谷 P1446: Cards</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4727">洛谷 P4727: 图的同构计数</a></li>
+</ul>
+</section>
+
+<section id="推荐题目---lv2" class="title-slide slide level1">
+<h1>推荐题目 - Lv2</h1>
+<ul>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5080">ICPC 2014 鞍山 K: Colorful Toy</a></li>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6360">HDU 6360: Kaleidoscope</a></li>
+<li><a href="https://nanti.jisuanke.com/t/42585">ICPC 2019 南昌 J: Summon</a></li>
+<li><a href="https://nanti.jisuanke.com/t/42393">ICPC 2019 银川 M: Crazy Cake</a></li>
+</ul>
 </section>
     </div>
   </div>
