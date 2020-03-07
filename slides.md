@@ -4,7 +4,7 @@ title: 浅谈置换群
 date: 2020.03
 ---
 
-# 群 $(G, \cdot)$
+# 群 $(G, \cdot)$ { #group }
 
 $G$ 是非空集合，且二元运算满足：
 
@@ -32,11 +32,62 @@ x = xe = x(ay) = (xa)y = y
 
 :::
 
-## 子群
+## 子群 { #subgroup }
 
-设 $(G, \cdot)$ 为群，$A$ 是 $G$ 的子集，若 $(A, \cdot)$ 成群，则称 $A$ 为 $G$ 的子群，记作 $A \le G$；
+设 $(G, \cdot)$ 为群，$H$ 是 $G$ 的子集，若 $(H, \cdot)$ 成群，则称 $H$ 为 $G$ 的子群，记作 $H \le G$；
 
-# 置换
+# 关系
+
+- 集合的笛卡尔积：
+$$
+A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
+$$
+- 设 $A$ 是集合，集合 $A \times A$ 的每个子集 $R$ 叫做集合 $A$ 上的一个关系。
+- 若 $(a, b) \in R$，则称 $a$ 和 $b$ 有关系 $R$，记作 $aRb$。
+
+## 等价关系
+
+若集合 $A$ 上的关系 $\sim$ 满足如下条件：
+
+- 自反性：$\forall a \in A$，$a \sim a$；
+- 对称性：$\forall a, b \in A$，若 $a \sim b$ 则 $b \sim a$；
+- 传递性：$\forall a, b \in A$，若 $a \sim b, \ b \sim c$，则 $a \sim c$；
+
+则称 $\sim$ 是**等价关系**。
+
+## 等价类
+
+设 $\sim$ 是 $A$ 上的等价关系，$\forall a \in A$，$[a]$ 表示 $A$ 中与 $a$ 等价的全部元素构成的集合：
+
+$$
+[a] = \left\{ b \in A \mid b \sim a \right\}
+$$
+
+称 $[a]$ 为 $a$ 所在的等价类。
+
+
+## 引理
+
+设 $G$ 是群，$A \leq G$，定义 $G$ 上的关系为：对于 $g, h \in G, \ g \sim h \Leftrightarrow gh^{-1} \in A$，则 $\sim$ 是 $G$ 上的等价关系；并且元素 $g$ 对此等价关系的**等价类**是 $Ag$。
+
+::: notes
+
+$$
+aA = \{ax \mid x \in A \}, \quad Aa = \{ xa \mid x \in A \} \\
+A^{-1} = \{a^{-1} \mid a \in A \}
+$$ 
+
+:::
+
+## 引理 - 证明
+
+- 自反性：$\forall g \in G, \ \because gg^{-1} \in A, \therefore g \sim g$；
+- 对称性：若 $g \sim h$，则 $gh^{-1} \in A$。由于 $A$ 是子群，故 $hg^{-1} = (gh^{-1})^{-1} \in A, \ \therefore h \sim g$；
+- 传递性：若 $g \sim h, \ h \sim l$，则 $gh^{-1}, hl^{-1} \in A, \ \therefore gl^{-1} = (gh^{-1})(hl^{-1}) \in A$；
+- 故是等价关系。
+
+
+# 置换 { #permutation }
 
 一个集合的置换即从该集合映射至自身的**双射**。
 
@@ -135,7 +186,7 @@ $$
   - 每个元素在分解式中恰好出现 $1$ 次；
   - 每个元素所属于的轮换是固定的。
 
-## 轮换的幂运算
+## 循环置换的幂运算
 
 $$
 (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)
@@ -206,9 +257,9 @@ $$
 借助这一性质可以 $\mathcal{O}(N)$ 求得任一置换的幂。
 
 
-# 置换群
+# 置换群 { #permutation-group }
 
-$n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元对称群 $S_n$
+$n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元**对称群** $S_n$
 
 - 结合律：$(f \circ g) \circ h = f \circ (g \circ h)$
 - 单位元：恒等置换 $e$；
@@ -220,38 +271,46 @@ $n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元�
 
 :::
 
-# 群在集合上的作用
+# 群在集合上的作用 { #group-action }
 
 设 $G$ 是一个群，$M$ 是一个集合。若 $G$ 中每个元 $\sigma$ 都对应于 $M$ 的一个变换，对 $\forall m \in M$ 记变换结果为 $\sigma \circ m$，且满足：
 
 - $\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m$；
 - $\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)$
   
-则称 $G$ 在 $M$ 上有**群作用**。
+则称 $G$ 在 $M$ 上有**群作用 (group action)**。
 
-## 轨道
+## 轨道 { #orbit }
 
 群 $G$ 作用于集合 $M$ 上，$x \in M$，称 $M$ 的子集
 
 $$
-O_x = \{ g \circ x \mid g \in G \}
+[x] = \{ g \circ x \mid g \in G \}
 $$
 
-为 $x$ 在 $G$ 作用下的轨道，简称过 $x$ 的轨道。
+为 $x$ 在 $G$ 作用下的**轨道 (orbit)**，简称过 $x$ 的轨道。
+
+::: notes
+
+蛤？为什么用了等价类的符号？因为它本质上就是一个等价类…… 国内部分教材也记作 $O_x$。
+
+:::
 
 ---
 
 $$
-O_x = \{ g \circ x \mid g \in G \}
+[x] = \{ g \circ x \mid g \in G \}
 $$
 
-
-- $x \in O_x$；
-- 若 $y \in O_x$，则 $x \in O_y$；
-- 若 $z \in O_y, y \in O_x$，则 $z \in O_x$。
-
+- 自反性：$x \in [x]$；
+- 对称性：若 $y \in [x]$，则 $x \in [y]$；
+- 传递性：若 $z \in [y], y \in [x]$，则 $z \in [x]$。
 
 ::: notes
+
+定义关系 $x \sim y := x \in [y]$，那么这是一个等价关系~
+
+💡 提示:
 
 1. 既然是置换群，必然有恒等置换；
 2. 既然置换群中逆元存在，有能把 x 变成 y 的置换则一定也有能把 y 变成 x 的置换；
@@ -261,34 +320,119 @@ $$
 
 ---
 
-- 若 $y \in O_x$，则 $O_x = O_y$；
-- $O_x$ 和 $O_y$ 要么重合，要么不相交；
+- 若 $[x] \cap [y] \neq \emptyset$，则 $[x] = [y]$；
 - 在 $M$ 的每一条轨道上取一个元素组成 $M$ 的一个子集 $I$，称为 $M$ 的**轨道的代表元集**，则：
 
   $$
-  M = \bigcup\limits_{x \in I} O_x
+  M = \bigcup\limits_{x \in I} [x]
   $$
 
-  并且此中各 $O_x$ 互不相交。
+  并且此中各 $[x]$ 互不相交。
 
----
 
-**怎么求群作用于集合的轨道数？**
+### 求轨道数量？
 
----
-
-### 有什么意义？
+::: fragment
 
 解决一类求本质不同方案个数的问题！
+
+:::
+
+::: fragment
 
 - $n$ 颗宝石围成一圈制成项链，每颗宝石有 $m$ 种颜色选择，能得到多少种本质不同的染色方案？
   - $R - G - B$ 和 $G - B - R$？
   - $R - G - B$ 和 $R - B - G$？
+
+:::
+  
+::: fragment
+
 - $n$ 个点构成本质不同的无向图个数？
   - 若对无向图 $G_1$ 中的点重新编号能得到 $G_2$，那么 $G_1 \sim G_2$。
+  
+:::
+
+## 陪集 { #coset }
+
+设 $H \leq G$，对于 $x \in G$：
+
+- $H$ 的一个**左陪集 (left coset)** $xH$：
+  $$
+  xH = \{ x \cdot h \mid h \in H \}
+  $$
+- $H$ 的一个**右陪集 (right coset)** $Hx$：
+  $$
+  Hx = \{ h \cdot x \mid h \in H \}
+  $$
+
+::: notes
+
+由于左右陪集相关内容是相似的，所以接下来只会分析左陪集。
+
+:::
+
+---
+
+### 性质 { #coset-properties }
+
+$$
+\begin{aligned}
+xH & = \{ x \cdot h \mid h \in H \} \\
+Hx & = \{ h \cdot x \mid h \in H \}
+\end{aligned}
+$$
+
+- 自反性：$x \in xH$；
+- 对称性：若 $y \in xH$，则 $x \in yH$；
+- 传递性：若 $z \in yH, \ y \in xH$，则 $z \in xH$。
+
+::: notes
+
+💡 提示:
+
+1. 既然 $H$ 还是群，那么肯定有单位元；
+2. 既然 $H$ 中逆元存在，有 $y = x \cdot h$, 自然有 $x = y \cdot h^{-1}$ 且 $h^{-1} \in H$；
+3. $z = y \cdot h_1, \ y = x \cdot h_2 \Rightarrow z = x \cdot h_2h_1$，又 $h_2h_1 \in H$，自然得证。
+
+:::
+
+---
+
+- 若 $xH \cap yH \neq \emptyset$，则 $xH = yH$；
+- 
+  $$
+  \bigcup\limits_{x \in G} xH = G
+  $$
+
+::: fragment
+
+WIP... 这里大概就引出拉格朗日定理了。
+
+:::
+
+::: notes
+
+:::
+
+## 稳定化子 { #stablizer }
+
+设群 $G$ 作用于集合 $M$，对 $x \in M$，令：
+
+$$
+G_x = \{ g \in G \mid g \circ x = x \}
+$$
+
+## 轨道-稳定化子定理
+
+设有限群 $G$ 作用于集合 $M$ ，$x \in M$，则：
+
+$$
+\mid G \mid = \mid G_x \mid \cdot \mid [x] \mid
+$$
 
 
-# Burnside 定理
+# Burnside 引理
 
 设有限群 $G$ 作用于有限集 $X$ 上，则轨道数：
 
@@ -296,11 +440,15 @@ $$
 |X/G| = \frac{1}{|G|} \sum\limits_{g \in G} |X^{g}|
 $$
 
-其中 $X^{g}$ 代表 $g$ 的不动元构成的集合：
+其中 $X^{g}$ 代表 $g$ 的不动点构成的集合：
 
 $$
 X^{g} = \{ x \in X \mid g \circ x = x \}
 $$
+
+## 证明
+
+咕咕咕……
 
 ## 例子
 
@@ -332,7 +480,7 @@ A_1 & A_2 & A_3 & A_4 & A_5 & A_6
 \end{array}\right)
 $$
 
-将这一置换作用于 $M$ 中的任意元素都不会使该元素发生变化，故不动元有 $20$ 个。
+将这一置换作用于 $M$ 中的任意元素都不会使该元素发生变化，故不动点有 $20$ 个。
 
 ---
 
@@ -345,13 +493,13 @@ A_6 & A_1 & A_2 & A_3 & A_4 & A_5
 \end{array}\right)
 $$
 
-若要成为不动元，则应当满足：
+若要成为不动点，则应当满足：
 
 $$
 A_1 = A_2 = \dots = A_6
 $$
 
-故没有不动元
+故没有不动点
 
 ---
 
@@ -364,13 +512,13 @@ A_5 & A_6 & A_1 & A_2 & A_3 & A_4
 \end{array}\right)
 $$
 
-若要成为不动元，则应当满足：
+若要成为不动点，则应当满足：
 
 $$
 A_1 = A_3 = A_5, \ A_2 = A_4 = A_6
 $$
 
-故不动元数量为 $2$
+故不动点数量为 $2$
 
 ---
 
@@ -383,13 +531,13 @@ A_4 & A_5 & A_6 & A_1 & A_2 & A_3
 \end{array}\right)
 $$
 
-若要成为不动元，则应当满足：
+若要成为不动点，则应当满足：
 
 $$
 A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 $$
 
-故没有不动元
+故没有不动点
 
 ---
 
@@ -584,9 +732,6 @@ $$
 $$
 - 复杂度就变成了 $\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})$
 
-# 2018 多校. Kaleidoscope
-
-咕咕咕……
 
 # 银川 M. Crazy Cake
 
@@ -683,7 +828,7 @@ $d \neq n$ 的情形
 
 # 谢谢大家
 
-# 推荐题目 - Lv1
+## 推荐题目 - Lv1
 
 - [HDU 1817: Necklace of Beads](http://acm.hdu.edu.cn/showproblem.php?pid=1817)
 - [HDU 3547: DIY Cube](http://acm.hdu.edu.cn/showproblem.php?pid=3547)
@@ -693,13 +838,21 @@ $d \neq n$ 的情形
 - [洛谷 P4727: 图的同构计数](https://www.luogu.com.cn/problem/P4727)
 
 
-# 推荐题目 - Lv2
+## 推荐题目 - Lv2
 
 - [ICPC 2014 鞍山 K: Colorful Toy](http://acm.hdu.edu.cn/showproblem.php?pid=5080)
 - [HDU 6360: Kaleidoscope](http://acm.hdu.edu.cn/showproblem.php?pid=6360)
 - [ICPC 2019 南昌 J: Summon](https://nanti.jisuanke.com/t/42585)
 - [ICPC 2019 银川 M: Crazy Cake](https://nanti.jisuanke.com/t/42393)
 
+## 部分符号说明
 
+**本文中**：
 
+- 一般用 $G, H$ 指代群，$M, X$ 等指代集合；
+- 一般用小写希腊字母（如 $\sigma, \tau$ 等）表示函数或映射；
+- 对于群 $G$ 作用于集合 $M$，$g \in G, x \in M$：
+  - $G_x$：$G$ 作用下 $x$ 的稳定化子；
+  - $[x]$：$x$ 所在的轨道/等价类；
+  - $M^g$：在置换 $g$ 下 $M$ 中不动点的集合。
 
