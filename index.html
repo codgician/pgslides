@@ -62,7 +62,7 @@
 <ul>
 <li>结合律：<span class="math inline">(a \cdot b) \cdot c = a \cdot (b \cdot c)</span></li>
 <li>单位元 <span class="math inline">e</span>：<span class="math inline">\forall a \in G, \ ea = ae = a</span></li>
-<li>存在逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e</span></li>
+<li>逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e</span></li>
 </ul>
 <div class="fragment">
 <p>若满足交换律，则为<strong>交换群</strong></p>
@@ -107,7 +107,7 @@
 2 &amp; \rightarrow 5 \rightarrow 6
 \end{aligned}
 </span></p>
-<p>任意一个映射都能被划分成若干不相交的映射链……</p>
+<p>任一置换都能被划分成若干不交的映射链？</p>
 </div>
 <aside class="notes">
 <p>如果可以的话，这就意味着我们发现了一种能够更简单表示置换的方式（也就是后面要介绍的轮换表示法）。</p>
@@ -202,12 +202,37 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 </section>
 <section class="slide level2">
 
-<h3 id="性质">性质</h3>
-<p>若置换 <span class="math inline">T</span> 可表示为 <span class="math inline">1</span> 个长度为 <span class="math inline">n</span> 的轮换 <span class="math inline">c</span>，可用如下算法求出 <span class="math inline">T^e</span> 轮换乘积形式：</p>
+<p><span class="math display">
+\sigma = (a_0 \enspace a_1 \enspace \dots \enspace a_{n - 1})
+</span></p>
 <ul>
-<li><span class="math inline">T^e</span> 可表示为 <span class="math inline">\gcd(n, e)</span> 个长度为 <span class="math inline">\frac{n}{\gcd(n, e)}</span> 的轮换 <span class="math inline">c&#39;</span>；</li>
-<li>对于第 <span class="math inline">i</span> 个轮换 <span class="math inline">c&#39;_i</span>：<span class="math inline">c&#39;_i[j] = c[(i + ej) \bmod n]</span>。</li>
+<li><span class="math inline">\sigma^t(a_i) = a_{[(i + t) \bmod n]}</span></li>
+<li>令 <span class="math inline">k \in N^{*} \text{ \ s.t. \ } \sigma^{tk}(a_i) = a_i</span>：</li>
 </ul>
+<div class="fragment current-visible" style="height:0">
+<p><span class="math display">
+i + tk \equiv i \pmod n
+</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+tk \equiv 0 \pmod n
+</span></p>
+<p>最小非负解：<span class="math inline">k = \frac{n}{\gcd(n, t)}</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+\sigma = (a_0 \enspace a_1 \enspace \dots \enspace a_{n - 1})
+</span></p>
+<ul>
+<li><span class="math inline">\sigma^t</span> 可表示为 <span class="math inline">\gcd(n, t)</span> 个长为 <span class="math inline">\frac{n}{\gcd(n, t)}</span> 的轮换；</li>
+<li>对于第 <span class="math inline">i</span> 个轮换 <span class="math inline">c&#39;_i</span>： <span class="math display">
+c&#39;_i[j] = c[(i + ej) \bmod n]
+</span></li>
+</ul>
+<p>借助这一性质可以 <span class="math inline">\mathcal{O}(N)</span> 求得任一置换的幂。</p>
 </section></section>
 <section id="置换群" class="title-slide slide level1">
 <h1>置换群</h1>
@@ -217,21 +242,78 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 <li>单位元：恒等置换 <span class="math inline">e</span>；</li>
 <li>逆元显然存在。</li>
 </ul>
+<aside class="notes">
+<p>对于结合律的进一步说明：等式两边都是 f(g(h(x)))</p>
+</aside>
 </section>
 
 <section>
 <section id="群在集合上的作用" class="title-slide slide level1">
 <h1>群在集合上的作用</h1>
-<p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall a \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
+<p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall m \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
 <ul>
 <li><span class="math inline">\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m</span>；</li>
 <li><span class="math inline">\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)</span></li>
 </ul>
 <p>则称 <span class="math inline">G</span> 在 <span class="math inline">M</span> 上有<strong>群作用</strong>。</p>
 </section>
-<section id="轨道不动元" class="slide level2">
-<h2>轨道，不动元</h2>
-<p>待补充……</p>
+<section id="轨道" class="slide level2">
+<h2>轨道</h2>
+<p>群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span> 上，<span class="math inline">x \in M</span>，称 <span class="math inline">M</span> 的子集</p>
+<p><span class="math display">
+O_x = \{ g \circ x \mid g \in G \}
+</span></p>
+<p>为 <span class="math inline">x</span> 在 <span class="math inline">G</span> 作用下的轨道，简称过 <span class="math inline">x</span> 的轨道。</p>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+O_x = \{ g \circ x \mid g \in G \}
+</span></p>
+<ul>
+<li><span class="math inline">x \in O_x</span>；</li>
+<li>若 <span class="math inline">y \in O_x</span>，则 <span class="math inline">x \in O_y</span>；</li>
+<li>若 <span class="math inline">z \in O_y, y \in O_x</span>，则 <span class="math inline">z \in O_x</span>。</li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li>既然是置换群，必然有恒等置换；</li>
+<li>既然置换群中逆元存在，有能把 x 变成 y 的置换则一定也有能把 y 变成 x 的置换；</li>
+<li>既然置换群中的运算封闭，若有置换能使 x -&gt; y，另一置换能使 y -&gt; z，则一定有一个置换能使 x -&gt; z。</li>
+</ol>
+</aside>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>若 <span class="math inline">y \in O_x</span>，则 <span class="math inline">O_x = O_y</span>；</p></li>
+<li><p><span class="math inline">O_x</span> 和 <span class="math inline">O_y</span> 要么重合，要么不相交；</p></li>
+<li><p>在 <span class="math inline">M</span> 的每一条轨道上取一个元素组成 <span class="math inline">M</span> 的一个子集 <span class="math inline">I</span>，称为 <span class="math inline">M</span> 的<strong>轨道的代表元集</strong>，则：</p>
+<p><span class="math display">
+M = \bigcup\limits_{x \in I} O_x
+</span></p>
+<p>并且此中各 <span class="math inline">O_x</span> 互不相交。</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><strong>怎么求群作用于集合的轨道数？</strong></p>
+</section>
+<section class="slide level2">
+
+<h3 id="有什么意义">有什么意义？</h3>
+<p>解决一类求本质不同方案个数的问题！</p>
+<ul>
+<li><span class="math inline">n</span> 颗宝石围成一圈制成项链，每颗宝石有 <span class="math inline">m</span> 种颜色选择，能得到多少种本质不同的染色方案？
+<ul>
+<li><span class="math inline">R - G - B</span> 和 <span class="math inline">G - B - R</span>？</li>
+<li><span class="math inline">R - G - B</span> 和 <span class="math inline">R - B - G</span>？</li>
+</ul></li>
+<li><span class="math inline">n</span> 个点构成本质不同的无向图个数？
+<ul>
+<li>若对无向图 <span class="math inline">G_1</span> 中的点重新编号能得到 <span class="math inline">G_2</span>，那么 <span class="math inline">G_1 \sim G_2</span>。</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="burnside-定理" class="title-slide slide level1">
@@ -607,7 +689,7 @@ f(n) &amp; = 2f(n - 1) \\
 <ul>
 <li>先对每个轮换单独考虑；</li>
 <li>轮换内部相邻两个点连线不会导致相交，故还是先考虑内部连边；</li>
-<li></li>
+<li>WIP</li>
 </ul>
 </section></section>
 <section id="谢谢大家" class="title-slide slide level1">

@@ -10,7 +10,7 @@ $G$ 是非空集合，且二元运算满足：
 
 - 结合律：$(a \cdot b) \cdot c = a \cdot (b \cdot c)$
 - 单位元 $e$：$\forall a \in G, \ ea = ae = a$ 
-- 存在逆元：$\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e$
+- 逆元：$\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e$
   
 ::: fragment
 
@@ -68,7 +68,7 @@ $$
 \end{aligned}
 $$
 
-任意一个映射都能被划分成若干不相交的映射链……
+任一置换都能被划分成若干不交的映射链？
 
 :::
 
@@ -170,12 +170,41 @@ $$
 
 ---
 
-### 性质
+$$
+\sigma = (a_0 \enspace a_1 \enspace \dots \enspace a_{n - 1})
+$$
 
-若置换 $T$ 可表示为 $1$ 个长度为 $n$ 的轮换 $c$，可用如下算法求出 $T^e$ 轮换乘积形式：
+- $\sigma^t(a_i) = a_{[(i + t) \bmod n]}$
+- 令 $k \in N^{*} \text{ \ s.t. \ } \sigma^{tk}(a_i) = a_i$：
+  
+::: { .fragment .current-visible style="height:0" }
+$$
+i + tk \equiv i \pmod n
+$$
+:::
 
-- $T^e$ 可表示为 $\gcd(n, e)$ 个长度为 $\frac{n}{\gcd(n, e)}$ 的轮换 $c'$；
-- 对于第 $i$ 个轮换 $c'_i$：$c'_i[j] = c[(i + ej) \bmod n]$。
+::: { .fragment }
+$$
+tk \equiv 0 \pmod n
+$$
+
+最小非负解：$k = \frac{n}{\gcd(n, t)}$
+:::
+
+---
+
+$$
+\sigma = (a_0 \enspace a_1 \enspace \dots \enspace a_{n - 1})
+$$
+
+- $\sigma^t$ 可表示为 $\gcd(n, t)$ 个长为 $\frac{n}{\gcd(n, t)}$ 的轮换；
+- 对于第 $i$ 个轮换 $c'_i$：
+  $$
+  c'_i[j] = c[(i + ej) \bmod n]
+  $$
+
+借助这一性质可以 $\mathcal{O}(N)$ 求得任一置换的幂。
+
 
 # 置换群
 
@@ -185,18 +214,79 @@ $n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元�
 - 单位元：恒等置换 $e$；
 - 逆元显然存在。
 
+::: notes
+
+对于结合律的进一步说明：等式两边都是 f(g(h(x)))
+
+:::
+
 # 群在集合上的作用
 
-设 $G$ 是一个群，$M$ 是一个集合。若 $G$ 中每个元 $\sigma$ 都对应于 $M$ 的一个变换，对 $\forall a \in M$ 记变换结果为 $\sigma \circ m$，且满足：
+设 $G$ 是一个群，$M$ 是一个集合。若 $G$ 中每个元 $\sigma$ 都对应于 $M$ 的一个变换，对 $\forall m \in M$ 记变换结果为 $\sigma \circ m$，且满足：
 
 - $\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m$；
 - $\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)$
   
 则称 $G$ 在 $M$ 上有**群作用**。
 
-## 轨道，不动元
+## 轨道
 
-待补充……
+群 $G$ 作用于集合 $M$ 上，$x \in M$，称 $M$ 的子集
+
+$$
+O_x = \{ g \circ x \mid g \in G \}
+$$
+
+为 $x$ 在 $G$ 作用下的轨道，简称过 $x$ 的轨道。
+
+---
+
+$$
+O_x = \{ g \circ x \mid g \in G \}
+$$
+
+
+- $x \in O_x$；
+- 若 $y \in O_x$，则 $x \in O_y$；
+- 若 $z \in O_y, y \in O_x$，则 $z \in O_x$。
+
+
+::: notes
+
+1. 既然是置换群，必然有恒等置换；
+2. 既然置换群中逆元存在，有能把 x 变成 y 的置换则一定也有能把 y 变成 x 的置换；
+3. 既然置换群中的运算封闭，若有置换能使 x -> y，另一置换能使 y -> z，则一定有一个置换能使 x -> z。
+
+:::
+
+---
+
+- 若 $y \in O_x$，则 $O_x = O_y$；
+- $O_x$ 和 $O_y$ 要么重合，要么不相交；
+- 在 $M$ 的每一条轨道上取一个元素组成 $M$ 的一个子集 $I$，称为 $M$ 的**轨道的代表元集**，则：
+
+  $$
+  M = \bigcup\limits_{x \in I} O_x
+  $$
+
+  并且此中各 $O_x$ 互不相交。
+
+---
+
+**怎么求群作用于集合的轨道数？**
+
+---
+
+### 有什么意义？
+
+解决一类求本质不同方案个数的问题！
+
+- $n$ 颗宝石围成一圈制成项链，每颗宝石有 $m$ 种颜色选择，能得到多少种本质不同的染色方案？
+  - $R - G - B$ 和 $G - B - R$？
+  - $R - G - B$ 和 $R - B - G$？
+- $n$ 个点构成本质不同的无向图个数？
+  - 若对无向图 $G_1$ 中的点重新编号能得到 $G_2$，那么 $G_1 \sim G_2$。
+
 
 # Burnside 定理
 
