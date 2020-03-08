@@ -67,12 +67,24 @@
 <div class="fragment">
 <p>若满足交换律，则为<strong>交换群</strong></p>
 </div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>左右逆元相等：
+<ul>
+<li><p>设 <span class="math inline">x</span> 是 <span class="math inline">a</span> 的左逆元，<span class="math inline">y</span> 是 <span class="math inline">a</span> 的右逆元，有：</p>
+<p><span class="math display">
+x = xe = x(ay) = (xa)y = y
+</span></p></li>
+</ul></li>
+<li>满足消去律：
+<ul>
+<li><span class="math inline">\forall a, b, c \in G, \ ab = ac \Leftrightarrow b = c</span></li>
+</ul></li>
+</ul>
 <aside class="notes">
-<p>对于群中的运算，我们后面会较多地称其为乘法。</p>
-<p>思考：不满足交换律时，若成群，左逆元一定等于右逆元吗？</p>
-<p>– 先别看下面 qwq –</p>
-<p>设 x 是 a 的左逆元，y 是 a 的右逆元，有：</p>
-<p>x = xe = x(ay) = (xa)y = y</p>
+<p>只要逆元存在就满足消去律：两边都乘上 <span class="math inline">a^{-1}</span> 即可。</p>
 </aside>
 </section>
 <section id="subgroup" class="slide level2">
@@ -80,17 +92,17 @@
 <p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的子群，记作 <span class="math inline">H \le G</span>；</p>
 </section></section>
 <section>
-<section id="关系" class="title-slide slide level1">
+<section id="relation" class="title-slide slide level1">
 <h1>关系</h1>
 <ul>
-<li>集合的笛卡尔积： <span class="math display">
+<li>集合的<strong>笛卡尔积 (Cartesian product)</strong>： <span class="math display">
 A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
 </span></li>
-<li>设 <span class="math inline">A</span> 是集合，集合 <span class="math inline">A \times A</span> 的每个子集 <span class="math inline">R</span> 叫做集合 <span class="math inline">A</span> 上的一个关系。</li>
+<li>设 <span class="math inline">A</span> 是集合，集合 <span class="math inline">A \times A</span> 的每个子集 <span class="math inline">R</span> 叫做集合 <span class="math inline">A</span> 上的一个<strong>关系 (relation)</strong>。</li>
 <li>若 <span class="math inline">(a, b) \in R</span>，则称 <span class="math inline">a</span> 和 <span class="math inline">b</span> 有关系 <span class="math inline">R</span>，记作 <span class="math inline">aRb</span>。</li>
 </ul>
 </section>
-<section id="等价关系" class="slide level2">
+<section id="equivalence-relation" class="slide level2">
 <h2>等价关系</h2>
 <p>若集合 <span class="math inline">A</span> 上的关系 <span class="math inline">\sim</span> 满足如下条件：</p>
 <ul>
@@ -98,39 +110,123 @@ A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
 <li>对称性：<span class="math inline">\forall a, b \in A</span>，若 <span class="math inline">a \sim b</span> 则 <span class="math inline">b \sim a</span>；</li>
 <li>传递性：<span class="math inline">\forall a, b \in A</span>，若 <span class="math inline">a \sim b, \ b \sim c</span>，则 <span class="math inline">a \sim c</span>；</li>
 </ul>
-<p>则称 <span class="math inline">\sim</span> 是<strong>等价关系</strong>。</p>
-</section>
-<section id="等价类" class="slide level2">
-<h2>等价类</h2>
+<p>则称 <span class="math inline">\sim</span> 是<strong>等价关系 (equivalence relation)</strong>。</p>
+<aside class="notes">
+<p>举个例子：<span class="math inline">a \sim b := a \equiv b \pmod 7</span></p>
+<p>这就是个等价关系（试着验证一下？）。</p>
+</aside>
+</section></section>
+<section>
+<section id="equivalence-class" class="title-slide slide level1">
+<h1>等价类</h1>
 <p>设 <span class="math inline">\sim</span> 是 <span class="math inline">A</span> 上的等价关系，<span class="math inline">\forall a \in A</span>，<span class="math inline">[a]</span> 表示 <span class="math inline">A</span> 中与 <span class="math inline">a</span> 等价的全部元素构成的集合：</p>
 <p><span class="math display">
 [a] = \left\{ b \in A \mid b \sim a \right\}
 </span></p>
-<p>称 <span class="math inline">[a]</span> 为 <span class="math inline">a</span> 所在的等价类。</p>
+<p>称 <span class="math inline">[a]</span> 为 <span class="math inline">a</span> 所在的<strong>等价类 (equivalence class)</strong>。</p>
 </section>
-<section id="引理" class="slide level2">
-<h2>引理</h2>
-<p>设 <span class="math inline">G</span> 是群，<span class="math inline">A \leq G</span>，定义 <span class="math inline">G</span> 上的关系为：对于 <span class="math inline">g, h \in G, \ g \sim h \Leftrightarrow gh^{-1} \in A</span>，则 <span class="math inline">\sim</span> 是 <span class="math inline">G</span> 上的等价关系；并且元素 <span class="math inline">g</span> 对此等价关系的<strong>等价类</strong>是 <span class="math inline">Ag</span>。</p>
+<section class="slide level2">
+
+<p><strong>若 <span class="math inline">a, b \in A</span> 且 <span class="math inline">[a] \cap [b] \neq \emptyset</span>，则 <span class="math inline">[a] = [b]</span>。</strong></p>
+<div class="fragment fade-in-then-out" style="height:0">
+<ul>
+<li>假设 <span class="math inline">k_1 \in [a]</span> 且 <span class="math inline">k_1 \notin [b]</span>，<span class="math inline">k_2 \in [a] \cap [b]</span>；</li>
+<li>则有 <span class="math inline">k_1 \sim a, \ k_2 \sim a, \ k_2 \sim b</span>；</li>
+<li>由传递性得 <span class="math inline">k_1 \sim b</span>，与假设不符。</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>集合 <span class="math inline">A</span> 可看作一些两两不相交的等价类的并： <span class="math display">
+A = \bigcup\limits_{a \in R} [a] \text{（两两不相交之并）}
+</span></li>
+<li><span class="math inline">A</span> 上的每个等价关系给出集合 <span class="math inline">A</span> 的一个<strong>划分 (partition)</strong>。</li>
+</ul>
+</div>
 <aside class="notes">
-<p><span class="math display">
-aA = \{ax \mid x \in A \}, \quad Aa = \{ xa \mid x \in A \} \\
-A^{-1} = \{a^{-1} \mid a \in A \}
-</span></p>
+<p>关于 <span class="math inline">R</span>，事实上是完全代表系，由等价类 <span class="math inline">[a_i]</span> 中选出一个元素构成，使得 <span class="math inline">A</span> 中每个元素都与 <span class="math inline">R</span> 中的某个元素等价，同时 <span class="math inline">R</span> 中的元素彼此不等价。</p>
+<p>对于划分的定义：若 <span class="math inline">A</span> 是它的某些子集 <span class="math inline">\{ A_i | i \in I \}</span> 之并，且 <span class="math inline">A_i</span> 两两不交，则称其为集合 <span class="math inline">A</span> 的一个划分（或分拆）。</p>
+<p>我们可以看到，引入等价类的意义就是为了对集合中的元素进行某种程度上的分类。后面要介绍的轨道、陪集等本质上都是基于等价关系的。</p>
+</aside>
+</section></section>
+<section>
+<section id="coset" class="title-slide slide level1">
+<h1>陪集</h1>
+<p>设 <span class="math inline">H \leq G</span>，对于 <span class="math inline">x \in G</span>：</p>
+<ul>
+<li><span class="math inline">H</span> 的一个<strong>左陪集 (left coset)</strong> <span class="math inline">xH</span>： <span class="math display">
+xH = \{ x \cdot h \mid h \in H \}
+</span></li>
+<li><span class="math inline">H</span> 的一个<strong>右陪集 (right coset)</strong> <span class="math inline">Hx</span>： <span class="math display">
+Hx = \{ h \cdot x \mid h \in H \}
+</span></li>
+</ul>
+<aside class="notes">
+<p>由于左右陪集相关内容是相似的，所以接下来只会分析左陪集。</p>
 </aside>
 </section>
-<section id="引理---证明" class="slide level2">
-<h2>引理 - 证明</h2>
+<section class="slide level2">
+
+<p><span class="math display">
+\begin{aligned}
+xH &amp; = \{ x \cdot h \mid h \in H \} \\
+Hx &amp; = \{ h \cdot x \mid h \in H \}
+\end{aligned}
+</span></p>
+<div class="fragment">
 <ul>
-<li>自反性：<span class="math inline">\forall g \in G, \ \because gg^{-1} \in A, \therefore g \sim g</span>；</li>
-<li>对称性：若 <span class="math inline">g \sim h</span>，则 <span class="math inline">gh^{-1} \in A</span>。由于 <span class="math inline">A</span> 是子群，故 <span class="math inline">hg^{-1} = (gh^{-1})^{-1} \in A, \ \therefore h \sim g</span>；</li>
-<li>传递性：若 <span class="math inline">g \sim h, \ h \sim l</span>，则 <span class="math inline">gh^{-1}, hl^{-1} \in A, \ \therefore gl^{-1} = (gh^{-1})(hl^{-1}) \in A</span>；</li>
-<li>故是等价关系。</li>
+<li>自反性：<span class="math inline">x \in xH</span>；</li>
+<li>对称性：若 <span class="math inline">y \in xH</span>，则 <span class="math inline">x \in yH</span>；</li>
+<li>传递性：若 <span class="math inline">z \in yH, \ y \in xH</span>，则 <span class="math inline">z \in xH</span>。</li>
+</ul>
+</div>
+<aside class="notes">
+<p>注意陪集不一定是 <span class="math inline">G</span> 的一个子群。</p>
+<p>💡 提示:</p>
+<ol type="1">
+<li>既然 <span class="math inline">H</span> 还是群，那么肯定有单位元；</li>
+<li>既然 <span class="math inline">H</span> 中逆元存在，有 <span class="math inline">y = x \cdot h</span>， 自然有 <span class="math inline">x = y \cdot h^{-1}</span> 且 <span class="math inline">h^{-1} \in H</span>；</li>
+<li><span class="math inline">z = y \cdot h_1, \ y = x \cdot h_2 \Rightarrow z = x \cdot h_2h_1</span>，又 <span class="math inline">h_2h_1 \in H</span>，自然得证。</li>
+</ol>
+</aside>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>若 <span class="math inline">xH \cap yH \neq \emptyset</span>，则 <span class="math inline">xH = yH</span>；</p></li>
+<li><p>利用陪集可以对群 <span class="math inline">G</span> 进行划分：</p>
+<p><span class="math display">
+G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
+</span></p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>对于 <span class="math inline">a, b \in H</span>，由消去律 <span class="math inline">a \neq b \Leftrightarrow ag \neq bg</span>；</li>
+<li>因此，<span class="math inline">\forall g \in R, \ \mid gH \mid = \mid H \mid</span>: <span class="math display">
+\mid G \mid = \sum\limits_{g \in R} \mid gH \mid 
+= \sum\limits_{g \in R} \mid A \mid 
+= \mid H \mid \cdot \mid R \mid
+</span></li>
 </ul>
 </section></section>
+<section id="lagrange-theorem" class="title-slide slide level1">
+<h1>拉格朗日定理</h1>
+<p>设 <span class="math inline">G</span> 为有限群，<span class="math inline">H \leq G</span>，则：</p>
+<p><span class="math display">
+\mid G \mid = [G : H] \cdot \mid H \mid
+</span></p>
+<p>其中 <span class="math inline">[G : H]</span> 称为群 <span class="math inline">H</span> 对于群 <span class="math inline">G</span> 的<strong>指数 (index)</strong>。</p>
+<aside class="notes">
+<p>说明 G 的子群 H 的大小一定是 G 大小的因子。</p>
+</aside>
+</section>
+
 <section>
 <section id="permutation" class="title-slide slide level1">
 <h1>置换</h1>
-<p>一个集合的置换即从该集合映射至自身的<strong>双射</strong>。</p>
+<p>一个集合的<strong>置换 (permutation)</strong> 即从该集合映射至自身的双射。</p>
 <p><span class="math display">
 \sigma = 
 \left(\begin{array}{c}
@@ -217,36 +313,35 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 </section>
 <section id="循环置换的幂运算" class="slide level2">
 <h2>循环置换的幂运算</h2>
+<div class="fragment current-visible" style="height:0">
 <p><span class="math display">
 (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)
 </span></p>
-</section>
-<section class="slide level2">
-
+</div>
+<div class="fragment fade-in-then-out" style="height:0">
 <p><span class="math display">
 \begin{aligned}
 &amp; (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^2 \\
 &amp; = (1 \enspace 3 \enspace 5) \cdot (2 \enspace 4 \enspace 6)
 \end{aligned}
 </span></p>
-</section>
-<section class="slide level2">
-
+</div>
+<div class="fragment fade-in-then-out" style="height:0">
 <p><span class="math display">
 \begin{aligned}
 &amp; (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^3 \\
 &amp; =  (1 \enspace 4) \cdot (2 \enspace 5) \cdot (3 \enspace 6)
 \end{aligned}
 </span></p>
-</section>
-<section class="slide level2">
-
+</div>
+<div class="fragment fade-in-then-out" style="height:0">
 <p><span class="math display">
 \begin{aligned}
 &amp; (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)^4 \\
 &amp; = (1 \enspace 5 \enspace 3) \cdot (2 \enspace 6 \enspace 4)
 \end{aligned}
 </span></p>
+</div>
 </section>
 <section class="slide level2">
 
@@ -295,7 +390,6 @@ c&#39;_i[j] = c[(i + ej) \bmod n]
 </aside>
 </section>
 
-<section>
 <section id="group-action" class="title-slide slide level1">
 <h1>群在集合上的作用</h1>
 <p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall m \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
@@ -304,22 +398,27 @@ c&#39;_i[j] = c[(i + ej) \bmod n]
 <li><span class="math inline">\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)</span></li>
 </ul>
 <p>则称 <span class="math inline">G</span> 在 <span class="math inline">M</span> 上有<strong>群作用 (group action)</strong>。</p>
+<aside class="notes">
+<p>其实任意群斗都与某个置换群同构，但是碍于主题，这里不会展开讲。对于后续所讲述的群都可默认为置换群。</p>
+</aside>
 </section>
-<section id="orbit" class="slide level2">
-<h2>轨道</h2>
+
+<section>
+<section id="orbit" class="title-slide slide level1">
+<h1>轨道</h1>
 <p>群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span> 上，<span class="math inline">x \in M</span>，称 <span class="math inline">M</span> 的子集</p>
 <p><span class="math display">
-[x] = \{ g \circ x \mid g \in G \}
+\text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}
 </span></p>
 <p>为 <span class="math inline">x</span> 在 <span class="math inline">G</span> 作用下的<strong>轨道 (orbit)</strong>，简称过 <span class="math inline">x</span> 的轨道。</p>
 <aside class="notes">
-<p>蛤？为什么用了等价类的符号？因为它本质上就是一个等价类…… 国内部分教材也记作 <span class="math inline">O_x</span>。</p>
+<p>其实本质上就是等价类…… 部分地方记作 <span class="math inline">\mathcal{O}_G(x)</span>。</p>
 </aside>
 </section>
 <section class="slide level2">
 
 <p><span class="math display">
-[x] = \{ g \circ x \mid g \in G \}
+[x] = \{ \sigma \circ x \mid \sigma \in G \}
 </span></p>
 <ul>
 <li>自反性：<span class="math inline">x \in [x]</span>；</li>
@@ -346,110 +445,76 @@ M = \bigcup\limits_{x \in I} [x]
 </span></p>
 <p>并且此中各 <span class="math inline">[x]</span> 互不相交。</p></li>
 </ul>
-<h3 id="求轨道数量">求轨道数量？</h3>
+</section>
+<section class="slide level2">
+
+<h3 id="whats-the-meaning">求轨道数量？</h3>
 <div class="fragment">
 <p>解决一类求本质不同方案个数的问题！</p>
 </div>
-<div class="fragment">
-<ul>
-<li><span class="math inline">n</span> 颗宝石围成一圈制成项链，每颗宝石有 <span class="math inline">m</span> 种颜色选择，能得到多少种本质不同的染色方案？
-<ul>
-<li><span class="math inline">R - G - B</span> 和 <span class="math inline">G - B - R</span>？</li>
-<li><span class="math inline">R - G - B</span> 和 <span class="math inline">R - B - G</span>？</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><span class="math inline">n</span> 个点构成本质不同的无向图个数？
-<ul>
-<li>若对无向图 <span class="math inline">G_1</span> 中的点重新编号能得到 <span class="math inline">G_2</span>，那么 <span class="math inline">G_1 \sim G_2</span>。</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="coset" class="slide level2">
-<h2>陪集</h2>
-<p>设 <span class="math inline">H \leq G</span>，对于 <span class="math inline">x \in G</span>：</p>
-<ul>
-<li><span class="math inline">H</span> 的一个<strong>左陪集 (left coset)</strong> <span class="math inline">xH</span>： <span class="math display">
-xH = \{ x \cdot h \mid h \in H \}
-</span></li>
-<li><span class="math inline">H</span> 的一个<strong>右陪集 (right coset)</strong> <span class="math inline">Hx</span>： <span class="math display">
-Hx = \{ h \cdot x \mid h \in H \}
-</span></li>
-</ul>
-<aside class="notes">
-<p>由于左右陪集相关内容是相似的，所以接下来只会分析左陪集。</p>
-</aside>
 </section>
 <section class="slide level2">
 
-<h3 id="coset-properties">性质</h3>
+<ul>
+<li>在等边三角形顶点上染色，可得到多少本质不同的三角形？</li>
+</ul>
+<div class="fragment fade-in-then-out" style="height:0">
+<figure>
+<img data-src="./assets/meaning-example-01.png" class="plain" alt="" /><figcaption>在旋转意义下同构</figcaption>
+</figure>
+</div>
+<div class="fragment fade-in-then-out" style="height:0">
+<figure>
+<img data-src="./assets/meaning-example-02.png" class="plain" alt="" /><figcaption>在翻转意义下同构</figcaption>
+</figure>
+</div>
+<div class="fragment">
 <p><span class="math display">
 \begin{aligned}
-xH &amp; = \{ x \cdot h \mid h \in H \} \\
-Hx &amp; = \{ h \cdot x \mid h \in H \}
+G_1 &amp; = \{ \text{顺时针旋转 } 120^\circ, 240^\circ, 360^\circ \} \\
+G_2 &amp; = \{ \text{ 不翻转、沿着过 $0, 1, 2$ 的对称轴翻转 } \} \\
+M &amp; = \{ 所有不考虑同构下不同的染色方案 \}
 \end{aligned}
 </span></p>
-<ul>
-<li>自反性：<span class="math inline">x \in xH</span>；</li>
-<li>对称性：若 <span class="math inline">y \in xH</span>，则 <span class="math inline">x \in yH</span>；</li>
-<li>传递性：若 <span class="math inline">z \in yH, \ y \in xH</span>，则 <span class="math inline">z \in xH</span>。</li>
-</ul>
-<aside class="notes">
-<p>💡 提示:</p>
-<ol type="1">
-<li>既然 <span class="math inline">H</span> 还是群，那么肯定有单位元；</li>
-<li>既然 <span class="math inline">H</span> 中逆元存在，有 <span class="math inline">y = x \cdot h</span>, 自然有 <span class="math inline">x = y \cdot h^{-1}</span> 且 <span class="math inline">h^{-1} \in H</span>；</li>
-<li><span class="math inline">z = y \cdot h_1, \ y = x \cdot h_2 \Rightarrow z = x \cdot h_2h_1</span>，又 <span class="math inline">h_2h_1 \in H</span>，自然得证。</li>
-</ol>
-</aside>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>若 <span class="math inline">xH \cap yH \neq \emptyset</span>，则 <span class="math inline">xH = yH</span>；</li>
-<li><span class="math display">
-\bigcup\limits_{x \in G} xH = G
-</span></li>
-</ul>
-<div class="fragment">
-<p>WIP… 这里大概就引出拉格朗日定理了。</p>
+<p><span class="math inline">G_1 \cup G_2</span> 作用于 <span class="math inline">M</span> 后，轨道数即为所求答案。</p>
 </div>
 <aside class="notes">
-
+<p>一个很<strong>关键</strong>的问题：试着验证一下为什么 <span class="math inline">G_1 \cup G_2</span> 依然是一个群。</p>
+<p>后面还会讲到这个模型，到时候会进行一个说明。但是希望大家在此处能够注意到这一问题，并加以思考。</p>
+<p>接下来我们要考虑的就是如何求轨道数了。</p>
 </aside>
-</section>
-<section id="stablizer" class="slide level2">
-<h2>稳定化子</h2>
-<p>设群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span>，对 <span class="math inline">x \in M</span>，令：</p>
+</section></section>
+<section>
+<section id="stabilizer" class="title-slide slide level1">
+<h1>稳定化子</h1>
+<p>设群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span>，对 <span class="math inline">x \in M</span>，称</p>
 <p><span class="math display">
-G_x = \{ g \in G \mid g \circ x = x \}
+\text{stab}_G(x) = \{ \sigma \in G \mid \sigma \circ x = x \}
 </span></p>
+<p>为群 <span class="math inline">G</span> 作用下 <span class="math inline">x</span> 的<strong>稳定化子 (stabilizer)</strong>。</p>
+<aside class="notes">
+<p>又称固定子群，有的地方也写成 <span class="math inline">G_m</span> 或 <span class="math inline">G^m</span>。</p>
+<p>试着证明其是 G 的子群。</p>
+</aside>
 </section>
 <section id="轨道-稳定化子定理" class="slide level2">
 <h2>轨道-稳定化子定理</h2>
 <p>设有限群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span> ，<span class="math inline">x \in M</span>，则：</p>
 <p><span class="math display">
-\mid G \mid = \mid G_x \mid \cdot \mid [x] \mid
+\mid G \mid = \mid \text{stab}_G(x) \mid \cdot \mid \text{orb}_G(x) \mid
 </span></p>
 </section></section>
 <section>
 <section id="burnside-引理" class="title-slide slide level1">
 <h1>Burnside 引理</h1>
-<p>设有限群 <span class="math inline">G</span> 作用于有限集 <span class="math inline">X</span> 上，则轨道数：</p>
+<p>设有限群 <span class="math inline">G</span> 作用于有限集 <span class="math inline">M</span> 上，则轨道数：</p>
 <p><span class="math display">
-|X/G| = \frac{1}{|G|} \sum\limits_{g \in G} |X^{g}|
+\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} |\text{fix}(\sigma)|
 </span></p>
-<p>其中 <span class="math inline">X^{g}</span> 代表 <span class="math inline">g</span> 的不动点构成的集合：</p>
+<p>其中 <span class="math inline">\text{fix}(\sigma)</span> 代表 <span class="math inline">\sigma</span> 的不动元构成的集合：</p>
 <p><span class="math display">
-X^{g} = \{ x \in X \mid g \circ x = x \}
+\text{fix}(\sigma) = \{ x \in M \mid \sigma \circ x = x \}
 </span></p>
-</section>
-<section id="证明-1" class="slide level2">
-<h2>证明</h2>
-<p>咕咕咕……</p>
 </section>
 <section id="例子" class="slide level2">
 <h2>例子</h2>
@@ -476,7 +541,7 @@ A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 \\
 A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 
 \end{array}\right)
 </span></p>
-<p>将这一置换作用于 <span class="math inline">M</span> 中的任意元素都不会使该元素发生变化，故不动点有 <span class="math inline">20</span> 个。</p>
+<p>将这一置换作用于 <span class="math inline">M</span> 中的任意元素都不会使该元素发生变化，故不动元有 <span class="math inline">20</span> 个。</p>
 </section>
 <section class="slide level2">
 
@@ -487,11 +552,11 @@ A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 \\
 A_6 &amp; A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 
 \end{array}\right)
 </span></p>
-<p>若要成为不动点，则应当满足：</p>
+<p>若要成为不动元，则应当满足：</p>
 <p><span class="math display">
 A_1 = A_2 = \dots = A_6
 </span></p>
-<p>故没有不动点</p>
+<p>故没有不动元</p>
 </section>
 <section class="slide level2">
 
@@ -502,11 +567,11 @@ A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 \\
 A_5 &amp; A_6 &amp; A_1 &amp; A_2 &amp; A_3 &amp; A_4 
 \end{array}\right)
 </span></p>
-<p>若要成为不动点，则应当满足：</p>
+<p>若要成为不动元，则应当满足：</p>
 <p><span class="math display">
 A_1 = A_3 = A_5, \ A_2 = A_4 = A_6
 </span></p>
-<p>故不动点数量为 <span class="math inline">2</span></p>
+<p>故不动元数量为 <span class="math inline">2</span></p>
 </section>
 <section class="slide level2">
 
@@ -517,11 +582,11 @@ A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 \\
 A_4 &amp; A_5 &amp; A_6 &amp; A_1 &amp; A_2 &amp; A_3 
 \end{array}\right)
 </span></p>
-<p>若要成为不动点，则应当满足：</p>
+<p>若要成为不动元，则应当满足：</p>
 <p><span class="math display">
 A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 </span></p>
-<p>故没有不动点</p>
+<p>故没有不动元</p>
 </section>
 <section class="slide level2">
 
@@ -536,12 +601,19 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 <section id="pólya-计数法" class="title-slide slide level1">
 <h1>Pólya 计数法</h1>
 <ul>
-<li>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动点……</li>
-<li>记颜色数量为 <span class="math inline">m</span>，<span class="math inline">c(g)</span> 为置换 <span class="math inline">g</span> 被分解为不交轮换乘积的个数：</li>
-</ul>
+<li><p>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元……</p></li>
+<li><p>记用于染色的颜色集合为 <span class="math inline">C</span>， <span class="math inline">c(g)</span> 为置换 <span class="math inline">g</span> 被分解为不交轮换乘积的个数，则：</p>
+<div class="fragment current-visible" style="height:0">
 <p><span class="math display">
-|X^{g}| = m^{c(g)}, \ |X/G| = \frac{1}{|G|} \sum\limits_{g \in G} m^{c(g)}
+\text{fix}(\sigma) = \mid C \mid^{c(\sigma)}
 </span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid C \mid^{c(\sigma)}
+</span></p>
+</div></li>
+</ul>
 </section>
 <section id="项链染色" class="slide level2">
 <h2>项链染色</h2>
@@ -556,14 +628,14 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 </span></p>
 <p>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 时，可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换，故：</p>
 <p><span class="math display">
-\sum\limits_{g \in G} |X^g| = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
+\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 </span></p>
 </section>
 <section class="slide level2">
 
 <p><span class="math display">
 \begin{aligned}
-\sum\limits_{g \in G} |X^g| 
+\sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid 
 &amp; = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)} \\
 &amp; = \sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(n, i) = d ] \\
 &amp; =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(\frac{n}{d}, i) = 1 ] \\
@@ -593,7 +665,7 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <section class="slide level2">
 
 <p><span class="math display">
-|X/G| = \frac{1}{|G| + |G&#39;|} (\sum\limits_{g \in G} |X^g| + \sum\limits_{g&#39; \in G&#39;} |X^{g&#39;}|)
+\mid M / G \mid = \frac{1}{\mid G \mid + |G&#39;|} (\sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid + \sum\limits_{g&#39; \in G&#39;} |X^{g&#39;}|)
 </span></p>
 </section></section>
 <section>
@@ -671,7 +743,7 @@ G = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <li>记 <span class="math inline">dp\langle i, j, k, l \rangle</span> 代表 <span class="math inline">i</span> 个水晶排成一排，最后三个元素的颜色分别为 <span class="math inline">j, k, l</span>，则方案数： <span class="math display">
 dp\langle i, j, k, l \rangle = \sum\limits_{s} dp \langle i - 1, s, j, k \rangle \cdot a \langle s, j, k, l \rangle
 </span></li>
-<li>枚举前三个水晶的颜色 <span class="math inline">\langle j, k, l \rangle</span>，则 <span class="math inline">dp \langle i + 3, j, k, l \rangle</span> 代表围成一圈时满足题目条件的不动点个数。</li>
+<li>枚举前三个水晶的颜色 <span class="math inline">\langle j, k, l \rangle</span>，则 <span class="math inline">dp \langle i + 3, j, k, l \rangle</span> 代表围成一圈时满足题目条件的不动元个数。</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -706,7 +778,7 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 <section class="slide level2">
 
 <ul>
-<li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 下不动点个数： <span class="math display">
+<li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 下不动元个数： <span class="math display">
 \sum\limits_{\langle a, b, c \rangle} dp \langle \gcd(n, i) + 3, a, b, c \rangle
 </span></li>
 <li>接下来记之为 <span class="math inline">f(\gcd(n, i))</span></li>
@@ -716,7 +788,7 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 <section class="slide level2">
 
 <ul>
-<li>不动点个数： <span class="math display">
+<li>不动元个数： <span class="math display">
 \begin{aligned}
 \sum\limits_{i = 1}^{n} f(\gcd(n, i)) 
 &amp; = \sum\limits_{d \mid n} f(d) \cdot \sum\limits_{i = 1}^{n} [\gcd(n, i) = d] \\
@@ -748,7 +820,7 @@ T \le 10^5, 2 \le n \le 10^6
 <ul>
 <li>等价于询问不考虑同构时的方案数……</li>
 <li>圆周上的 <span class="math inline">n</span> 条线段不会导致相交，故先只考虑圆内部的连边……</li>
-<li>记 <span class="math inline">f(n)</span> 代表 <span class="math inline">n</span> 个点只考虑<strong>内部</strong>连边的方案数，则旋转 <span class="math inline">2\pi</span> 时不动点个数为：</li>
+<li>记 <span class="math inline">f(n)</span> 代表 <span class="math inline">n</span> 个点只考虑<strong>内部</strong>连边的方案数，则旋转 <span class="math inline">2\pi</span> 时不动元个数为：</li>
 </ul>
 <p><span class="math display">
 2^n \cdot f(n)
@@ -846,7 +918,7 @@ f(n) &amp; = 2f(n - 1) \\
 <ul>
 <li><span class="math inline">G_x</span>：<span class="math inline">G</span> 作用下 <span class="math inline">x</span> 的稳定化子；</li>
 <li><span class="math inline">[x]</span>：<span class="math inline">x</span> 所在的轨道/等价类；</li>
-<li><span class="math inline">M^g</span>：在置换 <span class="math inline">g</span> 下 <span class="math inline">M</span> 中不动点的集合。</li>
+<li><span class="math inline">M^g</span>：在置换 <span class="math inline">g</span> 下 <span class="math inline">M</span> 中不动元的集合。</li>
 </ul></li>
 </ul>
 </section></section>
