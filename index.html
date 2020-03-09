@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="尚未完成">
+  <meta name="author" content="ver 0309 - 未完成">
   <title>浅谈置换群</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,7 +51,7 @@
 
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
-  <p class="author">尚未完成</p>
+  <p class="author">ver 0309 - 未完成</p>
   <p class="date">2020.03</p>
 </section>
 
@@ -728,23 +728,50 @@ M &amp; = \{ \text{不考虑同构的所有染色方案}  \}
 <p>若将环上的元素按顺时针编号：<span class="math inline">0, 1, \dots (n - 1)</span></p>
 <ul>
 <li>顺时针旋转 <span class="math inline">k \frac{2\pi}{n}</span>：<span class="math inline">\sigma_k(i) = (i + k) \bmod n</span>；</li>
-<li>沿过点 <span class="math inline">a</span> 的对称轴翻转：
-<ul>
-<li><span class="math inline">n</span> 为偶数时：</li>
-<li></li>
-</ul></li>
+<li>沿过点 <span class="math inline">a</span> 的对称轴翻转： <span class="math display">
+\tau_a(i) =
+\begin{cases}
+i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
+(2a - i) \bmod n &amp; \text{ otherwise } 
+\end{cases}
+</span></li>
 </ul>
+<div class="fragment current-visible" style="height:0">
+<ul>
+<li>考虑 <span class="math inline">i \neq a</span> 的情况（<span class="math inline">i = a</span> 显然封闭），若 <span class="math inline">2 \mid k</span>： <span class="math display">
+\sigma_k \circ \tau_a \circ i = (2a - i + k) \bmod n = \tau_{(a + \frac{k}{2}) \bmod n}
+</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>考虑 <span class="math inline">i \neq a</span> 的情况（<span class="math inline">i = a</span> 显然封闭），若 <span class="math inline">2 \nmid k</span>： <span class="math display">
+\sigma_k \circ \tau_a \circ i = (2a - i + k) \bmod n = \tau_{(a + \frac{n + k}{2}) \bmod n}
+</span></li>
+</ul>
+</div>
 <aside class="notes">
 <p><span class="math inline">n</span> 为偶数时，对称轴过两个点；而 <span class="math inline">n</span> 为奇数时，对称轴过一个点和一条边。</p>
+<p>如果 <span class="math inline">k</span></p>
 </aside>
+</section>
+<section class="slide level2">
+
 <h3 id="旋转">旋转</h3>
 <p><span class="math display">
-G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
+G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \quad \mid G_1 \mid = n
 </span></p>
-<p>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 时，可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换，故：</p>
+<ul>
+<li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时是一个循环置换；</li>
+<li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，故可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换：</li>
+</ul>
 <p><span class="math display">
 \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 </span></p>
+<aside class="notes">
+<p>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时显然只能拆成一个轮换（是一个循环置换）。回忆前面关于循环置换的幂的相关内容。</p>
+<p>然而现在复杂度是 <span class="math inline">\mathcal{O}(N)</span> 的，需要借助数论知识进一步优化……</p>
+</aside>
 </section>
 <section class="slide level2">
 
@@ -757,30 +784,51 @@ G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 &amp; = \sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d})
 \end{aligned}
 </span></p>
+<aside class="notes">
 <p>复杂度变成了 <span class="math inline">\mathcal{O}(\sqrt{N})</span></p>
+</aside>
 </section>
 <section class="slide level2">
 
 <h3 id="翻转">翻转</h3>
+<p><span class="math display">
+G_2 = \{ \text{过每一条对称轴的翻转 } \} \quad \mid G_2 \mid = n
+</span></p>
 <ul>
 <li><span class="math inline">n</span> 为偶数：
 <ul>
-<li><span class="math inline">\frac{1}{2}n</span> 条过点的对称轴：<span class="math inline">c(g) = \frac{1}{2}n + 1</span></li>
-<li><span class="math inline">\frac{1}{2}n</span> 条过边的对称轴：<span class="math inline">c(g) = \frac{1}{2}n</span></li>
-</ul></li>
-<li><span class="math inline">n</span> 为奇数：
-<ul>
-<li><span class="math inline">n</span> 条 既过点又过边的对称轴：<span class="math inline">c(g) = \frac{1}{2}(n - 1) + 1</span></li>
+<li><span class="math inline">\frac{n}{2}</span> 条过点的对称轴：<span class="math inline">c(g) = \frac{n}{2} + 1</span></li>
+<li><span class="math inline">\frac{n}{2}</span> 条过边的对称轴：<span class="math inline">c(g) = \frac{n}{2}</span> <span class="math display">
+\sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+= \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} 
+</span></li>
 </ul></li>
 </ul>
-<p><span class="math display">
-|G&#39;| = n
-</span></p>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><span class="math inline">n</span> 为奇数：
+<ul>
+<li><span class="math inline">n</span> 条 既过点又过边的对称轴：<span class="math inline">c(g) = \frac{n + 1}{2}</span></li>
+</ul>
+<span class="math display">
+\sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+= n \cdot m^{\frac{n + 1}{2}}
+</span></li>
+</ul>
 </section>
 <section class="slide level2">
 
 <p><span class="math display">
-\mid M / G \mid = \frac{1}{\mid G \mid + |G&#39;|} (\sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid + \sum\limits_{g&#39; \in G&#39;} |X^{g&#39;}|)
+\begin{aligned}
+\mid M / G \mid &amp; = \frac{\sum\limits_{\sigma \in G_1} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid}{\mid G_1 \mid + \mid G_2 \mid} \\
+&amp; = \frac{1}{2n}\sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d}) \\
+&amp; + \frac{1}{2n} \begin{cases}
+\frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} &amp; 2 \mid n \\
+n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
+\end{cases}
+\end{aligned}
 </span></p>
 </section></section>
 <section>
@@ -843,6 +891,9 @@ G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
 <h1>南昌 J. Summon</h1>
 <p>现要从 <span class="math inline">4</span> 种不同的水晶中取 <span class="math inline">n</span> 个围成一个圈，但有 <span class="math inline">m</span> 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 <span class="math inline">998244353</span>）</p>
 <p><span class="math inline">n \le 10^5, m \le 256</span></p>
+<aside class="notes">
+<p>这其实是去年老刘专题里面一道题的稍微加强版…… 原题是要求某两种不能连续，这里改成了某四种……（POJ 2888）</p>
+</aside>
 </section>
 <section id="分析-2" class="slide level2">
 <h2>分析</h2>

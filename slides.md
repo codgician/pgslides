@@ -1,5 +1,5 @@
 ---
-author: [尚未完成]
+author: [ver 0309 - 未完成]
 title: 浅谈置换群
 date: 2020.03
 ---
@@ -178,7 +178,7 @@ $$
   = \mid R \mid \cdot \mid H \mid
   $$
 
-::: notes
+::: { .notes }
 
 利用群 $G$ 的一个子群 $H$，我们可以把利用陪集对 $G$ 进行划分。换句话说，群 $G$ 一定可以表示成若干个 $H$ 的互不相交的左（右）陪集之并，而这些陪集的大小都是相同的。形象地理解，就是我们能够把 $G$ 划分成大小相等的若干部分。 
 
@@ -196,7 +196,7 @@ $$
 
 其中 $[G : H]$ 称为群 $H$ 对于群 $G$ 的**指数 (index)**。
 
-::: notes
+::: { .notes }
 
 说明 G 的子群 H 的大小一定是 G 大小的因子。
 
@@ -311,7 +311,7 @@ $$
 
 :::
 
-::: notes
+::: { .notes }
 
 循环置换就是最多只能被分解成一个不含重复元素的轮换的置换。
 
@@ -411,7 +411,7 @@ $n$ 个元的所有置换，在复合运算 $\circ$ 下成群，称作 $n$ 元**
   
 则称 $G$ 在 $M$ 上有**群作用 (group action)**。
 
-::: notes
+::: { .notes }
 
 其实任意群斗都与某个置换群同构，但是碍于主题，这里不会展开讲。对于后续所讲述的群都可默认为置换群。
 
@@ -526,7 +526,7 @@ $$
 
 为群 $G$ 作用下 $x$ 的**稳定子 (stabilizer)**。
 
-::: notes
+::: { .notes }
 
 又称固定子群、稳定子群、稳定化子…… 有的地方也写成 $G_m$ 或 $G^m$。
 
@@ -574,7 +574,7 @@ $$
 
 :::
 
-::: notes
+::: { .notes }
 
 $\beta \text{stab}_G(x)$ 里面的元素相当于 $G$ 中与 $\beta$ 等价的置换；那么陪集的数量就代表本质不同的置换的个数…… 这不就是轨道数吗~
 
@@ -618,7 +618,7 @@ $$
 \mid \text{stab}_G(x) \mid = \mid \text{fix}(\sigma) \mid
 $$
 
-::: notes
+::: { .notes }
 
 稳定子是固定 $x$ 找 $\sigma$，而不动元是固定 $\sigma$ 找 $m$。本质上只是换了一下遍历的顺序，所以两个集合的大小是相等的。
 
@@ -763,7 +763,7 @@ $$
 
   :::
 
-::: notes
+::: { .notes }
 
 前面讲到了置换 $\sigma$ 可以被拆成若干个长度相等的映射链，也就是若干个大小相等的轮换。考虑在原始的（不考虑同构）的染色方案集合里，什么样的元素会成为置换 $\sigma$ 的下的不动元？
 
@@ -778,7 +778,7 @@ $$
 
 $n, m \le 10^9$
 
-::: notes
+::: { .notes }
 
 这里将之前对多边形顶点染色问题一般化。
 
@@ -810,27 +810,63 @@ $$
 
 - 顺时针旋转 $k \frac{2\pi}{n}$：$\sigma_k(i) = (i + k) \bmod n$；
 - 沿过点 $a$ 的对称轴翻转：
-  -  $n$ 为偶数时：
-  -  
+  $$
+  \tau_a(i) =
+  \begin{cases}
+  i & i = a \text{ \ or \ } a \text{ 对面的点 } \\
+  (2a - i) \bmod n & \text{ otherwise } 
+  \end{cases}
+  $$
+
+::: { .fragment .current-visible style="height:0" }
+
+- 考虑 $i \neq a$ 的情况（$i = a$ 显然封闭），若 $2 \mid k$：
+$$
+\sigma_k \circ \tau_a \circ i = (2a - i + k) \bmod n = \tau_{(a + \frac{k}{2}) \bmod n}
+$$
+
+:::
+
+::: { .fragment }
+
+- 考虑 $i \neq a$ 的情况（$i = a$ 显然封闭），若 $2 \nmid k$：
+$$
+\sigma_k \circ \tau_a \circ i = (2a - i + k) \bmod n = \tau_{(a + \frac{n + k}{2}) \bmod n}
+$$
+
+:::
+
 
 ::: { .notes }
 
 $n$ 为偶数时，对称轴过两个点；而 $n$ 为奇数时，对称轴过一个点和一条边。
 
+如果 $k$
+
 :::
 
+---
 
 ### 旋转
 
 $$
-G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}
+G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \quad \mid G_1 \mid = n
 $$
 
-旋转 $i \cdot \frac{2\pi}{n}$ 时，可拆成 $\gcd(n, i)$ 个轮换，故：
+- 旋转 $\frac{2\pi}{n}$ 时是一个循环置换；
+- 旋转 $i \cdot \frac{2\pi}{n}$ 可看作前者的 $i$ 次幂，故可拆成 $\gcd(n, i)$ 个轮换：
 
 $$
 \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 $$
+
+::: { .notes }
+
+旋转 $\frac{2\pi}{n}$ 时显然只能拆成一个轮换（是一个循环置换）。回忆前面关于循环置换的幂的相关内容。
+
+然而现在复杂度是 $\mathcal{O}(N)$ 的，需要借助数论知识进一步优化……
+
+:::
 
 ---
 
@@ -844,26 +880,49 @@ $$
 \end{aligned}
 $$
 
+::: { .notes }
+
 复杂度变成了 $\mathcal{O}(\sqrt{N})$
+
+:::
 
 ---
 
 ### 翻转
 
-- $n$ 为偶数：
-  - $\frac{1}{2}n$ 条过点的对称轴：$c(g) = \frac{1}{2}n + 1$
-  - $\frac{1}{2}n$ 条过边的对称轴：$c(g) = \frac{1}{2}n$
-- $n$ 为奇数：
-  - $n$ 条 既过点又过边的对称轴：$c(g) = \frac{1}{2}(n - 1) + 1$
-
 $$
-|G'| = n
+G_2 = \{ \text{过每一条对称轴的翻转 } \} \quad \mid G_2 \mid = n
+$$
+
+- $n$ 为偶数：
+  - $\frac{n}{2}$ 条过点的对称轴：$c(g) = \frac{n}{2} + 1$
+  - $\frac{n}{2}$ 条过边的对称轴：$c(g) = \frac{n}{2}$
+$$
+\sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+= \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} 
 $$
 
 ---
 
+- $n$ 为奇数：
+  - $n$ 条 既过点又过边的对称轴：$c(g) = \frac{n + 1}{2}$
+
+  $$
+  \sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+= n \cdot m^{\frac{n + 1}{2}}
+  $$
+
+---
+
 $$
-\mid M / G \mid = \frac{1}{\mid G \mid + |G'|} (\sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid + \sum\limits_{g' \in G'} |X^{g'}|)
+\begin{aligned}
+\mid M / G \mid & = \frac{\sum\limits_{\sigma \in G_1} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid}{\mid G_1 \mid + \mid G_2 \mid} \\
+& = \frac{1}{2n}\sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d}) \\
+& + \frac{1}{2n} \begin{cases}
+\frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} & 2 \mid n \\
+n \cdot m^{\frac{n + 1}{2}} & 2 \nmid n
+\end{cases}
+\end{aligned}
 $$
 
 # 完全图同构计数 { #counting-undirected-graph }
@@ -921,6 +980,12 @@ $$
 现要从 $4$ 种不同的水晶中取 $n$ 个围成一个圈，但有 $m$ 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 $998244353$）
 
 $n \le 10^5, m \le 256$
+
+::: { .notes }
+
+这其实是去年老刘专题里面一道题的稍微加强版…… 原题是要求某两种不能连续，这里改成了某四种……（POJ 2888）
+
+:::
 
 
 ## 分析
