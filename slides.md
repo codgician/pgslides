@@ -1,5 +1,5 @@
 ---
-author: [ver 0309 - 未完成]
+author: [ver 0309-hotfix1 未完成]
 title: 浅谈置换群
 date: 2020.03
 ---
@@ -615,12 +615,12 @@ $$
 $$
 
 $$
-\mid \text{stab}_G(x) \mid = \mid \text{fix}(\sigma) \mid
+\sum\limits_{x \in M} \mid \text{stab}_G(x) \mid = \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
 $$
 
 ::: { .notes }
 
-稳定子是固定 $x$ 找 $\sigma$，而不动元是固定 $\sigma$ 找 $m$。本质上只是换了一下遍历的顺序，所以两个集合的大小是相等的。
+稳定子是固定 $x$ 找 $\sigma$，而不动元是固定 $\sigma$ 找 $m$，故对于下面的等式两边本质上只是换了一下遍历的顺序。
 
 :::
 

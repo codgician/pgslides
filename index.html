@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="ver 0309 - 未完成">
+  <meta name="author" content="ver 0309-hotfix1 未完成">
   <title>浅谈置换群</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,7 +51,7 @@
 
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
-  <p class="author">ver 0309 - 未完成</p>
+  <p class="author">ver 0309-hotfix1 未完成</p>
   <p class="date">2020.03</p>
 </section>
 
@@ -572,10 +572,10 @@ M &amp; = \{ 所有不考虑同构下不同的染色方案 \}
 \end{aligned}
 </span></p>
 <p><span class="math display">
-\mid \text{stab}_G(x) \mid = \mid \text{fix}(\sigma) \mid
+\sum\limits_{x \in M} \mid \text{stab}_G(x) \mid = \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
 </span></p>
 <aside class="notes">
-<p>稳定子是固定 <span class="math inline">x</span> 找 <span class="math inline">\sigma</span>，而不动元是固定 <span class="math inline">\sigma</span> 找 <span class="math inline">m</span>。本质上只是换了一下遍历的顺序，所以两个集合的大小是相等的。</p>
+<p>稳定子是固定 <span class="math inline">x</span> 找 <span class="math inline">\sigma</span>，而不动元是固定 <span class="math inline">\sigma</span> 找 <span class="math inline">m</span>，故对于下面的等式两边本质上只是换了一下遍历的顺序。</p>
 </aside>
 </section>
 <section id="proof-of-burnside-lemma-2" class="slide level2">
