@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="ver 0309-hotfix1 未完成">
+  <meta name="author" content="ver 0310 未完成">
   <title>浅谈置换群</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,7 +51,7 @@
 
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
-  <p class="author">ver 0309-hotfix1 未完成</p>
+  <p class="author">ver 0310 未完成</p>
   <p class="date">2020.03</p>
 </section>
 
@@ -261,7 +261,7 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 <p>如果可以的话，这就意味着我们发现了一种能够更简单表示置换的方式（也就是后面要介绍的轮换表示法）。</p>
 </aside>
 </section>
-<section id="轮换表示法" class="slide level2">
+<section id="cycle-notation" class="slide level2">
 <h2>轮换表示法</h2>
 <p><span class="math display"> 
 \left(\begin{array}{c}
@@ -270,7 +270,7 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 \end{array}\right) \xRightarrow{\text{记作}} (a_1 \enspace a_2 \enspace \dots \enspace a_n)
 </span></p>
 </section>
-<section id="例-1" class="slide level2">
+<section id="cn-example" class="slide level2">
 <h2>例</h2>
 <p><span class="math display">
 \left(\begin{array}{c} 
@@ -288,21 +288,16 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 </section>
 <section class="slide level2">
 
-<h3 id="证明">证明</h3>
-<p>考虑一个 <span class="math inline">n</span> 元置换</p>
 <ul>
 <li>对于恒等置换，显然分解是唯一的；</li>
-<li>对于非恒等置换，<span class="math inline">\exist i \text{ \ s.t. \ } \sigma(i) \neq i</span>。</li>
-</ul>
-</section>
-<section class="slide level2">
-
+<li>对于非恒等置换，<span class="math inline">\exist i \text{ \ s.t. \ } \sigma(i) \neq i</span>。
 <ul>
 <li><span class="math inline">i \rightarrow \sigma(i) \rightarrow \sigma^2(i) \rightarrow \dots</span></li>
 <li>由抽屉原理，<span class="math inline">\exist t_1 &lt; t_2 \text{ \ s.t. \ } \sigma^{t_1}(i) = \sigma^{t_2}(i)</span></li>
 <li>令 <span class="math inline">t</span> 为使得 <span class="math inline">\sigma^t(i) = i</span> 的最小正整数，则： <span class="math display">
 (i \enspace \sigma(i) \enspace \dots \enspace \sigma^{t - 1}(i))
 </span> 是一个轮换。</li>
+</ul></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -315,15 +310,15 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 </ul></li>
 </ul>
 </section>
-<section id="power-of-cyclic-permutation" class="slide level2">
-<h2>循环置换的幂运算</h2>
+<section id="power-of-cycle" class="slide level2">
+<h2>轮换的幂运算</h2>
 <div class="fragment current-visible" style="height:0">
 <p><span class="math display">
 (1 \enspace 2 \enspace 3 \enspace 4 \enspace 5 \enspace 6)
 </span></p>
 </div>
 <aside class="notes">
-<p>循环置换就是最多只能被分解成一个不含重复元素的轮换的置换。</p>
+<p>既然任意置换都可以被分解成若干不交轮换之积，那么如果轮换的幂运算能够快速进行，我们就可以快速地对任意置换进行幂运算。</p>
 </aside>
 <div class="fragment fade-in-then-out" style="height:0">
 <p><span class="math display">
@@ -377,12 +372,23 @@ tk \equiv 0 \pmod n
 \sigma = (a_0 \enspace a_1 \enspace \dots \enspace a_{n - 1})
 </span></p>
 <ul>
-<li><span class="math inline">\sigma^t</span> 可表示为 <span class="math inline">\gcd(n, t)</span> 个长为 <span class="math inline">\frac{n}{\gcd(n, t)}</span> 的轮换；</li>
-<li>对于第 <span class="math inline">i</span> 个轮换 <span class="math inline">c&#39;_i</span>： <span class="math display">
-c&#39;_i[j] = c[(i + ej) \bmod n]
-</span></li>
+<li><p><span class="math inline">\sigma^t</span> 可表示为 <span class="math inline">\gcd(n, t)</span> 个长为 <span class="math inline">\frac{n}{\gcd(n, t)}</span> 的轮换；</p></li>
+<li><p><span class="math inline">a_i</span> 所在轮换里第 <span class="math inline">j \ (0 \le j &lt; \gcd(n, t) )</span> 个元素为 <span class="math inline">a_{(i + jt) \bmod n}</span>。</p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">a_i</span> 所在轮换内元素下标模 <span class="math inline">\gcd(n, t)</span> 均为 <span class="math inline">i</span>；</li>
+<li><span class="math inline">a_0, a_1, \dots a_{\gcd(n, t) - 1}</span> 一定位于不同轮换。</li>
 </ul>
-<p>借助这一性质可以 <span class="math inline">\mathcal{O}(N)</span> 求得任一置换的幂。</p>
+</div></li>
+</ul>
+<aside class="notes">
+<p>两个推论的证明不难（用初等数论就可以解决），大家可以自行思考……</p>
+<p>💡 提示：</p>
+<ol type="1">
+<li><span class="math inline">\because \gcd(n, t) \mid t, \ \therefore \ i + jt \equiv i \pmod \gcd(n, t)</span></li>
+<li>可看作上一条的推论。</li>
+</ol>
+</aside>
 </section></section>
 <section id="permutation-group" class="title-slide slide level1">
 <h1>置换群</h1>
@@ -563,7 +569,7 @@ M &amp; = \{ 所有不考虑同构下不同的染色方案 \}
 \text{fix}(\sigma) = \{ x \in M \mid \sigma \circ x = x \}
 </span></p>
 </section>
-<section id="proof-of-burnside-lemma-1" class="slide level2">
+<section id="proof-of-burnside-lemma" class="slide level2">
 <h2>证明</h2>
 <p><span class="math display">
 \begin{aligned}
@@ -578,14 +584,14 @@ M &amp; = \{ 所有不考虑同构下不同的染色方案 \}
 <p>稳定子是固定 <span class="math inline">x</span> 找 <span class="math inline">\sigma</span>，而不动元是固定 <span class="math inline">\sigma</span> 找 <span class="math inline">m</span>，故对于下面的等式两边本质上只是换了一下遍历的顺序。</p>
 </aside>
 </section>
-<section id="proof-of-burnside-lemma-2" class="slide level2">
-<h2>证明</h2>
-<div class="fragment current-visible" style="height:0">
+<section class="slide level2">
+
+<div class="fragment fade-out" style="height:0" data-fragment-index="1">
 <ul>
 <li>每个轨道对答案的贡献为 <span class="math inline">1</span>，故元素 <span class="math inline">x \in M</span> 对答案的贡献为 <span class="math inline">\frac{1}{\mid \text{orb}_G(x) \mid}</span>；</li>
 </ul>
 </div>
-<div class="fragment">
+<div class="fragment" data-fragment-index="1">
 <p><span class="math display">
   \begin{aligned}
   \mid M / G \mid 
@@ -752,7 +758,6 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 </div>
 <aside class="notes">
 <p><span class="math inline">n</span> 为偶数时，对称轴过两个点；而 <span class="math inline">n</span> 为奇数时，对称轴过一个点和一条边。</p>
-<p>如果 <span class="math inline">k</span></p>
 </aside>
 </section>
 <section class="slide level2">
@@ -762,14 +767,14 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \quad \mid G_1 \mid = n
 </span></p>
 <ul>
-<li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时是一个循环置换；</li>
+<li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时只能分解成一个不交轮换；</li>
 <li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，故可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换：</li>
 </ul>
 <p><span class="math display">
 \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 </span></p>
 <aside class="notes">
-<p>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时显然只能拆成一个轮换（是一个循环置换）。回忆前面关于循环置换的幂的相关内容。</p>
+<p>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时显然只能拆成一个轮换。回忆前面关于快速求轮换幂的相关内容。</p>
 <p>然而现在复杂度是 <span class="math inline">\mathcal{O}(N)</span> 的，需要借助数论知识进一步优化……</p>
 </aside>
 </section>
@@ -832,9 +837,181 @@ n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
 </span></p>
 </section></section>
 <section>
+<section id="icpc-2019-nanchang-j" class="title-slide slide level1">
+<h1>南昌 J. Summon</h1>
+<p>现要从 <span class="math inline">4</span> 种不同的水晶中取 <span class="math inline">n</span> 个围成一个圈，但有 <span class="math inline">m</span> 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 <span class="math inline">998244353</span>）</p>
+<p><span class="math inline">n \le 10^5, m \le 256</span></p>
+<aside class="notes">
+<p>这其实是去年老刘专题里面一道题的稍微加强版…… 原题是要求某两种不能连续，这里改成了某四种……（POJ 2888）</p>
+</aside>
+</section>
+<section id="ncj-analysis" class="slide level2">
+<h2>分析</h2>
+<p><span class="math display">
+\begin{aligned}
+G &amp; = \{ \text{顺时针旋转} \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \\
+M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
+\end{aligned}
+</span></p>
+<div class="fragment">
+<ul>
+<li>单单把每一个轮换内的所有元素染成相同颜色可能破坏限制条件。</li>
+</ul>
+</div>
+<aside class="notes">
+<p>之前说 Polya 计数定理的时候，我们是基于同一个轮换内的所有元素都染色成同一个颜色得出的。在这道题目里，不动元不仅要满足轮换内元素颜色相等，同时在这一前提下还要满足限制条件。我们虽然没有办法直接套用 Polya，但是只要能够求出不动点借助 Burnside 引理还是能够解决问题的……</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 只能分解成一个不交轮换；</li>
+<li>旋转 <span class="math inline">i \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，因此：
+<ul>
+<li>可表示为 <span class="math inline">\gcd(n, i)</span> 个不交轮换之积；</li>
+<li>标号模 <span class="math inline">\gcd(n, i)</span> 结果相同的点在同一轮换内。</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><strong>对于旋转 <span class="math inline">i \frac{2\pi}{n}</span> 这一置换，只需确定前 <span class="math inline">\gcd(n, i)</span> 个元素的颜色即可知道该置换下不动元数量！</strong></p>
+</div>
+<aside class="notes">
+<p>换句话说，前 <span class="math inline">\gcd(n, i)</span> 个元素一定是位于不同轮换内的。对于不动点而言，既然同一轮换内染色方案一致，那么整个染色方案完全就是由前 <span class="math inline">\gcd(n, i)</span> 个元素一直往后复制这样生成的（逃</p>
+<p>可以考虑 DP。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>记 <span class="math inline">\text{v} \langle a, b, c, d \rangle</span> 代表是否允许 <span class="math inline">a, b, c, d</span> 四种颜色相邻；</li>
+</ul>
+<p><span class="math display">
+\text{v} \langle a, b, c, d \rangle =
+\begin{cases}
+0 &amp; \text{不允许 } a, b, c, d \text{ 相邻} \\
+1 &amp; \text{允许 } a, b, c, d \text{ 相邻}
+\end{cases}
+</span></p>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>记 <span class="math inline">\text{dp} \langle i, a, b, c \rangle</span> 代表 <span class="math inline">i</span> 个元素排成一排，最后 <span class="math inline">3</span> 个元素的颜色分别为 <span class="math inline">a, b, c</span> 的方案数： <span class="math display">
+\text{dp} \langle i, a, b, c \rangle = \sum\limits_{k} \text{v} \langle k, a, b, c \rangle \cdot \text{dp} \langle i - 1, k, a, b \rangle
+</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>枚举前 <span class="math inline">3</span> 个元素的颜色 <span class="math inline">\langle a, b, c \rangle</span>：
+<ul>
+<li>只初始化 <span class="math inline">\text{dp} \langle 3, a, b, c \rangle = 1</span>；</li>
+<li><span class="math inline">\text{dp} \langle m + 3, a, b, c \rangle</span> 即为 <span class="math inline">m</span> 个元素围成环时不动元方案数。</li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>对于环上的问题不方便考虑的话不妨先拆成链上的问题考虑（就不用考虑首尾是否满足条件）……</p>
+<p>最后要考虑首尾的情况的时候，不妨在尾多 DP 三个元素，然后只取首三个元素与末三个元素相同的方案。</p>
+<p>这样做一次 DP 复杂度是 <span class="math inline">\mathcal{O}(256N)</span> 的…… 而且对于每一种置换都要做一次…… 显然复杂度不可以接受。</p>
+<p>看看能不能用矩阵快速幂优化。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+  \text{dp} \langle i, a, b, c \rangle = \sum\limits_{k} \text{v} \langle k, a, b, c \rangle \cdot \text{dp} \langle i - 1, k, a, b \rangle
+</span></p>
+<p><span class="math display">
+\begin{aligned}
+  \begin{bmatrix}
+    \text{dp} \langle i, 1, 1, 1 \rangle \\
+    \text{dp} \langle i, 1, 1, 2 \rangle \\
+    \vdots \\
+    \text{dp} \langle i, 4, 4, 4 \rangle
+  \end{bmatrix}
+\end{aligned}
+= T \cdot
+\begin{aligned}
+  \begin{bmatrix}
+    \text{dp} \langle i - 1, 1, 1, 1 \rangle \\
+    \text{dp} \langle i - 1, 1, 1, 2 \rangle \\
+    \vdots \\
+    \text{dp} \langle i - 1, 4, 4, 4 \rangle
+  \end{bmatrix}
+\end{aligned}
+</span></p>
+<div class="fragment current-visible" style="height:0">
+<p><span class="math display">
+\text{dp} \langle i, a, b, c \rangle = \sum\limits_{\langle j, k, l \rangle} T[a, b, c][j, k, l] \cdot \text{dp} \langle i - 1, j, k, l \rangle
+</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
+</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>枚举前三 <span class="math inline">3</span> 个元素的颜色 <span class="math inline">\langle a, b, c \rangle</span> 时，初始化： <span class="math display">
+\begin{aligned}
+\begin{bmatrix}
+  1 \\
+  0 \\
+  \vdots \\
+  0
+\end{bmatrix}
+\end{aligned},
+\begin{aligned}
+\begin{bmatrix}
+  0 \\
+  1 \\
+  \vdots \\
+  0
+\end{bmatrix}
+\end{aligned},
+\dots, 
+\begin{aligned}
+\begin{bmatrix}
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{bmatrix}
+\end{aligned}
+</span></li>
+<li>等价于 <span class="math inline">T^{n}</span> 直接乘上单位矩阵；</li>
+<li><span class="math inline">T^{n}</span> 主对角线元素之和即为所有不动元数量。</li>
+</ul>
+<aside class="notes">
+<p>置换 <span class="math inline">\sigma</span> 下不动元的个数只跟其能被分解成不交轮换乘积的轮换个数有关。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<div class="fragment fade-out" data-fragment-index="1" style="height:0">
+<ul>
+<li>记 <span class="math inline">T^i</span> 对角线元素之和为 <span class="math inline">f(i)</span></li>
+<li>旋转 <span class="math inline">i \frac{2\pi}{n}</span> 下不动元个数为 <span class="math inline">f(\gcd(n, i))</span></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p><span class="math display">
+\begin{aligned}
+\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid 
+&amp; = \sum\limits_{i = 1}^{n} f(\gcd(n, i)) \\
+&amp; = \sum\limits_{d \mid n} f(d) \cdot \sum\limits_{i = 1}^{n} [\gcd(n, i) = d] \\
+&amp; = \sum\limits_{d \mid n} f(d) \cdot \varphi(\frac{n}{d})
+\end{aligned}
+</span></p>
+<p>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})</span></p>
+</div>
+</section></section>
+<section>
 <section id="counting-undirected-graph" class="title-slide slide level1">
 <h1>完全图同构计数</h1>
-<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图个数。</p>
+<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图染色方案数。</p>
 <p><span class="math inline">n \le 60, \ m \le 10^3</span></p>
 <div class="fragment">
 <ul>
@@ -843,8 +1020,14 @@ n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
 </ul>
 </div>
 </section>
-<section id="分析-1" class="slide level2">
+<section id="ugph-analysis" class="slide level2">
 <h2>分析</h2>
+<p><span class="math display">
+\begin{aligned}
+G &amp; = S_n \\
+M &amp; = \{ \text{所有不计同构的无向图染色方案数} \}
+\end{aligned}
+</span></p>
 <ul>
 <li>对点的置换群即 <span class="math inline">n</span> 阶对称群 <span class="math inline">S_n</span>，<span class="math inline">|S_n| = n!</span></li>
 <li>每个点置换可以被表示成若干点轮换的乘积，而该点置换下，边两端的两点有两种情况：
@@ -854,6 +1037,7 @@ n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
 </ul></li>
 </ul>
 <aside class="notes">
+<p>前面提到了</p>
 <p>注意接下来考虑的是轮换，那么对应的操作就是循环右移</p>
 </aside>
 </section>
@@ -887,84 +1071,6 @@ n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
 </ul>
 </section></section>
 <section>
-<section id="icpc-2019-nanchang-j" class="title-slide slide level1">
-<h1>南昌 J. Summon</h1>
-<p>现要从 <span class="math inline">4</span> 种不同的水晶中取 <span class="math inline">n</span> 个围成一个圈，但有 <span class="math inline">m</span> 个限制条件：每条限制条件要求某四种水晶不能在围成的圈中连续出现。通过旋转可互相得到的方案算作一种方案，问有多少种本质不同的方案？（结果模 <span class="math inline">998244353</span>）</p>
-<p><span class="math inline">n \le 10^5, m \le 256</span></p>
-<aside class="notes">
-<p>这其实是去年老刘专题里面一道题的稍微加强版…… 原题是要求某两种不能连续，这里改成了某四种……（POJ 2888）</p>
-</aside>
-</section>
-<section id="分析-2" class="slide level2">
-<h2>分析</h2>
-<ul>
-<li>由于带上了限制条件，无法直接通过 Pólya 计数法得到结果；</li>
-<li>若有 <span class="math inline">m</span> 个轮换，则只需要确定前 <span class="math inline">m</span> 个水晶的颜色即可！</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>记 <span class="math inline">a\langle i, j, k, l \rangle</span> 代表是否允许 <span class="math inline">i, j, k, l</span> 四种颜色相邻；</li>
-<li>记 <span class="math inline">dp\langle i, j, k, l \rangle</span> 代表 <span class="math inline">i</span> 个水晶排成一排，最后三个元素的颜色分别为 <span class="math inline">j, k, l</span>，则方案数： <span class="math display">
-dp\langle i, j, k, l \rangle = \sum\limits_{s} dp \langle i - 1, s, j, k \rangle \cdot a \langle s, j, k, l \rangle
-</span></li>
-<li>枚举前三个水晶的颜色 <span class="math inline">\langle j, k, l \rangle</span>，则 <span class="math inline">dp \langle i + 3, j, k, l \rangle</span> 代表围成一圈时满足题目条件的不动元个数。</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p><span class="math display">
-  dp\langle i, j, k, l \rangle = \sum\limits_{s} dp \langle i - 1, s, j, k \rangle \cdot a \langle s, j, k, l \rangle
-</span></p>
-<p><span class="math display">
-\begin{aligned}
-  \begin{bmatrix}
-    dp \langle i, 1, 1, 1 \rangle \\
-    dp \langle i, 1, 1, 2 \rangle \\
-    \vdots \\
-    dp \langle i, 4, 4, 4 \rangle
-  \end{bmatrix}
-\end{aligned}
-=
-\begin{aligned}
-  \begin{bmatrix}
-    dp \langle i - 1, 1, 1, 1 \rangle \\
-    dp \langle i - 1, 1, 1, 2 \rangle \\
-    \vdots \\
-    dp \langle i - 1, 4, 4, 4 \rangle
-  \end{bmatrix}
-\end{aligned}
-\cdot T
-</span></p>
-<p><span class="math display">
-T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rangle
-</span></p>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 下不动元个数： <span class="math display">
-\sum\limits_{\langle a, b, c \rangle} dp \langle \gcd(n, i) + 3, a, b, c \rangle
-</span></li>
-<li>接下来记之为 <span class="math inline">f(\gcd(n, i))</span></li>
-<li>做一次矩阵快速幂即可得解，复杂度：<span class="math inline">\mathcal{O}(64^2\log{n})</span></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>不动元个数： <span class="math display">
-\begin{aligned}
-\sum\limits_{i = 1}^{n} f(\gcd(n, i)) 
-&amp; = \sum\limits_{d \mid n} f(d) \cdot \sum\limits_{i = 1}^{n} [\gcd(n, i) = d] \\
-&amp; = \sum\limits_{d \mid n} f(d) \cdot \varphi(\frac{n}{d})
-\end{aligned}
-</span></li>
-<li>复杂度就变成了 <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})</span></li>
-</ul>
-</section></section>
-<section>
 <section id="icpc-2019-yinchuan-m" class="title-slide slide level1">
 <h1>银川 M. Crazy Cake</h1>
 <p>圆周上均匀分布 <span class="math inline">n</span> 个点，现可连接若干点对，但要求连出的线段不可在圆内部相交（但可以在圆上相交）。经过旋转可相互得到的方案算作相同方案，有多少种本质不同方案数？（<span class="math inline">T</span> 次询问，结果模 <span class="math inline">10^9 + 7</span>）</p>
@@ -972,7 +1078,7 @@ T[\langle s, j, k \rangle][\langle j, k, l \rangle] = a \langle s, j, k, l \rang
 T \le 10^5, 2 \le n \le 10^6
 </span></p>
 </section>
-<section id="分析-3" class="slide level2">
+<section id="ycm-analysis" class="slide level2">
 <h2>分析</h2>
 <ul>
 <li>置换群？顺时针旋转 <span class="math inline">\frac{2\pi}{n}, 2 \times \frac{2\pi}{n}, \dots, 2\pi</span>；</li>

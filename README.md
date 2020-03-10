@@ -20,7 +20,7 @@ pandoc -t revealjs -s -o index.html slides.md --katex -V revealjs-url=https://re
 
 - [x] 基础理论与证明
 - [x] 基本模型：项链染色
-- [x] 基本模型：无向图染色**（细节还需polish）**
-- [ ] 可能考虑引入一些中档题目作为过渡
+- [x] 基本模型：无向图染色 **（细节还需 polish）**
+- [ ] ~~可能考虑引入一些中档题目作为过渡（咕了）~~
 - [x] 题目：ICPC 2019 南昌 J.Summon
 - [ ] 题目：ICPC 2019 银川 M.Crazy Cake
