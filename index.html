@@ -8,8 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://revealjs.com/css/reset.css">
-  <link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+  <link rel="stylesheet" href="assets/revealjs/css/reset.css">
+  <link rel="stylesheet" href="assets/revealjs/css/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -18,19 +18,19 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="https://revealjs.com/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="assets/revealjs/css/theme/black.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'assets/revealjs/css/print/pdf.css' : 'assets/revealjs/css/print/paper.css';
     document.getElementsByTagName( 'head' )[0].appendChild( link );
   </script>
   <!--[if lt IE 9]>
-  <script src="https://revealjs.com/lib/js/html5shiv.js"></script>
+  <script src="assets/revealjs/lib/js/html5shiv.js"></script>
   <![endif]-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script src="assets/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
    var mathElements = document.getElementsByClassName("math");
    for (var i = 0; i < mathElements.length; i++) {
@@ -43,7 +43,7 @@
      });
   }}});
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <link rel="stylesheet" href="assets/katex/katex.min.css" />
 </head>
 <body>
   <div class="reveal">
@@ -486,7 +486,7 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 \begin{aligned}
 G_1 &amp; = \{ \text{顺时针旋转 } 120^\circ, 240^\circ, 360^\circ \} \\
 G_2 &amp; = \{ \text{ 不翻转、沿着过 $0, 1, 2$ 的对称轴翻转 } \} \\
-M &amp; = \{ 所有不考虑同构下不同的染色方案 \}
+M &amp; = \{ \text{所有不考虑所有不考虑同构下不同的染色方案} \}
 \end{aligned}
 </span></p>
 <p><span class="math inline">G_1 \cup G_2</span> 作用于 <span class="math inline">M</span> 后，轨道数即为所求答案。</p>
@@ -1212,14 +1212,14 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 </section>
 <section class="slide level2">
 
-<div class="fragment current-visible" style="height:0">
+<div class="fragment fade-out" data-fragment-index="1" style="height:0">
 <ul>
 <li><span class="math inline">n</span> 个点分配到轮换内（多重组合数）： <span class="math display">
 \frac{n!}{\prod\limits_{i = 1}^{k} l_i!}
 </span></li>
 </ul>
 </div>
-<div class="fragment current-visible" style="height:0">
+<div class="fragment current-visible" data-fragment-index="1" style="height:0">
 <ul>
 <li>再考虑轮换内的顺序（圆排列）： <span class="math display">
 \frac{n!}{\prod\limits_{i = 1}^{k} l_i!} \cdot \prod\limits_{i = 1}^{k} (l_i - 1)!
@@ -1302,7 +1302,7 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
     </div>
   </div>
 
-  <script src="https://revealjs.com/js/reveal.js"></script>
+  <script src="assets/revealjs/js/reveal.js"></script>
 
   <script>
 
@@ -1316,9 +1316,9 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true },
-          { src: 'https://revealjs.com/plugin/notes/notes.js', async: true }
+          { src: 'assets/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'assets/revealjs/plugin/zoom-js/zoom.js', async: true },
+          { src: 'assets/revealjs/plugin/notes/notes.js', async: true }
         ]
       });
     </script>
