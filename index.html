@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="ver 0310 未完成">
+  <meta name="author" content="ver 0311RC 接近完成">
   <title>浅谈置换群</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,7 +51,7 @@
 
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
-  <p class="author">ver 0310 未完成</p>
+  <p class="author">ver 0311RC 接近完成</p>
   <p class="date">2020.03</p>
 </section>
 
@@ -700,7 +700,7 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 </ul>
 <aside class="notes">
 <p>前面讲到了置换 <span class="math inline">\sigma</span> 可以被拆成若干个长度相等的映射链，也就是若干个大小相等的轮换。考虑在原始的（不考虑同构）的染色方案集合里，什么样的元素会成为置换 <span class="math inline">\sigma</span> 的下的不动元？</p>
-<p>是不是只要每个轮换内的点我染的颜色都一样，那么是不是就成为不动元了…… 那么根据乘法原理就可以得到 Polya 计数定理了。</p>
+<p>是不是只要每个轮换内的点我染的颜色都一样，那么是不是就成为不动元了…… 那么根据乘法原理就可以得到 Pólya 计数定理了。</p>
 </aside>
 </section>
 
@@ -764,11 +764,11 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 
 <h3 id="旋转">旋转</h3>
 <p><span class="math display">
-G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \quad \mid G_1 \mid = n
+G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}, \ \mid G_1 \mid = n
 </span></p>
 <ul>
 <li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时只能分解成一个不交轮换；</li>
-<li>旋转 <span class="math inline">i \cdot \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，故可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换：</li>
+<li>旋转 <span class="math inline">i \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，故可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换：</li>
 </ul>
 <p><span class="math display">
 \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
@@ -855,11 +855,12 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 </span></p>
 <div class="fragment">
 <ul>
-<li>单单把每一个轮换内的所有元素染成相同颜色可能破坏限制条件。</li>
+<li>单单把每一个轮换内的所有元素染成相同颜色可能破坏限制条件；</li>
+<li>无法直接应用 Pólya 计数定理。</li>
 </ul>
 </div>
 <aside class="notes">
-<p>之前说 Polya 计数定理的时候，我们是基于同一个轮换内的所有元素都染色成同一个颜色得出的。在这道题目里，不动元不仅要满足轮换内元素颜色相等，同时在这一前提下还要满足限制条件。我们虽然没有办法直接套用 Polya，但是只要能够求出不动点借助 Burnside 引理还是能够解决问题的……</p>
+<p>之前说 Pólya 计数定理的时候，我们是基于同一个轮换内的所有元素都染色成同一个颜色得出的。在这道题目里，不动元不仅要满足轮换内元素颜色相等，同时在这一前提下还要满足限制条件。我们虽然没有办法直接套用 Pólya，但是只要能够求出不动点借助 Burnside 引理还是能够解决问题的……</p>
 </aside>
 </section>
 <section class="slide level2">
@@ -950,6 +951,9 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
 </span></p>
 </div>
+<aside class="notes">
+<p><span class="math inline">T</span> 中其余元素都是 <span class="math inline">0</span>。</p>
+</aside>
 </section>
 <section class="slide level2">
 
@@ -1009,8 +1013,8 @@ T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
 </div>
 </section></section>
 <section>
-<section id="counting-undirected-graph" class="title-slide slide level1">
-<h1>完全图同构计数</h1>
+<section id="coloring-undirected-graph" class="title-slide slide level1">
+<h1>无向图同构计数</h1>
 <p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图染色方案数。</p>
 <p><span class="math inline">n \le 60, \ m \le 10^3</span></p>
 <div class="fragment">
@@ -1024,135 +1028,250 @@ T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
 <h2>分析</h2>
 <p><span class="math display">
 \begin{aligned}
-G &amp; = S_n \\
-M &amp; = \{ \text{所有不计同构的无向图染色方案数} \}
+G &amp; = S_n \enspace (n \text{阶对称群}), \ \mid S_n \mid = n! \\
+M &amp; = \{ \text{不计同构的无向图染色方案} \}
 \end{aligned}
 </span></p>
 <ul>
-<li>对点的置换群即 <span class="math inline">n</span> 阶对称群 <span class="math inline">S_n</span>，<span class="math inline">|S_n| = n!</span></li>
-<li>每个点置换可以被表示成若干点轮换的乘积，而该点置换下，边两端的两点有两种情况：
+<li>置换是对点的置换，而染色是对边染色；</li>
+<li>两点确定一条边，分析边两端点的情况。</li>
+</ul>
+<aside class="notes">
+<p>根据无向图同构的定义发现对于边的置换非常难找…… 要想办法把对点的置换与边的置换联系起来…… 既然两点可以确定一条边，那不妨分析边两边的情况。</p>
+<p>后面会用类似 “点置换”、“点轮换” 和 “边置换”、“边轮换” 等用词对两者进行区分。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+\sigma = \left(\begin{array}{c} 
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
+3 &amp; 4 &amp; 5 &amp; 2 &amp; 6 &amp; 1
+\end{array}\right) 
+= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+</span></p>
+<div class="fragment current-visible" style="height:0">
 <ul>
-<li>在同一个轮换里；</li>
-<li>在两个不同轮换里。</li>
+<li>对于两端点位于同一点轮换内的边：
+<ul>
+<li><span class="math inline">\langle 1, 3 \rangle \rightarrow \langle 3 ,5 \rangle \rightarrow \langle 5, 6 \rangle \rightarrow \langle 6, 1 \rangle</span></li>
+<li><span class="math inline">\langle 1, 5 \rangle \rightarrow \langle 3, 6 \rangle</span></li>
+<li><span class="math inline">\langle 2, 4 \rangle</span></li>
 </ul></li>
 </ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1})
+</span></p>
+<p><span class="math display">
+\langle a_i, a_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, a_{(j + 1) \bmod l} \rangle \rightarrow \dots
+</span></p>
+<div class="fragment current-visible" style="height:0">
+<p><span class="math display">
+\begin{cases}
+i + t \equiv i \pmod l \\
+j + t \equiv j \pmod l
+\end{cases}
+</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+t \equiv 0 \pmod m
+</span></p>
+<p>最小非负 <span class="math inline">t = l</span>，则边轮换长度至多为 <span class="math inline">l</span>。</p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l  - 1})
+</span></p>
+<p><span class="math display">
+\langle a_i, a_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, a_{(j + 1) \bmod l} \rangle \rightarrow \dots
+</span></p>
+<div class="fragment current-visible" style="height:0">
+<p><span class="math display">
+\begin{cases}
+i + t \equiv j \pmod l \\
+j + t \equiv i \pmod l
+\end{cases}
+</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+2i \equiv 2j \pmod m
+</span></p>
+<ul>
+<li>若 <span class="math inline">2 \nmid l</span>，则 <span class="math inline">i \equiv j \pmod l</span>，无法构成边；</li>
+<li>若 <span class="math inline">2 \mid l</span>，则 <span class="math inline">i \equiv j \pmod {\frac{l}{2}}</span>，最小非负 <span class="math inline">t = \frac{l}{2}</span>。</li>
+</ul>
+</div>
 <aside class="notes">
-<p>前面提到了</p>
-<p>注意接下来考虑的是轮换，那么对应的操作就是循环右移</p>
+<p>下标间距相同的边必然在同一边轮换内。</p>
 </aside>
 </section>
 <section class="slide level2">
 
+<p><span class="math display">
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1})
+</span></p>
 <ul>
-<li><p>两点在同一轮换里的边：记点轮换大小为 <span class="math inline">x</span>，则可构成 <span class="math inline">\left\lfloor \frac{x}{2} \right\rfloor</span> 个边轮换。</p>
-<p>考虑 <span class="math inline">x</span> 个点构成的完全图，将点等距离放在圆周上，则显然长度相等的线段构成一个边轮换，共 <span class="math inline">\left\lfloor \frac{x}{2} \right\rfloor</span> 个。</p></li>
+<li>对于边 <span class="math inline">\langle a_i, a_j \rangle</span> 所在的边轮换：
+<ul>
+<li>若 <span class="math inline">2 \mid l</span> 且 <span class="math inline">\mid j - i \mid = \frac{l}{2}</span>，则其大小为 <span class="math inline">\frac{l}{2}</span>；</li>
+<li>否则其大小为 <span class="math inline">l</span>；</li>
+</ul></li>
+<li><span class="math inline">\mid j - i \mid \bmod l</span> 相同的边在同一边轮换内，故边轮换个数为 <span class="math inline">\lfloor \frac{l}{2} \rfloor</span>。</li>
+</ul>
+<aside class="notes">
+<p>换句话说：</p>
+<ul>
+<li>两点在相同且大小为 <span class="math inline">l</span> 的点轮换里的边共可构成 <span class="math inline">\lfloor \frac{l}{2} \rfloor</span> 个边轮换，其中：
+<ul>
+<li>若 <span class="math inline">2 \nmid l</span>，则每个边轮换大小均为 <span class="math inline">l</span>；</li>
+<li>若 <span class="math inline">2 \mid l</span>，则一个边轮换大小为 <span class="math inline">\frac{l}{2}</span>，其余边轮换大小为 <span class="math inline">l</span>。</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">
+\sigma = \left(\begin{array}{c} 
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
+3 &amp; 4 &amp; 5 &amp; 2 &amp; 6 &amp; 1
+\end{array}\right) 
+= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+</span></p>
+<ul>
+<li>两点在不同点轮换里的边：
+<ul>
+<li><span class="math inline">\langle 1, 2 \rangle \rightarrow \langle 3, 4 \rangle \rightarrow \langle 5, 2 \rangle \rightarrow \langle 6, 4 \rangle</span></li>
+<li><span class="math inline">\langle 1, 4 \rangle \rightarrow \langle 3, 2 \rangle \rightarrow \langle 5, 4 \rangle \rightarrow \langle 6, 2 \rangle</span></li>
+</ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
+<p><span class="math display">
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1}) \cdot (b_0 \enspace b_1 \enspace \dots \enspace b_{s - 1} )
+</span></p>
+<p><span class="math display">
+\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod l} \rangle \rightarrow \dots
+</span></p>
+<div class="fragment">
+<p><span class="math display">
+\begin{cases}
+i + t \equiv i \pmod l \\
+j + t \equiv j \pmod s
+\end{cases}
+</span></p>
 <ul>
-<li><p>两点在不同轮换里的边：记点轮换大小分别为 <span class="math inline">x, y</span>，则可构成 <span class="math inline">\gcd(x, y)</span> 个边轮换。</p>
-<p>需要移 <span class="math inline">\text{lcm}(x, y)</span> 次才能转回原图形，发现每个轮换大小均为 <span class="math inline">\text{lcm}(x, y)</span>。共 <span class="math inline">xy</span> 条边，则轮换个数 <span class="math inline">\frac{xy}{\text{lcm}(x, y)} = \gcd(x, y)</span> 个。</p></li>
+<li>每个边轮换大小为 <span class="math inline">\text{lcm}(l, s)</span>，共 <span class="math inline">\frac{ls}{\text{lcm}(l, s)} = \gcd(l, s)</span> 个。</li>
 </ul>
+</div>
 </section>
 <section class="slide level2">
 
+<p><span class="math display">
+\sigma = \prod\limits_{i = 1}^{k} c_i \quad (\text{轮换 } c_i \text{ 长度为 } l_i)
+</span></p>
 <ul>
-<li>对 <span class="math inline">n</span> 的每一种拆分方案：<span class="math inline">n = \sum\limits_{i = 1}^{k} t_i a_i</span>，其中 <span class="math inline">a_i</span> 代表点轮换大小，<span class="math inline">t_i</span> 为该大小的点轮换个数。则满足上述条件的点置换个数为： <span class="math display">
-\frac{n!}{\prod\limits_{i = 1}^{k} t_i! \cdot a_i^{t_i}}
+<li>可表示成边轮换的个数： <span class="math display">
+\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)
 </span></li>
 </ul>
-</section>
-<section class="slide level2">
-
+<div class="fragment current-visible" style="height:0">
 <ul>
-<li>其中除去 <span class="math inline">a_i^{t_i}</span> 的原因是因为每个大小为 <span class="math inline">a_i</span> 的点轮换会被重复算 <span class="math inline">a_i</span> 次。</li>
-<li>爆搜所有的拆分方案即可，同一边轮换内的边都应当同色，运用一下 Pólya 定理即可。</li>
+<li>不动元？每个边轮换内的边染色情况应当相同；</li>
+<li><span class="math inline">\mid S_n \mid = n!</span>，没办法枚举每一个置换……</li>
 </ul>
-</section></section>
-<section>
-<section id="icpc-2019-yinchuan-m" class="title-slide slide level1">
-<h1>银川 M. Crazy Cake</h1>
-<p>圆周上均匀分布 <span class="math inline">n</span> 个点，现可连接若干点对，但要求连出的线段不可在圆内部相交（但可以在圆上相交）。经过旋转可相互得到的方案算作相同方案，有多少种本质不同方案数？（<span class="math inline">T</span> 次询问，结果模 <span class="math inline">10^9 + 7</span>）</p>
-<p><span class="math display">
-T \le 10^5, 2 \le n \le 10^6
-</span></p>
-</section>
-<section id="ycm-analysis" class="slide level2">
-<h2>分析</h2>
+</div>
+<div class="fragment">
 <ul>
-<li>置换群？顺时针旋转 <span class="math inline">\frac{2\pi}{n}, 2 \times \frac{2\pi}{n}, \dots, 2\pi</span>；</li>
-<li>集合？所有<strong>内部不相交</strong>的方案；</li>
-<li>每一种置换可表示为 <span class="math inline">\frac{n}{d}</span> 个长为 <span class="math inline">d</span> 的轮换。</li>
+<li>边轮换的个数只跟每个点轮换的大小有关系；</li>
+<li>枚举点轮换大小的情况（<span class="math inline">n</span> 的拆分方案）？</li>
 </ul>
-</section>
-<section class="slide level2">
-
-<p><span class="math inline">d = n</span> 时的情形（即旋转 <span class="math inline">2\pi</span>）：</p>
-<ul>
-<li>等价于询问不考虑同构时的方案数……</li>
-<li>圆周上的 <span class="math inline">n</span> 条线段不会导致相交，故先只考虑圆内部的连边……</li>
-<li>记 <span class="math inline">f(n)</span> 代表 <span class="math inline">n</span> 个点只考虑<strong>内部</strong>连边的方案数，则旋转 <span class="math inline">2\pi</span> 时不动元个数为：</li>
-</ul>
-<p><span class="math display">
-2^n \cdot f(n)
-</span></p>
-</section>
-<section class="slide level2">
-
-<p>首先考虑 <span class="math inline">0</span> 号点没有连边的情况：</p>
-<ul>
-<li>把 <span class="math inline">0</span> 号点删掉不影响答案；</li>
-<li>考虑如何从 <span class="math inline">f(n - 1)</span> 转移？</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p><img data-src="./assets/yinchuan-m-01.png" class="plain" /></p>
-<p><span class="math display">
-2 \cdot f(n - 1)
-</span></p>
+</div>
 <aside class="notes">
-<p>在考虑 f(n - 1) 时，n - 2 和 n 是相邻点故我们没有考虑它们间的相邻情况；而当考虑 f(n) 是，n - 2 和 n 不是相邻点了，而这两个点是否相连都不会影响答案，所以此时方案数是 2 * f(n - 1)。</p>
+<p>想办法剪枝。我们并不关系每个边置换里面有哪些边或者有多少边…… 既然每个边轮换内的边颜色都要一样，我们只关心边轮换的个数就行了。</p>
 </aside>
 </section>
 <section class="slide level2">
 
-<p>其次考虑 <span class="math inline">0</span> 号点有连边的情况：</p>
 <ul>
-<li>记 <span class="math inline">0</span> 号点连出的<strong>最小标号</strong>为 <span class="math inline">i \in [1, n - 1]</span>；</li>
-<li>上面这条线将图形分成了 <span class="math inline">2</span> 个部分</li>
+<li><p>枚举 <span class="math inline">n</span> 的拆分方案：</p>
+<p><span class="math display">
+n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
+</span></p></li>
+<li><p>每一种拆分方案对应多少点置换？</p></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><img data-src="./assets/yinchuan-m-02.png" class="plain" /></p>
-<p><span class="math display">
-2 \cdot f(i) \cdot f(n - i + 1) \quad (i \ge 3)
-</span></p>
-<aside class="notes">
-<p>别忘了 i = 0, 1, n - 1 是不用考虑的……</p>
-<p>不清楚的话自己想想为什么 :P</p>
-<p>（定义 f 的时候就把相邻点连边排除在外了）</p>
-</aside>
+<div class="fragment current-visible" style="height:0">
+<ul>
+<li><span class="math inline">n</span> 个点分配到轮换内（多重组合数）： <span class="math display">
+\frac{n!}{\prod\limits_{i = 1}^{k} l_i!}
+</span></li>
+</ul>
+</div>
+<div class="fragment current-visible" style="height:0">
+<ul>
+<li>再考虑轮换内的顺序（圆排列）： <span class="math display">
+\frac{n!}{\prod\limits_{i = 1}^{k} l_i!} \cdot \prod\limits_{i = 1}^{k} (l_i - 1)!
+</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>对于长度相等的轮换，其之间的顺序不计。
+<ul>
+<li>记共有 <span class="math inline">s</span> 种不同长度的轮换，其中第 <span class="math inline">i</span> 种轮换的长度为 <span class="math inline">q_i</span>，则： <span class="math display">
+\frac{n!}{\prod\limits_{i = 1}^{k} l_i} \cdot \prod\limits_{i = 1}^{s} \frac{1}{q_i!}
+</span></li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section class="slide level2">
 
-<p>综上所述</p>
+<ul>
+<li>对 <span class="math inline">n</span> 的每一种拆分方案：<span class="math inline">n = \sum\limits_{i = 1}^{k} l_i</span>
+<ul>
+<li><span class="math inline">l_1 \le l_2 \le \dots \le l_k</span>；</li>
+<li>记共有 <span class="math inline">s</span> 种不同长度的轮换，其中第 <span class="math inline">i</span> 种轮换的长度为 <span class="math inline">q_i</span>；</li>
+<li>其对应的点轮换数量为：</li>
+</ul></li>
+</ul>
+<p><span class="math display">
+\frac{n!}{(\prod\limits_{i = 1}^{k} l_i) \cdot (\prod\limits_{i = 1}^{s} q_i!)}
+</span></p>
+</section>
+<section class="slide level2">
+
 <p><span class="math display">
 \begin{aligned}
-f(n) &amp; = 2f(n - 1) \\
-&amp; + f(n - 1) + 2\sum\limits_{i = 3}^{n - 2} f(i) \cdot f(n - i + 1)
+&amp; \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
+&amp; = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 </span></p>
+<p>复杂度 <span class="math inline">\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)</span></p>
+<aside class="notes">
+<p>Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度（即拆成了多少个点轮换）</p>
+</aside>
 </section>
 <section class="slide level2">
 
-<p><span class="math inline">d \neq n</span> 的情形</p>
+<h3 id="思路回顾">思路回顾</h3>
 <ul>
-<li>先对每个轮换单独考虑；</li>
-<li>轮换内部相邻两个点连线不会导致相交，故还是先考虑内部连边；</li>
-<li>WIP</li>
+<li>置换是对点的置换，均可分解成点轮换之积；</li>
+<li>染色对边染色，同一边轮换内边染色方案相同；</li>
+<li>点轮换和边轮换之间的关系？</li>
+<li>只关心边轮换个数，其只与点轮换的大小情况有关，枚举点轮换的大小情况……</li>
 </ul>
 </section></section>
 <section>
@@ -1168,7 +1287,7 @@ f(n) &amp; = 2f(n - 1) \\
 <li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3441">HDU 3441: Rotation</a></li>
 <li><a href="http://poj.org/problem?id=2888">POJ 2888: Magic Bracelet</a></li>
 <li><a href="https://www.luogu.com.cn/problem/P1446">洛谷 P1446: Cards</a></li>
-<li><a href="https://www.luogu.com.cn/problem/P4727">洛谷 P4727: 图的同构计数</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4128">洛谷 P4128: 有色图</a></li>
 </ul>
 </section>
 <section id="probset-2" class="slide level2">

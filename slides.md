@@ -1,5 +1,5 @@
 ---
-author: [ver 0310 未完成]
+author: [ver 0311RC 接近完成]
 title: 浅谈置换群
 date: 2020.03
 ---
@@ -380,7 +380,7 @@ $$
   - $a_0, a_1, \dots a_{\gcd(n, t) - 1}$ 一定位于不同轮换。
   :::
 
-::: notes
+::: { .notes }
 
 两个推论的证明不难（用初等数论就可以解决），大家可以自行思考……
 
@@ -771,7 +771,7 @@ $$
 
 前面讲到了置换 $\sigma$ 可以被拆成若干个长度相等的映射链，也就是若干个大小相等的轮换。考虑在原始的（不考虑同构）的染色方案集合里，什么样的元素会成为置换 $\sigma$ 的下的不动元？
 
-是不是只要每个轮换内的点我染的颜色都一样，那么是不是就成为不动元了…… 那么根据乘法原理就可以得到 Polya 计数定理了。
+是不是只要每个轮换内的点我染的颜色都一样，那么是不是就成为不动元了…… 那么根据乘法原理就可以得到 Pólya 计数定理了。
 
 :::
 
@@ -852,11 +852,11 @@ $n$ 为偶数时，对称轴过两个点；而 $n$ 为奇数时，对称轴过�
 ### 旋转
 
 $$
-G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \quad \mid G_1 \mid = n
+G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}, \ \mid G_1 \mid = n
 $$
 
 - 旋转 $\frac{2\pi}{n}$ 时只能分解成一个不交轮换；
-- 旋转 $i \cdot \frac{2\pi}{n}$ 可看作前者的 $i$ 次幂，故可拆成 $\gcd(n, i)$ 个轮换：
+- 旋转 $i \frac{2\pi}{n}$ 可看作前者的 $i$ 次幂，故可拆成 $\gcd(n, i)$ 个轮换：
 
 $$
 \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
@@ -950,13 +950,14 @@ $$
 
 ::: { .fragment }
 
-- 单单把每一个轮换内的所有元素染成相同颜色可能破坏限制条件。
+- 单单把每一个轮换内的所有元素染成相同颜色可能破坏限制条件；
+- 无法直接应用 Pólya 计数定理。
 
 :::
 
-::: notes
+::: { .notes }
 
-之前说 Polya 计数定理的时候，我们是基于同一个轮换内的所有元素都染色成同一个颜色得出的。在这道题目里，不动元不仅要满足轮换内元素颜色相等，同时在这一前提下还要满足限制条件。我们虽然没有办法直接套用 Polya，但是只要能够求出不动点借助 Burnside 引理还是能够解决问题的……
+之前说 Pólya 计数定理的时候，我们是基于同一个轮换内的所有元素都染色成同一个颜色得出的。在这道题目里，不动元不仅要满足轮换内元素颜色相等，同时在这一前提下还要满足限制条件。我们虽然没有办法直接套用 Pólya，但是只要能够求出不动点借助 Burnside 引理还是能够解决问题的……
 
 :::
 
@@ -973,7 +974,7 @@ $$
 
 :::
 
-::: notes
+::: { .notes }
 
 换句话说，前 $\gcd(n, i)$ 个元素一定是位于不同轮换内的。对于不动点而言，既然同一轮换内染色方案一致，那么整个染色方案完全就是由前 $\gcd(n, i)$ 个元素一直往后复制这样生成的（逃
 
@@ -1008,7 +1009,7 @@ $$
 
 :::
 
-::: notes
+::: { .notes }
 
 对于环上的问题不方便考虑的话不妨先拆成链上的问题考虑（就不用考虑首尾是否满足条件）…… 
 
@@ -1062,6 +1063,12 @@ $$
 
 :::
 
+::: { .notes }
+
+$T$ 中其余元素都是 $0$。
+
+:::
+
 ---
 
 - 枚举前三 $3$ 个元素的颜色 $\langle a, b, c \rangle$ 时，初始化：
@@ -1095,7 +1102,7 @@ $$
 - 等价于 $T^{n}$ 直接乘上单位矩阵；
 - $T^{n}$ 主对角线元素之和即为所有不动元数量。
 
-::: notes
+::: { .notes }
 
 置换 $\sigma$ 下不动元的个数只跟其能被分解成不交轮换乘积的轮换个数有关。
 
@@ -1126,7 +1133,7 @@ $$
 :::
 
 
-# 完全图同构计数 { #counting-undirected-graph }
+# 无向图同构计数 { #coloring-undirected-graph }
 
 $n$ 个点无向完全图，$m$ 种颜色给边染色，求互不同构无向完全图染色方案数。
 
@@ -1143,142 +1150,276 @@ $n \le 60, \ m \le 10^3$
 
 $$
 \begin{aligned}
-G & = S_n \\
-M & = \{ \text{所有不计同构的无向图染色方案数} \}
+G & = S_n \enspace (n \text{阶对称群}), \ \mid S_n \mid = n! \\
+M & = \{ \text{不计同构的无向图染色方案} \}
 \end{aligned}
 $$
 
-- 对点的置换群即 $n$ 阶对称群 $S_n$，$|S_n| = n!$
-- 每个点置换可以被表示成若干点轮换的乘积，而该点置换下，边两端的两点有两种情况：
-  - 在同一个轮换里；
-  - 在两个不同轮换里。
+- 置换是对点的置换，而染色是对边染色；
+- 两点确定一条边，分析边两端点的情况。
 
 ::: { .notes }
 
-前面提到了
+根据无向图同构的定义发现对于边的置换非常难找…… 要想办法把对点的置换与边的置换联系起来…… 既然两点可以确定一条边，那不妨分析边两边的情况。
 
-注意接下来考虑的是轮换，那么对应的操作就是循环右移
+后面会用类似 “点置换”、“点轮换” 和 “边置换”、“边轮换” 等用词对两者进行区分。
 
 :::
 
 ---
 
-- 两点在同一轮换里的边：记点轮换大小为 $x$，则可构成 $\left\lfloor \frac{x}{2} \right\rfloor$ 个边轮换。
-
-  考虑 $x$ 个点构成的完全图，将点等距离放在圆周上，则显然长度相等的线段构成一个边轮换，共 $\left\lfloor \frac{x}{2} \right\rfloor$ 个。
-
----
-
-- 两点在不同轮换里的边：记点轮换大小分别为 $x, y$，则可构成 $\gcd(x, y)$ 个边轮换。
-
-  需要移 $\text{lcm}(x, y)$ 次才能转回原图形，发现每个轮换大小均为 $\text{lcm}(x, y)$。共 $xy$ 条边，则轮换个数 $\frac{xy}{\text{lcm}(x, y)} = \gcd(x, y)$ 个。 
-
----
-
-- 对 $n$ 的每一种拆分方案：$n = \sum\limits_{i = 1}^{k} t_i a_i$，其中 $a_i$ 代表点轮换大小，$t_i$ 为该大小的点轮换个数。则满足上述条件的点置换个数为：
 $$
-\frac{n!}{\prod\limits_{i = 1}^{k} t_i! \cdot a_i^{t_i}}
+\sigma = \left(\begin{array}{c} 
+1 & 2 & 3 & 4 & 5 & 6 \\ 
+3 & 4 & 5 & 2 & 6 & 1
+\end{array}\right) 
+= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 $$
 
----
+::: { .fragment .current-visible style="height:0" }
 
-- 其中除去 $a_i^{t_i}$ 的原因是因为每个大小为 $a_i$ 的点轮换会被重复算 $a_i$ 次。
-- 爆搜所有的拆分方案即可，同一边轮换内的边都应当同色，运用一下 Pólya 定理即可。
-
-
-# 银川 M. Crazy Cake { #icpc-2019-yinchuan-m }
-
-圆周上均匀分布 $n$ 个点，现可连接若干点对，但要求连出的线段不可在圆内部相交（但可以在圆上相交）。经过旋转可相互得到的方案算作相同方案，有多少种本质不同方案数？（$T$ 次询问，结果模 $10^9 + 7$）
-
-$$
-T \le 10^5, 2 \le n \le 10^6
-$$
-
-
-## 分析 { #ycm-analysis }
-
-- 置换群？顺时针旋转 $\frac{2\pi}{n}, 2 \times \frac{2\pi}{n}, \dots, 2\pi$；
-- 集合？所有**内部不相交**的方案；
-- 每一种置换可表示为 $\frac{n}{d}$ 个长为 $d$ 的轮换。
-
----
-
-$d = n$ 时的情形（即旋转 $2\pi$）：
-
-- 等价于询问不考虑同构时的方案数……
-- 圆周上的 $n$ 条线段不会导致相交，故先只考虑圆内部的连边……
-- 记 $f(n)$ 代表 $n$ 个点只考虑**内部**连边的方案数，则旋转 $2\pi$ 时不动元个数为：
-
-$$
-2^n \cdot f(n)
-$$
-
----
-
-首先考虑 $0$ 号点没有连边的情况：
-
-- 把 $0$ 号点删掉不影响答案；
-- 考虑如何从 $f(n - 1)$ 转移？
-
----
-
-![](./assets/yinchuan-m-01.png){ .plain }
-
-$$
-2 \cdot f(n - 1)
-$$
-
-::: { .notes }
-
-在考虑 f(n - 1) 时，n - 2 和 n 是相邻点故我们没有考虑它们间的相邻情况；而当考虑 f(n) 是，n - 2 和 n 不是相邻点了，而这两个点是否相连都不会影响答案，所以此时方案数是 2 * f(n - 1)。
+- 对于两端点位于同一点轮换内的边：
+  - $\langle 1, 3 \rangle \rightarrow \langle 3 ,5 \rangle \rightarrow \langle 5, 6 \rangle \rightarrow \langle 6, 1 \rangle$
+  - $\langle 1, 5 \rangle \rightarrow \langle 3, 6 \rangle$
+  - $\langle 2, 4 \rangle$
 
 :::
 
 ---
 
-其次考虑 $0$ 号点有连边的情况：
-
-- 记 $0$ 号点连出的**最小标号**为 $i \in [1, n - 1]$；
-- 上面这条线将图形分成了 $2$ 个部分
-
----
-
-![](./assets/yinchuan-m-02.png){ .plain }
-
 $$
-2 \cdot f(i) \cdot f(n - i + 1) \quad (i \ge 3)
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1})
 $$
 
-::: { .notes }
+$$
+\langle a_i, a_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, a_{(j + 1) \bmod l} \rangle \rightarrow \dots
+$$
 
-别忘了 i = 0, 1, n - 1 是不用考虑的……
+::: { .fragment .current-visible style="height:0" }
 
-不清楚的话自己想想为什么 :P
+$$
+\begin{cases}
+i + t \equiv i \pmod l \\
+j + t \equiv j \pmod l
+\end{cases}
+$$
 
-（定义 f 的时候就把相邻点连边排除在外了）
+:::
+
+::: { .fragment }
+
+$$
+t \equiv 0 \pmod m
+$$
+
+最小非负 $t = l$，则边轮换长度至多为 $l$。
 
 :::
 
 ---
 
-综上所述
+$$
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l  - 1})
+$$
+
+$$
+\langle a_i, a_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, a_{(j + 1) \bmod l} \rangle \rightarrow \dots
+$$
+
+::: { .fragment .current-visible style="height:0" }
+
+$$
+\begin{cases}
+i + t \equiv j \pmod l \\
+j + t \equiv i \pmod l
+\end{cases}
+$$
+
+:::
+
+::: { .fragment }
+
+$$
+2i \equiv 2j \pmod m
+$$
+
+- 若 $2 \nmid l$，则 $i \equiv j \pmod l$，无法构成边；
+- 若 $2 \mid l$，则 $i \equiv j \pmod {\frac{l}{2}}$，最小非负 $t = \frac{l}{2}$。
+
+:::
+
+::: { .notes }
+
+下标间距相同的边必然在同一边轮换内。
+
+:::
+
+---
+
+$$
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1})
+$$
+
+- 对于边 $\langle a_i, a_j \rangle$ 所在的边轮换：
+  - 若 $2 \mid l$ 且 $\mid j - i \mid = \frac{l}{2}$，则其大小为 $\frac{l}{2}$；
+  - 否则其大小为 $l$；
+- $\mid j - i \mid \bmod l$ 相同的边在同一边轮换内，故边轮换个数为 $\lfloor \frac{l}{2} \rfloor$。
+
+::: { .notes }
+
+换句话说：
+
+- 两点在相同且大小为 $l$ 的点轮换里的边共可构成 $\lfloor \frac{l}{2} \rfloor$ 个边轮换，其中：
+  - 若 $2 \nmid l$，则每个边轮换大小均为 $l$；
+  - 若 $2 \mid l$，则一个边轮换大小为 $\frac{l}{2}$，其余边轮换大小为 $l$。
+
+:::
+
+---
+
+$$
+\sigma = \left(\begin{array}{c} 
+1 & 2 & 3 & 4 & 5 & 6 \\ 
+3 & 4 & 5 & 2 & 6 & 1
+\end{array}\right) 
+= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+$$
+
+- 两点在不同点轮换里的边：
+  - $\langle 1, 2 \rangle \rightarrow \langle 3, 4 \rangle \rightarrow \langle 5, 2 \rangle \rightarrow \langle 6, 4 \rangle$
+  - $\langle 1, 4 \rangle \rightarrow \langle 3, 2 \rangle \rightarrow \langle 5, 4 \rangle \rightarrow \langle 6, 2 \rangle$
+
+---
+
+$$
+(a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1}) \cdot (b_0 \enspace b_1 \enspace \dots \enspace b_{s - 1} )
+$$
+
+$$
+\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod l} \rangle \rightarrow \dots
+$$
+
+::: { .fragment }
+
+$$
+\begin{cases}
+i + t \equiv i \pmod l \\
+j + t \equiv j \pmod s
+\end{cases}
+$$
+
+- 每个边轮换大小为 $\text{lcm}(l, s)$，共 $\frac{ls}{\text{lcm}(l, s)} = \gcd(l, s)$ 个。
+
+:::
+
+---
+
+$$
+\sigma = \prod\limits_{i = 1}^{k} c_i \quad (\text{轮换 } c_i \text{ 长度为 } l_i)
+$$
+
+- 可表示成边轮换的个数：
+  $$
+  \sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)
+  $$
+
+::: { .fragment .current-visible style="height:0" }
+
+- 不动元？每个边轮换内的边染色情况应当相同；
+- $\mid S_n \mid = n!$，没办法枚举每一个置换……
+
+:::
+
+::: { .fragment }
+
+- 边轮换的个数只跟每个点轮换的大小有关系；
+- 枚举点轮换大小的情况（$n$ 的拆分方案）？
+
+:::
+
+::: { .notes }
+
+想办法剪枝。我们并不关系每个边置换里面有哪些边或者有多少边…… 既然每个边轮换内的边颜色都要一样，我们只关心边轮换的个数就行了。
+
+:::
+
+---
+
+- 枚举 $n$ 的拆分方案：
+
+  $$
+  n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
+  $$
+
+- 每一种拆分方案对应多少点置换？
+
+---
+
+::: { .fragment .current-visible style="height:0" }
+
+- $n$ 个点分配到轮换内（多重组合数）：
+  $$
+  \frac{n!}{\prod\limits_{i = 1}^{k} l_i!}
+  $$
+
+:::
+
+::: { .fragment .current-visible style="height:0" }
+
+- 再考虑轮换内的顺序（圆排列）：
+  $$
+  \frac{n!}{\prod\limits_{i = 1}^{k} l_i!} \cdot \prod\limits_{i = 1}^{k} (l_i - 1)!
+  $$
+
+:::
+
+::: { .fragment }
+
+- 对于长度相等的轮换，其之间的顺序不计。
+  - 记共有 $s$ 种不同长度的轮换，其中第 $i$ 种轮换的长度为 $q_i$，则： 
+  $$
+  \frac{n!}{\prod\limits_{i = 1}^{k} l_i} \cdot \prod\limits_{i = 1}^{s} \frac{1}{q_i!}
+  $$
+
+:::
+
+---
+
+- 对 $n$ 的每一种拆分方案：$n = \sum\limits_{i = 1}^{k} l_i$
+  - $l_1 \le l_2 \le \dots \le l_k$；
+  - 记共有 $s$ 种不同长度的轮换，其中第 $i$ 种轮换的长度为 $q_i$；
+  - 其对应的点轮换数量为：
+
+$$
+\frac{n!}{(\prod\limits_{i = 1}^{k} l_i) \cdot (\prod\limits_{i = 1}^{s} q_i!)}
+$$
+
+---
 
 $$
 \begin{aligned}
-f(n) & = 2f(n - 1) \\
-& + f(n - 1) + 2\sum\limits_{i = 3}^{n - 2} f(i) \cdot f(n - i + 1)
+& \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
+& = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 $$
 
+复杂度 $\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)$
+
+::: { .notes }
+
+Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度（即拆成了多少个点轮换） 
+
+:::
+
 ---
 
-$d \neq n$ 的情形
+### 思路回顾
 
-- 先对每个轮换单独考虑；
-- 轮换内部相邻两个点连线不会导致相交，故还是先考虑内部连边；
-- WIP
+- 置换是对点的置换，均可分解成点轮换之积；
+- 染色对边染色，同一边轮换内边染色方案相同；
+- 点轮换和边轮换之间的关系？
+- 只关心边轮换个数，其只与点轮换的大小情况有关，枚举点轮换的大小情况……
   
-
 # 谢谢大家 { #finale }
 
 ## 推荐题目 - Lv1 { #probset-1 }
@@ -1288,8 +1429,7 @@ $d \neq n$ 的情形
 - [HDU 3441: Rotation](http://acm.hdu.edu.cn/showproblem.php?pid=3441)
 - [POJ 2888: Magic Bracelet](http://poj.org/problem?id=2888)
 - [洛谷 P1446: Cards](https://www.luogu.com.cn/problem/P1446)
-- [洛谷 P4727: 图的同构计数](https://www.luogu.com.cn/problem/P4727)
-
+- [洛谷 P4128: 有色图](https://www.luogu.com.cn/problem/P4128)
 
 ## 推荐题目 - Lv2 { #probset-2 }
 
