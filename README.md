@@ -4,13 +4,13 @@
 
 幻灯片主要偏向于应用，因此可能会有不严谨之处…… 我会尽量完善……
 
-源文件即 `slides.md`，需要在有互联网连接的前提下使用 `pandoc` 编译为网页文件 `index.html`。编译指令如下：
+源文件即 `slides.md`，可下使用 `pandoc` 编译为网页文件 `index.html`。参考编译指令如下：
 
 ```bash
-pandoc -t revealjs -s -o index.html slides.md --katex -V revealjs-url=https://revealjs.com -V theme=black -V hash=true -V transition=fade --slide-level=2 --highlight-style=zenburn
+pandoc -t revealjs -s -o index.html slides.md --katex=assets/katex/ -V revealjs-url=assets/revealjs -V theme=black -V hash=true -V transition=fade --slide-level=2 --highlight-style=zenburn
 ```
 
-仓库中已经附带了编译好的网页文件 `index.html`。
+也可执行仓库根目录下的 `build.cmd` 或 `build.sh`。仓库中已经附带了编译好的网页文件 `index.html`。
 
 ## 进度
 
@@ -29,4 +29,4 @@ pandoc -t revealjs -s -o index.html slides.md --katex -V revealjs-url=https://re
 - [x] 基本模型：项链染色
 - [x] 基本模型：无向图染色
 - [x] 题目：ICPC 2019 南昌 J.Summon
-- [ ] 题目：ICPC 2019 银川 M.Crazy Cake（视情况可能咕）
+- [ ] ~~题目：ICPC 2019 银川 M.Crazy Cake~~

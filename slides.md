@@ -1,7 +1,7 @@
 ---
-author: [ver 0311RC 接近完成]
+author: [codgician]
 title: 浅谈置换群
-date: 2020.03
+date: 2020.03.13
 ---
 
 # 群 $(G, \cdot)$ { #group }
@@ -134,12 +134,15 @@ $$
 
 $$
 \begin{aligned}
-xH & = \{ x \cdot h \mid h \in H \} \\
-Hx & = \{ h \cdot x \mid h \in H \}
+xH & = \{ x \cdot h \mid h \in H \}
 \end{aligned}
 $$
 
 ::: { .fragment }
+
+$$
+x \sim y := x \in yH
+$$
 
 - **自反性**：$x \in xH$；
 - **对称性**：若 $y \in xH$，则 $x \in yH$；
@@ -148,6 +151,8 @@ $$
 :::
 
 ::: { .notes }
+
+$x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪集对群 $G$ 进行划分。
 
 注意陪集不一定是 $G$ 的一个子群。
 
@@ -162,25 +167,34 @@ $$
 ---
 
 - 若 $xH \cap yH \neq \emptyset$，则 $xH = yH$；
-- 利用陪集可以对群 $G$ 进行划分：
+- 利用陪集可以对群 $G$ 进行划分（陪集分解）：
   
   $$
   G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
   $$
 
+::: { .notes }
+
+既然是等价关系，那么可以得到这里的推论。
+
+这里展现了对于群 $G$ 的左陪集分解，类似地 $R$ 称作 $G$ 对 $H$ 左陪集的代表元系。$R$ 由 $G$ 中的元素构成，并且这些用元素生成的左陪集彼此互不相同，与此同时这些左陪集的并集恰好为 $G$。
+
+:::
+
 ---
 
-- 对于 $a, b \in H$，由消去律 $a \neq b \Leftrightarrow ag \neq bg$；
+- 对于 $a, b \in H, g \in G$，由消去律 $a \neq b \Leftrightarrow ga \neq gb$；
 - 因此，$\forall g \in R, \ \mid gH \mid = \mid H \mid$:
   $$
   \mid G \mid = \sum\limits_{g \in R} \mid gH \mid 
-  = \sum\limits_{g \in R} \mid A \mid 
+  = \sum\limits_{g \in R} \mid H \mid 
   = \mid R \mid \cdot \mid H \mid
   $$
 
+
 ::: { .notes }
 
-利用群 $G$ 的一个子群 $H$，我们可以把利用陪集对 $G$ 进行划分。换句话说，群 $G$ 一定可以表示成若干个 $H$ 的互不相交的左（右）陪集之并，而这些陪集的大小都是相同的。形象地理解，就是我们能够把 $G$ 划分成大小相等的若干部分。 
+利用群 $G$ 的一个子群 $H$，我们可以借助陪集对 $G$ 进行划分。换句话说，群 $G$ 一定可以表示成若干个 $H$ 的互不相交的左（右）陪集之并，同时这些陪集的大小都是相同的。
 
 把 $\mid R \mid$ 记作群 $H$ 对群 $G$ 的指数 $[G : H]$，就可以得到拉格朗日定理……
 
@@ -198,7 +212,7 @@ $$
 
 ::: { .notes }
 
-说明 G 的子群 H 的大小一定是 G 大小的因子。
+说明 $G$ 的子群 $H$ 的大小一定是 G 大小的因子。
 
 :::
 
@@ -215,6 +229,16 @@ $$
 $$
 
 复合运算: $(f \circ g)(x) = f(g(x))$
+
+::: { .notes }
+
+回忆：双射 = 单射 + 满射，其描述的是两个集合间的关系。当然在这里，可以把置换成一种特殊的函数，那么这里双射描述的就是定义域与值域之间的关系。
+
+- 单射：对于定义域里的每一个 $x$，值域里都存在一个 $y$ 使得 $\sigma(x) = y$；
+- 满射：对于值域里的每一个 $y$，定义域里都存在一个 $x$ 使得 $y = \sigma(x)$；
+- 双射：同时满足单射和满射，即定义域和值域间存在严格的一一对应关系。
+
+:::
 
 ## 例
 
@@ -1423,7 +1447,7 @@ Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度�
   
 # 谢谢大家 { #finale }
 
-## 推荐题目 - Lv1 { #probset-1 }
+## 相关题目 #1 { #probset-1 }
 
 - [HDU 1817: Necklace of Beads](http://acm.hdu.edu.cn/showproblem.php?pid=1817)
 - [HDU 3547: DIY Cube](http://acm.hdu.edu.cn/showproblem.php?pid=3547)
@@ -1432,10 +1456,17 @@ Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度�
 - [洛谷 P1446: Cards](https://www.luogu.com.cn/problem/P1446)
 - [洛谷 P4128: 有色图](https://www.luogu.com.cn/problem/P4128)
 
-## 推荐题目 - Lv2 { #probset-2 }
+## 相关题目 #2 { #probset-2 }
 
 - [ICPC 2014 鞍山 K: Colorful Toy](http://acm.hdu.edu.cn/showproblem.php?pid=5080)
 - [HDU 6360: Kaleidoscope](http://acm.hdu.edu.cn/showproblem.php?pid=6360)
 - [ICPC 2019 南昌 J: Summon](https://nanti.jisuanke.com/t/42585)
 - [ICPC 2019 银川 M: Crazy Cake](https://nanti.jisuanke.com/t/42393)
 
+## 参考资料 { #reference }
+
+- 近世代数引论/冯克勤,李尚志,章璞编著.-3版.-合肥：中国科学技术大学出版社,2009.12
+- 近世代数初步/石生明.-2版.-北京：高等教育出版社,2006.3
+- Contemporary Abstract Algebra/Joseph A. Gallian.-8th Edition
+- [群论初探 - nosta - 博客园](https://www.cnblogs.com/nosta/p/9444576.html)
+- [2019 ICPC Asia Yinchuan Regional M Crazy Cake【ICPC银川M】【多项式】【生成函数】](https://blog.csdn.net/Zayin___/article/details/103795483)
