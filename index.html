@@ -111,17 +111,23 @@ A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
 <li><strong>传递性</strong>：<span class="math inline">\forall a, b \in A</span>，若 <span class="math inline">a \sim b, \ b \sim c</span>，则 <span class="math inline">a \sim c</span>；</li>
 </ul>
 <p>则称 <span class="math inline">\sim</span> 是<strong>等价关系 (equivalence relation)</strong>。</p>
-<aside class="notes">
-<p>举个例子：<span class="math inline">a \sim b := a \equiv b \pmod 7</span></p>
-<p>这就是个等价关系（试着验证一下？）。</p>
-</aside>
+</section>
+<section id="eqc-example" class="slide level2">
+<h2>例</h2>
+<p><span class="math display">
+a \sim b := a \equiv b \pmod 7
+</span></p>
+<ul>
+<li>自反性？对称性？传递性？</li>
+<li>看起来可以把所有自然数分成 <span class="math inline">7</span> 类……</li>
+</ul>
 </section></section>
 <section>
 <section id="equivalence-class" class="title-slide slide level1">
 <h1>等价类</h1>
 <p>设 <span class="math inline">\sim</span> 是 <span class="math inline">A</span> 上的等价关系，<span class="math inline">\forall a \in A</span>，<span class="math inline">[a]</span> 表示 <span class="math inline">A</span> 中与 <span class="math inline">a</span> 等价的全部元素构成的集合：</p>
 <p><span class="math display">
-[a] = \left\{ b \in A \mid b \sim a \right\}
+[a] = \{ b \mid b \sim a \land b \in A \}
 </span></p>
 <p>称 <span class="math inline">[a]</span> 为 <span class="math inline">a</span> 所在的<strong>等价类 (equivalence class)</strong>。</p>
 </section>
@@ -247,7 +253,8 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 </span></p>
 <p>复合运算: <span class="math inline">(f \circ g)(x) = f(g(x))</span></p>
 <aside class="notes">
-<p>回忆：双射 = 单射 + 满射，其描述的是两个集合间的关系。当然在这里，可以把置换成一种特殊的函数，那么这里双射描述的就是定义域与值域之间的关系。</p>
+<p>可以理解成对于 <span class="math inline">1 \sim n</span> 的重排列。</p>
+<p>回忆：双射描述的是两个集合间的关系。当然在这里，可以把置换成一种特殊的函数，则双射描述的就是定义域与值域之间的关系。</p>
 <ul>
 <li>单射：对于定义域里的每一个 <span class="math inline">x</span>，值域里都存在一个 <span class="math inline">y</span> 使得 <span class="math inline">\sigma(x) = y</span>；</li>
 <li>满射：对于值域里的每一个 <span class="math inline">y</span>，定义域里都存在一个 <span class="math inline">x</span> 使得 <span class="math inline">y = \sigma(x)</span>；</li>
@@ -409,28 +416,94 @@ tk \equiv 0 \pmod n
 <h1>置换群</h1>
 <p><span class="math inline">n</span> 个元的所有置换，在复合运算 <span class="math inline">\circ</span> 下成群，称作 <span class="math inline">n</span> 元<strong>对称群</strong> <span class="math inline">S_n</span></p>
 <ul>
-<li>结合律：<span class="math inline">(f \circ g) \circ h = f \circ (g \circ h)</span></li>
+<li>结合律：<span class="math inline">(\sigma \circ \tau) \circ \phi = \sigma \circ (\tau \circ \phi)</span></li>
 <li>单位元：恒等置换 <span class="math inline">\epsilon \circ x = x</span>；</li>
 <li>逆元显然存在。</li>
 </ul>
 <aside class="notes">
-<p>对于结合律的进一步说明：等式两边都是 f(g(h(x)))</p>
+<p>对于结合律的进一步说明：等式两边都是 <span class="math inline">\sigma(\tau(\phi(x)))</span></p>
 </aside>
 </section>
 
+<section>
 <section id="group-action" class="title-slide slide level1">
 <h1>群在集合上的作用</h1>
-<p>设 <span class="math inline">G</span> 是一个群，<span class="math inline">M</span> 是一个集合。若 <span class="math inline">G</span> 中每个元 <span class="math inline">\sigma</span> 都对应于 <span class="math inline">M</span> 的一个变换，对 <span class="math inline">\forall m \in M</span> 记变换结果为 <span class="math inline">\sigma \circ m</span>，且满足：</p>
+<p><span class="math display">
+\begin{aligned}
+\phi: G \times M &amp; \longrightarrow M \\
+(\sigma, x) &amp; \longmapsto \sigma \circ x
+\end{aligned}
+</span></p>
 <ul>
-<li><span class="math inline">\exist e \text{ \ s.t. \ } \forall m \in M, \ e \circ m = m</span>；</li>
-<li><span class="math inline">\forall \tau, \sigma \in G, \ (\tau\sigma) \circ m = \tau \circ (\sigma \circ m)</span></li>
+<li><span class="math inline">\forall x \in M</span> 满足：
+<ul>
+<li><strong>单位元</strong>：<span class="math inline">\exist \epsilon \in G \text{ \ s.t. \ }\epsilon \circ x = x</span></li>
+<li><strong>结合律</strong>：<span class="math inline">\tau \circ (\sigma \circ x) = (\tau \circ \sigma) \circ x</span></li>
+</ul></li>
 </ul>
-<p>则称 <span class="math inline">G</span> 在 <span class="math inline">M</span> 上有<strong>群作用 (group action)</strong>。</p>
 <aside class="notes">
-<p>其实任意群斗都与某个置换群同构，但是碍于主题，这里不会展开讲。对于后续所讲述的群都可默认为置换群。</p>
+<p><span class="math inline">G</span> 是一个群（这里我们就看成置换群），<span class="math inline">M</span> 是一个集合。如果存在这样的映射 <span class="math inline">\phi</span> 并且满足上述条件，那么我们称群 <span class="math inline">G</span> 在集合 <span class="math inline">M</span> 上有群作用。</p>
+<p>根据 Cayley 定理，每个群均同构于某个置换群。有了这个前提可能会更好理解群在集合上的作用。但是今天碍于主题，我们主要探讨置换群对于集合的作用。</p>
 </aside>
 </section>
+<section class="slide level2">
 
+<ul>
+<li>用黑白两色对等边三角形顶点染色，若可通过旋转得到的方案算相同方案，求方案数？</li>
+</ul>
+<div class="fragment fade-in-then-out" style="height:0">
+<figure>
+<img data-src="./assets/ga-example-1.png" class="plain" style="background:transparent" alt="" /><figcaption>在旋转意义下同构</figcaption>
+</figure>
+</div>
+<div class="fragment">
+<p><span class="math display">
+\begin{aligned}
+G&amp; = \{ \text{顺时针旋转 } 0^\circ, 120^\circ, 240^\circ \} \\
+M &amp; = \{ \text{不考虑同构时的染色方案} \}
+\end{aligned}
+</span></p>
+</div>
+<div class="fragment">
+<figure>
+<img data-src="./assets/ga-example-2.png" class="plain" style="background:transparent" alt="" /><figcaption>不考虑同构时的染色方案</figcaption>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="assets/ga-example-3.png" class="plain" style="background:transparent" alt="" /><figcaption><span class="math inline">G \times M</span></figcaption>
+</figure>
+<aside class="notes">
+<p>可以看到 <span class="math inline">G \times M</span> 后并不会产生新的元素，也就是说 <span class="math inline">G \times M</span> 和 <span class="math inline">M</span> 是一样大的。</p>
+<p>存在单位置换（旋转 <span class="math inline">0^\circ</span>）使得它与任何一个染色方案作用都不发生变化；多个旋转作用于染色方案也是满足结合律的。所以这里我们称 <span class="math inline">G</span> 对 <span class="math inline">M</span> 有群作用。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="assets/ga-example-4.png" class="plain" style="background:transparent" alt="" /><figcaption>等价类？</figcaption>
+</figure>
+<aside class="notes">
+<p>比如所有置换作用于第二个染色方案，我们实际上得到的就是与第二个方案等价的染色方案，并且我们得到的这些染色方案都是存在于原始集合里面的。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="assets/ga-example-5.png" class="plain" style="background:transparent" alt="" /><figcaption>等价类？</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<p><img data-src="assets/ga-example-6.png" class="plain" style="background:transparent" /></p>
+<ul>
+<li>一种等价关系？</li>
+<li>借助该等价关系对集合进行划分？</li>
+<li>有多少不同的等价类？</li>
+</ul>
+</section></section>
 <section>
 <section id="orbit" class="title-slide slide level1">
 <h1>轨道</h1>
@@ -440,6 +513,7 @@ tk \equiv 0 \pmod n
 </span></p>
 <p>为 <span class="math inline">x</span> 在 <span class="math inline">G</span> 作用下的<strong>轨道 (orbit)</strong>，简称过 <span class="math inline">x</span> 的轨道。</p>
 <aside class="notes">
+<p>就比如刚刚对三角形着色的例子里，对于第二个染色方案分别用 <span class="math inline">0^\circ, 120^\circ, 240^\circ</span> 的旋转作用于它，便可以得到过它的轨道。</p>
 <p>其实本质上就是等价类…… 部分地方记作 <span class="math inline">\mathcal{O}_G(x)</span>，也有的地方直接用等价类的符号 <span class="math inline">[x]</span>。</p>
 </aside>
 </section>
@@ -447,6 +521,9 @@ tk \equiv 0 \pmod n
 
 <p><span class="math display">
 \text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}
+</span></p>
+<p><span class="math display">
+x \sim y := x \in \text{orb}_G(y)
 </span></p>
 <ul>
 <li><strong>自反性</strong>：<span class="math inline">x \in \text{orb}_G(x)</span>；</li>
@@ -473,61 +550,33 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </span></p>
 <p>并且此中各 <span class="math inline">\text{orb}_G(x)</span> 互不相交。</p></li>
 </ul>
-</section>
-<section class="slide level2">
-
-<h3 id="whats-the-meaning">求轨道数量？</h3>
-<div class="fragment">
-<p>解决一类求本质不同方案个数的问题！</p>
-</div>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>在等边三角形顶点上染色，可得到多少本质不同的三角形？</li>
-</ul>
-<div class="fragment fade-in-then-out" style="height:0">
-<figure>
-<img data-src="./assets/meaning-example-01.png" class="plain" alt="" /><figcaption>在旋转意义下同构</figcaption>
-</figure>
-</div>
-<div class="fragment fade-in-then-out" style="height:0">
-<figure>
-<img data-src="./assets/meaning-example-02.png" class="plain" alt="" /><figcaption>在翻转意义下同构</figcaption>
-</figure>
-</div>
-<div class="fragment">
-<p><span class="math display">
-\begin{aligned}
-G_1 &amp; = \{ \text{顺时针旋转 } 120^\circ, 240^\circ, 360^\circ \} \\
-G_2 &amp; = \{ \text{ 不翻转、沿着过 $0, 1, 2$ 的对称轴翻转 } \} \\
-M &amp; = \{ \text{所有不考虑所有不考虑同构下不同的染色方案} \}
-\end{aligned}
-</span></p>
-<p><span class="math inline">G_1 \cup G_2</span> 作用于 <span class="math inline">M</span> 后，轨道数即为所求答案。</p>
-</div>
-<aside class="notes">
-<p>一个很<strong>关键</strong>的问题：试着验证一下为什么 <span class="math inline">G_1 \cup G_2</span> 依然是一个群。</p>
-<p>后面还会讲到这个模型，到时候会进行一个说明。但是希望大家在此处能够注意到这一问题，并加以思考。</p>
-<p>接下来我们要考虑的就是如何求轨道数了。</p>
-</aside>
 </section></section>
 <section>
 <section id="stabilizer" class="title-slide slide level1">
 <h1>稳定子</h1>
 <p>设群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span>，对 <span class="math inline">x \in M</span>，称</p>
 <p><span class="math display">
-\text{stab}_G(x) = \{ \sigma \in G \mid \sigma \circ x = x \}
+\text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \}
 </span></p>
 <p>为群 <span class="math inline">G</span> 作用下 <span class="math inline">x</span> 的<strong>稳定子 (stabilizer)</strong>。</p>
 <aside class="notes">
+<p>稳定子里面的元素都是置换，集合 <span class="math inline">M</span> 里面某个元素的稳定子包含所有使它不发生变化的置换。</p>
 <p>又称固定子群、稳定子群、稳定化子…… 有的地方也写成 <span class="math inline">G_m</span> 或 <span class="math inline">G^m</span>。</p>
 </aside>
 </section>
 <section class="slide level2">
 
+<figure>
+<img data-src="assets/ga-example-3.png" class="plain" style="background:transparent" alt="" /><figcaption><span class="math inline">G \times M</span></figcaption>
+</figure>
+<aside class="notes">
+<p>对于第一种和最后一种染色方案而言，其稳定子里面的元素就是三个置换，而对于其他染色方案稳定子都是空集。</p>
+</aside>
+</section>
+<section class="slide level2">
+
 <p><span class="math display">
-\text{stab}_G(x) = \{ \sigma \in G \mid \sigma \circ x = x \} \le G
+\text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \} \le G
 </span></p>
 <div class="fragment">
 <ul>
@@ -541,7 +590,7 @@ M &amp; = \{ \text{所有不考虑所有不考虑同构下不同的染色方案}
 <section class="slide level2">
 
 <p><span class="math display">
-\text{stab}_G(x) = \{ \sigma \in G \mid \sigma \circ x = x \} \le G
+\text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \} \le G
 </span></p>
 <div class="fragment current-visible" style="height:0">
 <ul>
@@ -551,7 +600,7 @@ M &amp; = \{ \text{所有不考虑所有不考虑同构下不同的染色方案}
 <div class="fragment">
 <ul>
 <li><span class="math inline">\beta \text{stab}_G(x)</span> 里的元素相当于作用于 <span class="math inline">x</span> 时 <span class="math inline">G</span> 中所有与 <span class="math inline">\beta</span> 等价的置换： <span class="math display">
-\beta \text{stab}_G(x) = \{ \tau \in G \mid \tau \circ x = \beta \circ x \}
+\beta \text{stab}_G(x) = \{ \tau \circ x = \beta \circ x \mid \tau \in G \}
 </span></li>
 </ul>
 </div>
@@ -581,15 +630,15 @@ M &amp; = \{ \text{所有不考虑所有不考虑同构下不同的染色方案}
 </span></p>
 <p>其中 <span class="math inline">\text{fix}(\sigma)</span> 代表 <span class="math inline">\sigma</span> 的不动元构成的集合：</p>
 <p><span class="math display">
-\text{fix}(\sigma) = \{ x \in M \mid \sigma \circ x = x \}
+\text{fix}(\sigma) = \{ \sigma \circ x = x \mid x \in M \}
 </span></p>
 </section>
 <section id="proof-of-burnside-lemma" class="slide level2">
 <h2>证明</h2>
 <p><span class="math display">
 \begin{aligned}
-\text{stab}_G(x) &amp; = \{ \sigma \in G \mid \sigma \circ x = x \}\\
-\text{fix}(\sigma) &amp; = \{ x \in M \mid \sigma \circ x = x \}
+\text{stab}_G(x) &amp; = \{ \sigma \circ x = x \mid \sigma \in G \}\\
+\text{fix}(\sigma) &amp; = \{ \sigma \circ x = x \mid x \in M \}
 \end{aligned}
 </span></p>
 <p><span class="math display">
@@ -701,15 +750,15 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 <h1>Pólya 计数定理</h1>
 <ul>
 <li><p>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元……</p></li>
-<li><p>记用于染色的颜色集合为 <span class="math inline">C</span>， <span class="math inline">c(\sigma)</span> 为置换 <span class="math inline">\sigma</span> 被分解为不交轮换乘积的个数，则：</p>
+<li><p>记染色可选的颜色数为 <span class="math inline">m</span>， <span class="math inline">c(\sigma)</span> 为置换 <span class="math inline">\sigma</span> 被分解为不交轮换乘积的个数，则：</p>
 <div class="fragment current-visible" style="height:0">
 <p><span class="math display">
-\text{fix}(\sigma) = \mid C \mid^{c(\sigma)}
+\text{fix}(\sigma) = m^{c(\sigma)}
 </span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">
-\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid C \mid^{c(\sigma)}
+\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} m^{c(\sigma)}
 </span></p>
 </div></li>
 </ul>
@@ -732,16 +781,14 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 
 <p><span class="math display">
 \begin{aligned}
-G_1 &amp; = \{ \text{顺时针旋转} \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \} \\
-G_2 &amp; = \{ \text{过每一条对称轴的翻转 } \} \\
+G &amp; = \{ \text{顺时针旋转} \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi, \\
+&amp; \text{过每一条对称轴的翻转 } \} \\
 M &amp; = \{ \text{不考虑同构的所有染色方案}  \}
 \end{aligned}
 </span></p>
-<p><span class="math inline">G = G_1 \cap G_2</span> 作用于 <span class="math inline">M</span></p>
+<p><span class="math inline">G</span> 作用于 <span class="math inline">M</span></p>
 <div class="fragment">
-<p><span class="math display">
-\mid G \mid = \mid G_1 \mid + \mid G_2 \mid ?
-</span></p>
+<p><span class="math inline">G</span> 中复合运算封闭吗？</p>
 </div>
 </section>
 <section class="slide level2">
@@ -778,15 +825,13 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 <section class="slide level2">
 
 <h3 id="旋转">旋转</h3>
-<p><span class="math display">
-G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}, \ \mid G_1 \mid = n
-</span></p>
 <ul>
+<li>旋转置换一共 <span class="math inline">n</span> 种；</li>
 <li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时只能分解成一个不交轮换；</li>
 <li>旋转 <span class="math inline">i \frac{2\pi}{n}</span> 可看作前者的 <span class="math inline">i</span> 次幂，故可拆成 <span class="math inline">\gcd(n, i)</span> 个轮换：</li>
 </ul>
 <p><span class="math display">
-\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
+\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)}
 </span></p>
 <aside class="notes">
 <p>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时显然只能拆成一个轮换。回忆前面关于快速求轮换幂的相关内容。</p>
@@ -811,15 +856,13 @@ G_1 = \{ \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi \}, \ \mid G_1 \mid 
 <section class="slide level2">
 
 <h3 id="翻转">翻转</h3>
-<p><span class="math display">
-G_2 = \{ \text{过每一条对称轴的翻转 } \} \quad \mid G_2 \mid = n
-</span></p>
 <ul>
+<li>翻转置换一共 <span class="math inline">n</span> 种。</li>
 <li><span class="math inline">n</span> 为偶数：
 <ul>
-<li><span class="math inline">\frac{n}{2}</span> 条过点的对称轴：<span class="math inline">c(g) = \frac{n}{2} + 1</span></li>
-<li><span class="math inline">\frac{n}{2}</span> 条过边的对称轴：<span class="math inline">c(g) = \frac{n}{2}</span> <span class="math display">
-\sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+<li><span class="math inline">\frac{n}{2}</span> 条过点的对称轴：<span class="math inline">c(\tau) = \frac{n}{2} + 1</span></li>
+<li><span class="math inline">\frac{n}{2}</span> 条过边的对称轴：<span class="math inline">c(\tau) = \frac{n}{2}</span> <span class="math display">
+\sum\limits_{\tau} \mid \text{fix}(\tau) \mid 
 = \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} 
 </span></li>
 </ul></li>
@@ -830,10 +873,10 @@ G_2 = \{ \text{过每一条对称轴的翻转 } \} \quad \mid G_2 \mid = n
 <ul>
 <li><span class="math inline">n</span> 为奇数：
 <ul>
-<li><span class="math inline">n</span> 条 既过点又过边的对称轴：<span class="math inline">c(g) = \frac{n + 1}{2}</span></li>
+<li><span class="math inline">n</span> 条 既过点又过边的对称轴：<span class="math inline">c(\tau) = \frac{n + 1}{2}</span></li>
 </ul>
 <span class="math display">
-\sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid 
+\sum\limits_{\tau} \mid \text{fix}(\tau) \mid 
 = n \cdot m^{\frac{n + 1}{2}}
 </span></li>
 </ul>
@@ -842,7 +885,7 @@ G_2 = \{ \text{过每一条对称轴的翻转 } \} \quad \mid G_2 \mid = n
 
 <p><span class="math display">
 \begin{aligned}
-\mid M / G \mid &amp; = \frac{\sum\limits_{\sigma \in G_1} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau \in G_2} \mid \text{fix}(\tau) \mid}{\mid G_1 \mid + \mid G_2 \mid} \\
+\mid M / G \mid &amp; = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
 &amp; = \frac{1}{2n}\sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d}) \\
 &amp; + \frac{1}{2n} \begin{cases}
 \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} &amp; 2 \mid n \\
@@ -1321,7 +1364,6 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 <li>近世代数初步/石生明.-2版.-北京：高等教育出版社,2006.3</li>
 <li>Contemporary Abstract Algebra/Joseph A. Gallian.-8th Edition</li>
 <li><a href="https://www.cnblogs.com/nosta/p/9444576.html">群论初探 - nosta - 博客园</a></li>
-<li><a href="https://blog.csdn.net/Zayin___/article/details/103795483">2019 ICPC Asia Yinchuan Regional M Crazy Cake【ICPC银川M】【多项式】【生成函数】</a></li>
 </ul>
 </section></section>
     </div>

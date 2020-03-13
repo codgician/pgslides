@@ -16,17 +16,15 @@ pandoc -t revealjs -s -o index.html slides.md --katex=assets/katex/ -V revealjs-
 
 **ETA: 03/13/2019**
 
-**Release-Candidate: ver0311**
-
 - [x] 基础理论与证明
   - [x] 群
-  - [x] 关系，等关系，等价类
+  - [x] 关系，等价关系，等价类
   - [x] 陪集，拉格朗日定理
   - [x] 置换，置换群
   - [x] 群在集合上作用，轨道，稳定子
   - [x] Burnside 引理
   - [x] Polya 计数定理
 - [x] 基本模型：项链染色
-- [x] 基本模型：无向图染色
 - [x] 题目：ICPC 2019 南昌 J.Summon
-- [ ] ~~题目：ICPC 2019 银川 M.Crazy Cake~~
+- [x] 基本模型：无向图染色
+- [ ] ~~题目：ICPC 2019 银川 M.Crazy Cake~~（来不及了qwq）
