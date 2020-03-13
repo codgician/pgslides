@@ -622,22 +622,35 @@ $$
 \text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \} \le G
 $$
 
-::: { .fragment .current-visible style="height:0" }
+::: { .fragment .current-visible style="height:0" data-fragment-index="1"  }
 
 - 既然是子群，那可以用来对 $G$ 进行左陪集划分；
 
 :::
 
-::: { .fragment }
+::: { .fragment data-fragment-index="2" }
 
 - $\beta \text{stab}_G(x)$ 里的元素相当于作用于 $x$ 时 $G$ 中所有与 $\beta$ 等价的置换：
-  $$
-  \beta \text{stab}_G(x) = \{ \tau \circ x = \beta \circ x \mid \tau \in G \}
-  $$
 
 :::
 
-::: { .fragment }
+::: { .fragment .current-visible style="height:0" data-fragment-index="2" }
+
+$$
+\beta \text{stab}_G(x) = \{ (\beta \circ \sigma) \circ x = \beta \circ x \mid \sigma \in G \}
+$$
+
+:::
+
+::: { .fragment data-fragment-index="3" }
+
+$$
+\beta \text{stab}_G(x) = \{ \tau \circ x = \beta \circ x \mid \tau \in G \}
+$$
+
+:::
+
+::: { .fragment data-fragment-index="4" }
 
 - $\text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}$ 表示作用于 $x$ 时互不等价的置换，即上述不同左陪集的数量。
 

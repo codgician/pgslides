@@ -592,19 +592,27 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <p><span class="math display">
 \text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \} \le G
 </span></p>
-<div class="fragment current-visible" style="height:0">
+<div class="fragment current-visible" style="height:0" data-fragment-index="1">
 <ul>
 <li>既然是子群，那可以用来对 <span class="math inline">G</span> 进行左陪集划分；</li>
 </ul>
 </div>
-<div class="fragment">
+<div class="fragment" data-fragment-index="2">
 <ul>
-<li><span class="math inline">\beta \text{stab}_G(x)</span> 里的元素相当于作用于 <span class="math inline">x</span> 时 <span class="math inline">G</span> 中所有与 <span class="math inline">\beta</span> 等价的置换： <span class="math display">
-\beta \text{stab}_G(x) = \{ \tau \circ x = \beta \circ x \mid \tau \in G \}
-</span></li>
+<li><span class="math inline">\beta \text{stab}_G(x)</span> 里的元素相当于作用于 <span class="math inline">x</span> 时 <span class="math inline">G</span> 中所有与 <span class="math inline">\beta</span> 等价的置换：</li>
 </ul>
 </div>
-<div class="fragment">
+<div class="fragment current-visible" style="height:0" data-fragment-index="2">
+<p><span class="math display">
+\beta \text{stab}_G(x) = \{ (\beta \circ \sigma) \circ x = \beta \circ x \mid \sigma \in G \}
+</span></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><span class="math display">
+\beta \text{stab}_G(x) = \{ \tau \circ x = \beta \circ x \mid \tau \in G \}
+</span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
 <ul>
 <li><span class="math inline">\text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}</span> 表示作用于 <span class="math inline">x</span> 时互不等价的置换，即上述不同左陪集的数量。</li>
 </ul>
