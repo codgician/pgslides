@@ -156,7 +156,7 @@ x = xe = x(ay) = (xa)y = y
 </section>
 <section id="subgroup" class="slide level2">
 <h2>子群</h2>
-<p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的子群，记作 <span class="math inline">H \le G</span>；</p>
+<p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的<strong>子群 (subgroup)</strong>，记作 <span class="math inline">H \le G</span>；</p>
 </section></section>
 <section>
 <section id="coset" class="title-slide slide level1">
@@ -417,11 +417,11 @@ tk \equiv 0 \pmod n
 </section></section>
 <section id="permutation-group" class="title-slide slide level1">
 <h1>置换群</h1>
-<p><span class="math inline">n</span> 个元的所有置换，在复合运算 <span class="math inline">\circ</span> 下成群，称作 <span class="math inline">n</span> 元<strong>对称群</strong> <span class="math inline">S_n</span></p>
+<p><span class="math inline">n</span> 个元的所有置换，在复合运算 <span class="math inline">\circ</span> 下成群，称作 <span class="math inline">n</span> 元<strong>对称群 (symmetric group)</strong>，记作 <span class="math inline">S_n</span></p>
 <ul>
-<li>结合律：<span class="math inline">(\sigma \circ \tau) \circ \phi = \sigma \circ (\tau \circ \phi)</span></li>
-<li>单位元：恒等置换 <span class="math inline">\epsilon \circ x = x</span>；</li>
-<li>逆元显然存在。</li>
+<li><strong>结合律</strong>：<span class="math inline">(\sigma \circ \tau) \circ \phi = \sigma \circ (\tau \circ \phi)</span></li>
+<li><strong>单位元</strong>：恒等置换 <span class="math inline">\epsilon \circ x = x</span>；</li>
+<li><strong>逆元</strong>：置换是双射，故必然存在逆置换。</li>
 </ul>
 <aside class="notes">
 <p>对于结合律的进一步说明：等式两边都是 <span class="math inline">\sigma(\tau(\phi(x)))</span></p>
@@ -679,7 +679,9 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </section>
 <section class="slide level2">
 
-<p>对正六边形的 <span class="math inline">6</span> 个顶点，一半涂黑一半涂白。若经旋转可得到的方案算相同方案，求方案数？</p>
+<ul>
+<li>对正六边形的 <span class="math inline">6</span> 个顶点，一半涂黑一半涂白。若经旋转可得到的方案算相同方案，求方案数？</li>
+</ul>
 <div class="fragment">
 <p><span class="math display">
 M = \{ \text{不计同构的涂色方案} \} \enspace |M| = \binom{6}{3} = 20
@@ -692,7 +694,7 @@ G = \{ \text{顺时针旋转} 0^\circ, 60^\circ, 120^\circ, 180^\circ, 240^\circ
 </section>
 <section class="slide level2">
 
-<h3 id="旋转-360circ">旋转 <span class="math inline">360^\circ</span></h3>
+<h3 id="旋转-0circ">旋转 <span class="math inline">0^\circ</span></h3>
 <p><span class="math display">
 \left(\begin{array}{c} 
 A_1 &amp; A_2 &amp; A_3 &amp; A_4 &amp; A_5 &amp; A_6 \\ 
@@ -1081,7 +1083,7 @@ T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
 <section>
 <section id="coloring-undirected-graph" class="title-slide slide level1">
 <h1>无向图同构计数</h1>
-<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求互不同构无向完全图染色方案数。</p>
+<p><span class="math inline">n</span> 个点无向完全图，<span class="math inline">m</span> 种颜色给边染色，求本质不同的染色方案数。</p>
 <p><span class="math inline">n \le 60, \ m \le 10^3</span></p>
 <div class="fragment">
 <ul>

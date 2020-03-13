@@ -1,5 +1,7 @@
 # 浅谈置换群 幻灯片
 
+[演示地址](https://codgician.gitee.io/pgslides) | [PDF](https://codgician.gitee.io/pgslides/slides.pdf)
+
 ## 简介
 
 幻灯片主要偏向于应用，因此可能会有不严谨之处…… 我会尽量完善……
