@@ -603,7 +603,7 @@ $$
 
 ::: { .notes }
 
-对于第一种和最后一种染色方案而言，其稳定子里面的元素就是三个置换，而对于其他染色方案稳定子都是空集。
+对于第一种和最后一种染色方案而言，其稳定子里面的元素就是三个置换，而对于其他染色方案稳定子都只有一个，就是旋转 $0^\circ$ 的置换。
 
 :::
 
@@ -925,6 +925,10 @@ $$
 
 $n$ 为偶数时，对称轴过两个点；而 $n$ 为奇数时，对称轴过一个点和一条边。
 
+另外 对于 $n$ 为偶数时，由于对称轴可以同时过两条边，因此考虑的时候不妨在每条边中间再加一个点，即考虑 $2n$ 个点围成的环只过点的对称轴…… （因为上面只说明了过点的对称轴，所以不妨这么理解qwq）。
+
+可能有点不严密，大家自己推一推应该也能发现是正确的（逃
+
 :::
 
 ---
@@ -954,7 +958,7 @@ $$
 \sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid 
 & = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)} \\
 & = \sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(n, i) = d ] \\
-& =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(\frac{n}{d}, i) = 1 ] \\
+& =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{\frac{n}{d}} [ \gcd(\frac{n}{d}, i) = 1 ] \\
 & = \sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d})
 \end{aligned}
 $$
@@ -1089,7 +1093,7 @@ $$
 
 最后要考虑首尾的情况的时候，不妨在尾多 DP 三个元素，然后只取首三个元素与末三个元素相同的方案。
 
-这样做一次 DP 复杂度是 $\mathcal{O}(256N)$ 的…… 而且对于每一种置换都要做一次…… 显然复杂度不可以接受。
+这样做一次 DP 复杂度是 $\mathcal{O}(64^3 N)$ 的…… 而且对于每一种置换都要做一次…… 显然复杂度不可以接受。
 
 看看能不能用矩阵快速幂优化。
 
@@ -1132,12 +1136,14 @@ $$
 ::: { .fragment }
 
 $$
-T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
+T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 $$
 
 :::
 
 ::: { .notes }
+
+可以把后三个连续颜色 $<a, b, c>$ 看出一个可以用 $0 \sim 63$ 表示的一个状态，就更好理解了……
 
 $T$ 中其余元素都是 $0$。
 
@@ -1202,7 +1208,8 @@ $$
 \end{aligned}
 $$
 
- 复杂度： $\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})$
+- 复杂度： $\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})$
+- 其实因数个数在数据范围内是远小于 $\sqrt{n}$ 的，所以…… $\mathcal{O}(\text{能过})$。
 
 :::
 
@@ -1362,7 +1369,7 @@ $$
 $$
 
 $$
-\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod l} \rangle \rightarrow \dots
+\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod s} \rangle \rightarrow \dots
 $$
 
 ::: { .fragment }
@@ -1433,6 +1440,7 @@ $$
 ::: { .fragment .current-visible data-fragment-index="1" style="height:0" }
 
 - 再考虑轮换内的顺序（圆排列）：
+  - 比如 $(1 \enspace 2 \enspace 3)$ 和 $(1 \enspace 3 \enspace 2)$ 算不同的置换
   $$
   \frac{n!}{\prod\limits_{i = 1}^{k} l_i!} \cdot \prod\limits_{i = 1}^{k} (l_i - 1)!
   $$
@@ -1465,15 +1473,16 @@ $$
 $$
 \begin{aligned}
 & \frac{1}{|G|} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
-& = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
+& = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i) \cdot (\prod\limits_{i = 1}^{s} q_i!)} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 $$
 
-复杂度 $\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)$
+- 复杂度 $\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)$
+- 其实题目数据范围内 $\text{Partition}(n)$ 大小不大…… 所以 $\mathcal{O}(\text{能过})$。
 
 ::: { .notes }
 
-Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度（即拆成了多少个点轮换） 
+$\text{Partition}(n)$ 指 $n$ 的拆分方案数，而 $\text{len}(p)$ 指拆分方案 $p$ 的长度（即拆成了多少个点轮换） 
 
 :::
 

@@ -571,7 +571,7 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <img data-src="assets/ga-example-3.png" class="plain" style="background:transparent" alt="" /><figcaption><span class="math inline">G \times M</span></figcaption>
 </figure>
 <aside class="notes">
-<p>对于第一种和最后一种染色方案而言，其稳定子里面的元素就是三个置换，而对于其他染色方案稳定子都是空集。</p>
+<p>对于第一种和最后一种染色方案而言，其稳定子里面的元素就是三个置换，而对于其他染色方案稳定子都只有一个，就是旋转 <span class="math inline">0^\circ</span> 的置换。</p>
 </aside>
 </section>
 <section class="slide level2">
@@ -826,6 +826,8 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 </div>
 <aside class="notes">
 <p><span class="math inline">n</span> 为偶数时，对称轴过两个点；而 <span class="math inline">n</span> 为奇数时，对称轴过一个点和一条边。</p>
+<p>另外 对于 <span class="math inline">n</span> 为偶数时，由于对称轴可以同时过两条边，因此考虑的时候不妨在每条边中间再加一个点，即考虑 <span class="math inline">2n</span> 个点围成的环只过点的对称轴…… （因为上面只说明了过点的对称轴，所以不妨这么理解qwq）。</p>
+<p>可能有点不严密，大家自己推一推应该也能发现是正确的（逃</p>
 </aside>
 </section>
 <section class="slide level2">
@@ -851,7 +853,7 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 \sum\limits_{g \in G} \mid \text{fix}(\sigma) \mid 
 &amp; = \sum\limits_{i = 1}^{n} m^{\gcd(n, i)} \\
 &amp; = \sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(n, i) = d ] \\
-&amp; =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{n} [ \gcd(\frac{n}{d}, i) = 1 ] \\
+&amp; =\sum\limits_{d \mid n} m^d \sum\limits_{i = 1}^{\frac{n}{d}} [ \gcd(\frac{n}{d}, i) = 1 ] \\
 &amp; = \sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d})
 \end{aligned}
 </span></p>
@@ -977,7 +979,7 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 <aside class="notes">
 <p>对于环上的问题不方便考虑的话不妨先拆成链上的问题考虑（就不用考虑首尾是否满足条件）……</p>
 <p>最后要考虑首尾的情况的时候，不妨在尾多 DP 三个元素，然后只取首三个元素与末三个元素相同的方案。</p>
-<p>这样做一次 DP 复杂度是 <span class="math inline">\mathcal{O}(256N)</span> 的…… 而且对于每一种置换都要做一次…… 显然复杂度不可以接受。</p>
+<p>这样做一次 DP 复杂度是 <span class="math inline">\mathcal{O}(64^3 N)</span> 的…… 而且对于每一种置换都要做一次…… 显然复杂度不可以接受。</p>
 <p>看看能不能用矩阵快速幂优化。</p>
 </aside>
 </section>
@@ -1012,10 +1014,11 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 </div>
 <div class="fragment">
 <p><span class="math display">
-T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
+T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 </span></p>
 </div>
 <aside class="notes">
+<p>可以把后三个连续颜色 <span class="math inline">&lt;a, b, c&gt;</span> 看出一个可以用 <span class="math inline">0 \sim 63</span> 表示的一个状态，就更好理解了……</p>
 <p><span class="math inline">T</span> 中其余元素都是 <span class="math inline">0</span>。</p>
 </aside>
 </section>
@@ -1073,7 +1076,10 @@ T[ a, b, c ][ k, a, b ] = a \langle k, a, b, c \rangle
 &amp; = \sum\limits_{d \mid n} f(d) \cdot \varphi(\frac{n}{d})
 \end{aligned}
 </span></p>
-<p>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^2\log{n})</span></p>
+<ul>
+<li>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})</span></li>
+<li>其实因数个数在数据范围内是远小于 <span class="math inline">\sqrt{n}</span> 的，所以…… <span class="math inline">\mathcal{O}(\text{能过})</span>。</li>
+</ul>
 </div>
 </section></section>
 <section>
@@ -1216,7 +1222,7 @@ j + t \equiv i \pmod l
 (a_0 \enspace a_1 \enspace \dots \enspace a_{l - 1}) \cdot (b_0 \enspace b_1 \enspace \dots \enspace b_{s - 1} )
 </span></p>
 <p><span class="math display">
-\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod l} \rangle \rightarrow \dots
+\langle a_i, b_j \rangle \rightarrow \langle a_{(i + 1) \bmod l}, b_{(j + 1) \bmod s} \rangle \rightarrow \dots
 </span></p>
 <div class="fragment">
 <p><span class="math display">
@@ -1277,9 +1283,12 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 </div>
 <div class="fragment current-visible" data-fragment-index="1" style="height:0">
 <ul>
-<li>再考虑轮换内的顺序（圆排列）： <span class="math display">
+<li>再考虑轮换内的顺序（圆排列）：
+<ul>
+<li>比如 <span class="math inline">(1 \enspace 2 \enspace 3)</span> 和 <span class="math inline">(1 \enspace 3 \enspace 2)</span> 算不同的置换 <span class="math display">
 \frac{n!}{\prod\limits_{i = 1}^{k} l_i!} \cdot \prod\limits_{i = 1}^{k} (l_i - 1)!
 </span></li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
@@ -1312,12 +1321,15 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 <p><span class="math display">
 \begin{aligned}
 &amp; \frac{1}{|G|} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
-&amp; = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
+&amp; = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i) \cdot (\prod\limits_{i = 1}^{s} q_i!)} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 </span></p>
-<p>复杂度 <span class="math inline">\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)</span></p>
+<ul>
+<li>复杂度 <span class="math inline">\mathcal{O} \left( \sum\limits_{p \in \text{Partition}(n)} \text{len}^2(p) \cdot \log{n} \right)</span></li>
+<li>其实题目数据范围内 <span class="math inline">\text{Partition}(n)</span> 大小不大…… 所以 <span class="math inline">\mathcal{O}(\text{能过})</span>。</li>
+</ul>
 <aside class="notes">
-<p>Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度（即拆成了多少个点轮换）</p>
+<p><span class="math inline">\text{Partition}(n)</span> 指 <span class="math inline">n</span> 的拆分方案数，而 <span class="math inline">\text{len}(p)</span> 指拆分方案 <span class="math inline">p</span> 的长度（即拆成了多少个点轮换）</p>
 </aside>
 </section>
 <section class="slide level2">
