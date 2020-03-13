@@ -56,42 +56,6 @@
 </section>
 
 <section>
-<section id="group" class="title-slide slide level1">
-<h1>群 <span class="math inline">(G, \cdot)</span></h1>
-<p><span class="math inline">G</span> 是非空集合，且二元运算满足：</p>
-<ul>
-<li>结合律：<span class="math inline">(a \cdot b) \cdot c = a \cdot (b \cdot c)</span></li>
-<li>单位元 <span class="math inline">e</span>：<span class="math inline">\forall a \in G, \ ea = ae = a</span></li>
-<li>逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e</span></li>
-</ul>
-<div class="fragment">
-<p>若满足交换律，则为<strong>交换群</strong></p>
-</div>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>左右逆元相等：
-<ul>
-<li><p>设 <span class="math inline">x</span> 是 <span class="math inline">a</span> 的左逆元，<span class="math inline">y</span> 是 <span class="math inline">a</span> 的右逆元，有：</p>
-<p><span class="math display">
-x = xe = x(ay) = (xa)y = y
-</span></p></li>
-</ul></li>
-<li>满足消去律：
-<ul>
-<li><span class="math inline">\forall a, b, c \in G, \ ab = ac \Leftrightarrow b = c</span></li>
-</ul></li>
-</ul>
-<aside class="notes">
-<p>只要逆元存在就满足消去律：两边都乘上 <span class="math inline">a^{-1}</span> 即可。</p>
-</aside>
-</section>
-<section id="subgroup" class="slide level2">
-<h2>子群</h2>
-<p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的子群，记作 <span class="math inline">H \le G</span>；</p>
-</section></section>
-<section>
 <section id="relation" class="title-slide slide level1">
 <h1>关系</h1>
 <ul>
@@ -110,7 +74,7 @@ A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
 <li><strong>对称性</strong>：<span class="math inline">\forall a, b \in A</span>，若 <span class="math inline">a \sim b</span> 则 <span class="math inline">b \sim a</span>；</li>
 <li><strong>传递性</strong>：<span class="math inline">\forall a, b \in A</span>，若 <span class="math inline">a \sim b, \ b \sim c</span>，则 <span class="math inline">a \sim c</span>；</li>
 </ul>
-<p>则称 <span class="math inline">\sim</span> 是<strong>等价关系 (equivalence relation)</strong>。</p>
+<p>则称 <span class="math inline">\sim</span> 是<strong>等价关系 (equivalence relation)</strong></p>
 </section>
 <section id="eqc-example" class="slide level2">
 <h2>例</h2>
@@ -154,6 +118,45 @@ A = \bigcup\limits_{a \in R} [a] \text{（两两不相交之并）}
 <p>对于划分的定义：若 <span class="math inline">A</span> 是它的某些子集 <span class="math inline">\{ A_i | i \in I \}</span> 之并，且 <span class="math inline">A_i</span> 两两不交，则称其为集合 <span class="math inline">A</span> 的一个划分（或分拆）。</p>
 <p>我们可以看到，引入等价类的意义就是为了对集合中的元素进行某种程度上的分类。后面要介绍的轨道、陪集等本质上都是基于等价关系的。</p>
 </aside>
+</section></section>
+<section>
+<section id="group" class="title-slide slide level1">
+<h1>群 <span class="math inline">(G, \cdot)</span></h1>
+<p><span class="math inline">G</span> 是非空集合，且二元运算满足：</p>
+<ul>
+<li>结合律：<span class="math inline">(a \cdot b) \cdot c = a \cdot (b \cdot c)</span></li>
+<li>单位元 <span class="math inline">e</span>：<span class="math inline">\forall a \in G, \ ea = ae = a</span></li>
+<li>逆元：<span class="math inline">\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e</span></li>
+</ul>
+<div class="fragment">
+<p>若满足交换律，则称为<strong>交换群</strong></p>
+</div>
+<aside class="notes">
+<p>需要注意的是，构成群不一定要满足交换律。接下来我们会说明为什么对于群左右逆元是相等的。</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>左右逆元相等：
+<ul>
+<li><p>设 <span class="math inline">x</span> 是 <span class="math inline">a</span> 的左逆元，<span class="math inline">y</span> 是 <span class="math inline">a</span> 的右逆元，有：</p>
+<p><span class="math display">
+x = xe = x(ay) = (xa)y = y
+</span></p></li>
+</ul></li>
+<li>满足消去律：
+<ul>
+<li><span class="math inline">\forall a, b, c \in G, \ ab = ac \Leftrightarrow b = c</span></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>只要逆元存在就满足消去律：两边都乘上 <span class="math inline">a^{-1}</span> 即可。</p>
+</aside>
+</section>
+<section id="subgroup" class="slide level2">
+<h2>子群</h2>
+<p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的子群，记作 <span class="math inline">H \le G</span>；</p>
 </section></section>
 <section>
 <section id="coset" class="title-slide slide level1">
@@ -218,7 +221,7 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 <ul>
 <li>对于 <span class="math inline">a, b \in H, g \in G</span>，由消去律 <span class="math inline">a \neq b \Leftrightarrow ga \neq gb</span>；</li>
 <li>因此，<span class="math inline">\forall g \in R, \ \mid gH \mid = \mid H \mid</span>: <span class="math display">
-\mid G \mid = \sum\limits_{g \in R} \mid gH \mid 
+|G| = \sum\limits_{g \in R} \mid gH \mid 
 = \sum\limits_{g \in R} \mid H \mid 
 = \mid R \mid \cdot \mid H \mid
 </span></li>
@@ -232,7 +235,7 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 <h1>拉格朗日定理</h1>
 <p>设 <span class="math inline">G</span> 为有限群，<span class="math inline">H \leq G</span>，则：</p>
 <p><span class="math display">
-\mid G \mid = [G : H] \cdot \mid H \mid
+|G| = [G : H] \cdot \mid H \mid
 </span></p>
 <p>其中 <span class="math inline">[G : H]</span> 称为群 <span class="math inline">H</span> 对于群 <span class="math inline">G</span> 的<strong>指数 (index)</strong>。</p>
 <aside class="notes">
@@ -626,7 +629,7 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <h2>轨道-稳定子定理</h2>
 <p>设有限群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span> ，<span class="math inline">x \in M</span>，则：</p>
 <p><span class="math display">
-\mid G \mid = \mid \text{stab}_G(x) \mid \cdot \mid \text{orb}_G(x) \mid
+|G| = \mid \text{stab}_G(x) \mid \cdot \mid \text{orb}_G(x) \mid
 </span></p>
 </section></section>
 <section>
@@ -634,7 +637,7 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <h1>Burnside 引理</h1>
 <p>设有限群 <span class="math inline">G</span> 作用于有限集 <span class="math inline">M</span> 上，则轨道数：</p>
 <p><span class="math display">
-\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} |\text{fix}(\sigma)|
+| M/G | = \frac{1}{|G|} \sum\limits_{\sigma \in G} |\text{fix}(\sigma)|
 </span></p>
 <p>其中 <span class="math inline">\text{fix}(\sigma)</span> 代表 <span class="math inline">\sigma</span> 的不动元构成的集合：</p>
 <p><span class="math display">
@@ -666,29 +669,26 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <div class="fragment" data-fragment-index="1">
 <p><span class="math display">
   \begin{aligned}
-  \mid M / G \mid 
+  | M/G | 
   &amp; = \sum\limits_{x \in M} \frac{1}{ \mid \text{orb}_G(x) \mid } \\
-  &amp; = \sum\limits_{x \in M}\frac{ \mid \text{stab}_G(x) \mid }{ \mid G \mid } \text{（轨道-稳定子定理）} \\
-  &amp; = \frac{1}{\mid G \mid}\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
+  &amp; = \sum\limits_{x \in M}\frac{ \mid \text{stab}_G(x) \mid }{ |G| } \text{（轨道-稳定子定理）} \\
+  &amp; = \frac{1}{|G|}\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
   \end{aligned}
 </span></p>
 </div>
 </section>
-<section id="bs-example" class="slide level2">
-<h2>例子</h2>
-<p>对正六边形的 <span class="math inline">6</span> 个顶点，一半涂黑色一半涂白色。若经过旋转可相互得到的方案算同一种方案，求染色方案数？</p>
-</section>
 <section class="slide level2">
 
-<h3 id="分析">分析</h3>
+<p>对正六边形的 <span class="math inline">6</span> 个顶点，一半涂黑一半涂白。若经旋转可得到的方案算相同方案，求方案数？</p>
+<div class="fragment">
 <p><span class="math display">
-M = \text{所有涂色方案， 共：} \binom{6}{3} = 20 \text{ 种}
+M = \{ \text{不计同构的涂色方案} \} \enspace |M| = \binom{6}{3} = 20
 </span></p>
 <p><span class="math display">
-G = \{ 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ, 360^\circ \} \\
-\text{（绕中心顺时针旋转）}
+G = \{ \text{顺时针旋转} 0^\circ, 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ \} \\
 </span></p>
-<p>记 <span class="math inline">6</span> 个顶点分别为 <span class="math inline">A_1, A_2, \dots, A_6</span>。</p>
+<p>记 <span class="math inline">6</span> 个顶点分别为 <span class="math inline">A_1, A_2, \dots, A_6</span></p>
+</div>
 </section>
 <section class="slide level2">
 
@@ -766,7 +766,7 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 </div>
 <div class="fragment">
 <p><span class="math display">
-\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} m^{c(\sigma)}
+| M/G | = \frac{1}{|G|} \sum\limits_{\sigma \in G} m^{c(\sigma)}
 </span></p>
 </div></li>
 </ul>
@@ -893,7 +893,7 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 
 <p><span class="math display">
 \begin{aligned}
-\mid M / G \mid &amp; = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
+| M/G | &amp; = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
 &amp; = \frac{1}{2n}\sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d}) \\
 &amp; + \frac{1}{2n} \begin{cases}
 \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} &amp; 2 \mid n \\
@@ -1321,7 +1321,7 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 
 <p><span class="math display">
 \begin{aligned}
-&amp; \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
+&amp; \frac{1}{|G|} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
 &amp; = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 </span></p>
@@ -1353,17 +1353,20 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 <li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3441">HDU 3441: Rotation</a></li>
 <li><a href="http://poj.org/problem?id=2888">POJ 2888: Magic Bracelet</a></li>
 <li><a href="https://www.luogu.com.cn/problem/P1446">洛谷 P1446: Cards</a></li>
-<li><a href="https://www.luogu.com.cn/problem/P4128">洛谷 P4128: 有色图</a></li>
 </ul>
 </section>
 <section id="probset-2" class="slide level2">
 <h2>相关题目 #2</h2>
 <ul>
+<li><a href="https://www.luogu.com.cn/problem/P4128">洛谷 P4128: 有色图</a></li>
 <li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5080">ICPC 2014 鞍山 K: Colorful Toy</a></li>
 <li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6360">HDU 6360: Kaleidoscope</a></li>
 <li><a href="https://nanti.jisuanke.com/t/42585">ICPC 2019 南昌 J: Summon</a></li>
 <li><a href="https://nanti.jisuanke.com/t/42393">ICPC 2019 银川 M: Crazy Cake</a></li>
 </ul>
+<aside class="notes">
+<p>本次讲解只讲了一些比较初步的应用，而给的题目里面很多更加灵活，不保证仅靠幻灯片里的内容就能解出这些题（狗头保命）……</p>
+</aside>
 </section>
 <section id="reference" class="slide level2">
 <h2>参考资料</h2>

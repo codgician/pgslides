@@ -4,43 +4,6 @@ title: 浅谈置换群
 date: 2020.03.13
 ---
 
-# 群 $(G, \cdot)$ { #group }
-
-$G$ 是非空集合，且二元运算满足：
-
-- 结合律：$(a \cdot b) \cdot c = a \cdot (b \cdot c)$
-- 单位元 $e$：$\forall a \in G, \ ea = ae = a$ 
-- 逆元：$\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e$
-  
-::: { .fragment }
-
-若满足交换律，则为**交换群** 
-
-:::
-
----
-
-- 左右逆元相等：
-  - 设 $x$ 是 $a$ 的左逆元，$y$ 是 $a$ 的右逆元，有：
-  
-    $$
-    x = xe = x(ay) = (xa)y = y
-    $$
-
-- 满足消去律：
-  - $\forall a, b, c \in G, \ ab = ac \Leftrightarrow b = c$
-
-::: { .notes }
-
-只要逆元存在就满足消去律：两边都乘上 $a^{-1}$ 即可。
-
-:::  
-
-
-## 子群 { #subgroup }
-
-设 $(G, \cdot)$ 为群，$H$ 是 $G$ 的子集，若 $(H, \cdot)$ 成群，则称 $H$ 为 $G$ 的子群，记作 $H \le G$；
-
 # 关系 { #relation }
 
 - 集合的**笛卡尔积 (Cartesian product)**：
@@ -58,7 +21,7 @@ $$
 - **对称性**：$\forall a, b \in A$，若 $a \sim b$ 则 $b \sim a$；
 - **传递性**：$\forall a, b \in A$，若 $a \sim b, \ b \sim c$，则 $a \sim c$；
 
-则称 $\sim$ 是**等价关系 (equivalence relation)**。
+则称 $\sim$ 是**等价关系 (equivalence relation)**
 
 ---
 
@@ -113,6 +76,49 @@ $$
 我们可以看到，引入等价类的意义就是为了对集合中的元素进行某种程度上的分类。后面要介绍的轨道、陪集等本质上都是基于等价关系的。
 
 :::
+
+
+# 群 $(G, \cdot)$ { #group }
+
+$G$ 是非空集合，且二元运算满足：
+
+- 结合律：$(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+- 单位元 $e$：$\forall a \in G, \ ea = ae = a$ 
+- 逆元：$\forall a \in G, \ \exist b \in G \text{ \ s.t. \ } ab = ba = e$
+  
+::: { .fragment }
+
+若满足交换律，则称为**交换群**
+
+:::
+
+::: { .notes }
+
+需要注意的是，构成群不一定要满足交换律。接下来我们会说明为什么对于群左右逆元是相等的。
+
+:::
+
+---
+
+- 左右逆元相等：
+  - 设 $x$ 是 $a$ 的左逆元，$y$ 是 $a$ 的右逆元，有：
+  
+    $$
+    x = xe = x(ay) = (xa)y = y
+    $$
+
+- 满足消去律：
+  - $\forall a, b, c \in G, \ ab = ac \Leftrightarrow b = c$
+
+::: { .notes }
+
+只要逆元存在就满足消去律：两边都乘上 $a^{-1}$ 即可。
+
+:::  
+
+## 子群 { #subgroup }
+
+设 $(G, \cdot)$ 为群，$H$ 是 $G$ 的子集，若 $(H, \cdot)$ 成群，则称 $H$ 为 $G$ 的子群，记作 $H \le G$；
 
 # 陪集 { #coset }
 
@@ -189,7 +195,7 @@ $x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪
 - 对于 $a, b \in H, g \in G$，由消去律 $a \neq b \Leftrightarrow ga \neq gb$；
 - 因此，$\forall g \in R, \ \mid gH \mid = \mid H \mid$:
   $$
-  \mid G \mid = \sum\limits_{g \in R} \mid gH \mid 
+  |G| = \sum\limits_{g \in R} \mid gH \mid 
   = \sum\limits_{g \in R} \mid H \mid 
   = \mid R \mid \cdot \mid H \mid
   $$
@@ -208,7 +214,7 @@ $x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪
 设 $G$ 为有限群，$H \leq G$，则：
 
 $$
-\mid G \mid = [G : H] \cdot \mid H \mid
+|G| = [G : H] \cdot \mid H \mid
 $$
 
 其中 $[G : H]$ 称为群 $H$ 对于群 $G$ 的**指数 (index)**。
@@ -669,16 +675,15 @@ $\beta \text{stab}_G(x)$ 里面的元素相当于 $G$ 中与 $\beta$ 等价的�
 设有限群 $G$ 作用于集合 $M$ ，$x \in M$，则：
 
 $$
-\mid G \mid = \mid \text{stab}_G(x) \mid \cdot \mid \text{orb}_G(x) \mid
+|G| = \mid \text{stab}_G(x) \mid \cdot \mid \text{orb}_G(x) \mid
 $$
-
 
 # Burnside 引理 { #burnside-lemma }
 
 设有限群 $G$ 作用于有限集 $M$ 上，则轨道数：
 
 $$
-\mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} |\text{fix}(\sigma)|
+| M/G | = \frac{1}{|G|} \sum\limits_{\sigma \in G} |\text{fix}(\sigma)|
 $$
 
 其中 $\text{fix}(\sigma)$ 代表 $\sigma$ 的不动元构成的集合：
@@ -718,33 +723,32 @@ $$
 
 $$
   \begin{aligned}
-  \mid M / G \mid 
+  | M/G | 
   & = \sum\limits_{x \in M} \frac{1}{ \mid \text{orb}_G(x) \mid } \\
-  & = \sum\limits_{x \in M}\frac{ \mid \text{stab}_G(x) \mid }{ \mid G \mid } \text{（轨道-稳定子定理）} \\
-  & = \frac{1}{\mid G \mid}\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
+  & = \sum\limits_{x \in M}\frac{ \mid \text{stab}_G(x) \mid }{ |G| } \text{（轨道-稳定子定理）} \\
+  & = \frac{1}{|G|}\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
   \end{aligned}
 $$
 
 :::
 
-## 例子 { #bs-example }
-
-对正六边形的 $6$ 个顶点，一半涂黑色一半涂白色。若经过旋转可相互得到的方案算同一种方案，求染色方案数？
-
 ---
 
-### 分析
+对正六边形的 $6$ 个顶点，一半涂黑一半涂白。若经旋转可得到的方案算相同方案，求方案数？
+
+::: { .fragment }
 
 $$
-M = \text{所有涂色方案， 共：} \binom{6}{3} = 20 \text{ 种}
+M = \{ \text{不计同构的涂色方案} \} \enspace |M| = \binom{6}{3} = 20
 $$
 
 $$
-G = \{ 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ, 360^\circ \} \\
-\text{（绕中心顺时针旋转）}
+G = \{ \text{顺时针旋转} 0^\circ, 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ \} \\
 $$
 
-记 $6$ 个顶点分别为 $A_1, A_2, \dots, A_6$。
+记 $6$ 个顶点分别为 $A_1, A_2, \dots, A_6$
+
+:::
 
 ---
 
@@ -840,7 +844,7 @@ $$
   ::: { .fragment }
 
   $$
-  \mid M / G \mid = \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} m^{c(\sigma)}
+  | M/G | = \frac{1}{|G|} \sum\limits_{\sigma \in G} m^{c(\sigma)}
   $$
 
   :::
@@ -988,7 +992,7 @@ $$
 
 $$
 \begin{aligned}
-\mid M / G \mid & = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
+| M/G | & = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
 & = \frac{1}{2n}\sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d}) \\
 & + \frac{1}{2n} \begin{cases}
 \frac{n}{2} \cdot m^{\frac{n}{2} + 1} + \frac{n}{2} \cdot m^{\frac{n}{2}} & 2 \mid n \\
@@ -1468,7 +1472,7 @@ $$
 
 $$
 \begin{aligned}
-& \frac{1}{\mid G \mid} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
+& \frac{1}{|G|} \sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid \\
 & = \frac{1}{n!} \cdot \sum\frac{n!}{(\prod\limits_{i = 1}^{k} l_i!) \cdot (\prod\limits_{i = 1}^{k} t_i^{l_i})} \cdot m^{\sum\limits_{i = 1}^{k} \left\lfloor \frac{l_i}{2} \right\rfloor + \sum\limits_{i = 1}^{k}\sum\limits_{j = i + 1}^{k} \gcd(l_i, l_j)}
 \end{aligned}
 $$
@@ -1500,14 +1504,20 @@ Partition(n) 指 n 的拆分方案数，而 len(p) 指拆分方案 p 的长度�
 - [HDU 3441: Rotation](http://acm.hdu.edu.cn/showproblem.php?pid=3441)
 - [POJ 2888: Magic Bracelet](http://poj.org/problem?id=2888)
 - [洛谷 P1446: Cards](https://www.luogu.com.cn/problem/P1446)
-- [洛谷 P4128: 有色图](https://www.luogu.com.cn/problem/P4128)
 
 ## 相关题目 #2 { #probset-2 }
 
+- [洛谷 P4128: 有色图](https://www.luogu.com.cn/problem/P4128)
 - [ICPC 2014 鞍山 K: Colorful Toy](http://acm.hdu.edu.cn/showproblem.php?pid=5080)
 - [HDU 6360: Kaleidoscope](http://acm.hdu.edu.cn/showproblem.php?pid=6360)
 - [ICPC 2019 南昌 J: Summon](https://nanti.jisuanke.com/t/42585)
 - [ICPC 2019 银川 M: Crazy Cake](https://nanti.jisuanke.com/t/42393)
+
+::: { .notes }
+
+本次讲解只讲了一些比较初步的应用，而给的题目里面很多更加灵活，不保证仅靠幻灯片里的内容就能解出这些题（狗头保命）……
+
+:::
 
 ## 参考资料 { #reference }
 
