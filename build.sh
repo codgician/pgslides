@@ -6,4 +6,6 @@ pandoc -t revealjs -s \
     --katex=assets/katex/ \
     -V revealjs-url=assets/revealjs \
     -V theme=black \
-    -V transition=fade
+    -V transition=fade \
+    -V width=1366 \
+    -V height=768
