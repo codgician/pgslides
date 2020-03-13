@@ -76,7 +76,7 @@ $$
 设 $\sim$ 是 $A$ 上的等价关系，$\forall a \in A$，$[a]$ 表示 $A$ 中与 $a$ 等价的全部元素构成的集合：
 
 $$
-[a] = \{ b \mid b \sim a \land b \in A \}
+[a] = \{ b \sim a \mid b \in A \}
 $$
 
 称 $[a]$ 为 $a$ 所在的**等价类 (equivalence class)**。
