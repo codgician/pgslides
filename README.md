@@ -4,13 +4,7 @@
 
 幻灯片主要偏向于应用，因此可能会有不严谨之处…… 我会尽量完善……
 
-源文件即 `slides.md`，可下使用 `pandoc` 编译为网页文件 `index.html`。参考编译指令如下：
-
-```bash
-pandoc -t revealjs -s -o index.html slides.md --katex=assets/katex/ -V revealjs-url=assets/revealjs -V theme=black -V hash=true -V transition=fade --slide-level=2 --highlight-style=zenburn
-```
-
-也可执行仓库根目录下的 `build.cmd` 或 `build.sh`。仓库中已经附带了编译好的网页文件 `index.html`。
+源文件即 `slides.md`，可下使用 `pandoc` 编译为网页文件 `index.html`。编译指令可参考根目录下的 `build.cmd` 或 `build.sh`。仓库中已经附带了编译好的网页文件 `index.html`。
 
 ## 进度
 

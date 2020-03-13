@@ -1243,11 +1243,7 @@ $$
 ---
 
 $$
-\sigma = \left(\begin{array}{c} 
-1 & 2 & 3 & 4 & 5 & 6 \\ 
-3 & 4 & 5 & 2 & 6 & 1
-\end{array}\right) 
-= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+\sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 $$
 
 ::: { .fragment .current-visible style="height:0" }
@@ -1352,11 +1348,7 @@ $$
 ---
 
 $$
-\sigma = \left(\begin{array}{c} 
-1 & 2 & 3 & 4 & 5 & 6 \\ 
-3 & 4 & 5 & 2 & 6 & 1
-\end{array}\right) 
-= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+\sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 $$
 
 - 两点在不同点轮换里的边：

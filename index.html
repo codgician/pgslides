@@ -1110,11 +1110,7 @@ M &amp; = \{ \text{不计同构的无向图染色方案} \}
 <section class="slide level2">
 
 <p><span class="math display">
-\sigma = \left(\begin{array}{c} 
-1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
-3 &amp; 4 &amp; 5 &amp; 2 &amp; 6 &amp; 1
-\end{array}\right) 
-= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+\sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 </span></p>
 <div class="fragment current-visible" style="height:0">
 <ul>
@@ -1206,11 +1202,7 @@ j + t \equiv i \pmod l
 <section class="slide level2">
 
 <p><span class="math display">
-\sigma = \left(\begin{array}{c} 
-1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
-3 &amp; 4 &amp; 5 &amp; 2 &amp; 6 &amp; 1
-\end{array}\right) 
-= (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
+\sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 </span></p>
 <ul>
 <li>两点在不同点轮换里的边：
@@ -1391,6 +1383,11 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
         history: true,
         // Transition style
         transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
 
         // Optional reveal.js plugins
         dependencies: [
