@@ -193,11 +193,11 @@ $x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪
 ---
 
 - 对于 $a, b \in H, g \in G$，由消去律 $a \neq b \Leftrightarrow ga \neq gb$；
-- 因此，$\forall g \in R, \ \mid gH \mid = \mid H \mid$:
+- 因此，$\forall g \in R, \ |gH| = |H|$:
   $$
-  |G| = \sum\limits_{g \in R} \mid gH \mid 
-  = \sum\limits_{g \in R} \mid H \mid 
-  = \mid R \mid \cdot \mid H \mid
+  |G| = \sum\limits_{g \in R} |gH| 
+  = \sum\limits_{g \in R} |H| 
+  = |R| \cdot |H|
   $$
 
 
@@ -205,7 +205,7 @@ $x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪
 
 利用群 $G$ 的一个子群 $H$，我们可以借助陪集对 $G$ 进行划分。换句话说，群 $G$ 一定可以表示成若干个 $H$ 的互不相交的左（右）陪集之并，同时这些陪集的大小都是相同的。
 
-把 $\mid R \mid$ 记作群 $H$ 对群 $G$ 的指数 $[G : H]$，就可以得到拉格朗日定理……
+把 $|R|$ 记作群 $H$ 对群 $G$ 的指数 $[G : H]$，就可以得到拉格朗日定理……
 
 :::
 
@@ -214,7 +214,7 @@ $x \sim y := x \in yH$ 是一个等价关系，这意味着我们可以借助陪
 设 $G$ 为有限群，$H \leq G$，则：
 
 $$
-|G| = [G : H] \cdot \mid H \mid
+|G| = [G : H] \cdot |H|
 $$
 
 其中 $[G : H]$ 称为群 $H$ 对于群 $G$ 的**指数 (index)**。
