@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-hans">
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
@@ -52,7 +52,7 @@
 <section id="title-slide">
   <h1 class="title">浅谈置换群</h1>
   <p class="author">codgician</p>
-  <p class="date">2020.03.13</p>
+  <p class="date">2020.03.14</p>
 </section>
 
 <section>
@@ -76,8 +76,8 @@ A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}
 </ul>
 <p>则称 <span class="math inline">\sim</span> 是<strong>等价关系 (equivalence relation)</strong></p>
 </section>
-<section id="eqc-example" class="slide level2">
-<h2>例</h2>
+<section class="slide level2">
+
 <p><span class="math display">
 a \sim b := a \equiv b \pmod 7
 </span></p>
@@ -85,10 +85,9 @@ a \sim b := a \equiv b \pmod 7
 <li>自反性？对称性？传递性？</li>
 <li>看起来可以把所有自然数分成 <span class="math inline">7</span> 类……</li>
 </ul>
-</section></section>
-<section>
-<section id="equivalence-class" class="title-slide slide level1">
-<h1>等价类</h1>
+</section>
+<section id="equivalence-class" class="slide level2">
+<h2>等价类</h2>
 <p>设 <span class="math inline">\sim</span> 是 <span class="math inline">A</span> 上的等价关系，<span class="math inline">\forall a \in A</span>，<span class="math inline">[a]</span> 表示 <span class="math inline">A</span> 中与 <span class="math inline">a</span> 等价的全部元素构成的集合：</p>
 <p><span class="math display">
 [a] = \{ b \sim a \mid b \in A \}
@@ -157,10 +156,9 @@ x = xe = x(ay) = (xa)y = y
 <section id="subgroup" class="slide level2">
 <h2>子群</h2>
 <p>设 <span class="math inline">(G, \cdot)</span> 为群，<span class="math inline">H</span> 是 <span class="math inline">G</span> 的子集，若 <span class="math inline">(H, \cdot)</span> 成群，则称 <span class="math inline">H</span> 为 <span class="math inline">G</span> 的<strong>子群 (subgroup)</strong>，记作 <span class="math inline">H \le G</span>；</p>
-</section></section>
-<section>
-<section id="coset" class="title-slide slide level1">
-<h1>陪集</h1>
+</section>
+<section id="coset" class="slide level2">
+<h2>陪集</h2>
 <p>设 <span class="math inline">H \leq G</span>，对于 <span class="math inline">x \in G</span>：</p>
 <ul>
 <li><span class="math inline">H</span> 的一个<strong>左陪集 (left coset)</strong> <span class="math inline">xH</span>： <span class="math display">
@@ -230,9 +228,9 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 <p>利用群 <span class="math inline">G</span> 的一个子群 <span class="math inline">H</span>，我们可以借助陪集对 <span class="math inline">G</span> 进行划分。换句话说，群 <span class="math inline">G</span> 一定可以表示成若干个 <span class="math inline">H</span> 的互不相交的左（右）陪集之并，同时这些陪集的大小都是相同的。</p>
 <p>把 <span class="math inline">|R|</span> 记作群 <span class="math inline">H</span> 对群 <span class="math inline">G</span> 的指数 <span class="math inline">[G : H]</span>，就可以得到拉格朗日定理……</p>
 </aside>
-</section></section>
-<section id="lagrange-theorem" class="title-slide slide level1">
-<h1>拉格朗日定理</h1>
+</section>
+<section id="lagrange-theorem" class="slide level2">
+<h2>拉格朗日定理</h2>
 <p>设 <span class="math inline">G</span> 为有限群，<span class="math inline">H \leq G</span>，则：</p>
 <p><span class="math display">
 |G| = [G : H] \cdot |H|
@@ -241,8 +239,7 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 <aside class="notes">
 <p>说明 <span class="math inline">G</span> 的子群 <span class="math inline">H</span> 的大小一定是 G 大小的因子。</p>
 </aside>
-</section>
-
+</section></section>
 <section>
 <section id="permutation" class="title-slide slide level1">
 <h1>置换</h1>
@@ -265,8 +262,8 @@ G = \bigcup\limits_{g \in R} gH \text{（两两不相交之并）}
 </ul>
 </aside>
 </section>
-<section id="例" class="slide level2">
-<h2>例</h2>
+<section class="slide level2">
+
 <p><span class="math display">
 \left(\begin{array}{c} 
 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
@@ -295,8 +292,8 @@ a_2 &amp; a_3 &amp; \dots &amp; a_1
 \end{array}\right) \xRightarrow{\text{记作}} (a_1 \enspace a_2 \enspace \dots \enspace a_n)
 </span></p>
 </section>
-<section id="cn-example" class="slide level2">
-<h2>例</h2>
+<section class="slide level2">
+
 <p><span class="math display">
 \left(\begin{array}{c} 
 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 
@@ -414,9 +411,9 @@ tk \equiv 0 \pmod n
 <li>可看作上一条的推论。</li>
 </ol>
 </aside>
-</section></section>
-<section id="permutation-group" class="title-slide slide level1">
-<h1>置换群</h1>
+</section>
+<section id="permutation-group" class="slide level2">
+<h2>置换群</h2>
 <p><span class="math inline">n</span> 个元的所有置换，在复合运算 <span class="math inline">\circ</span> 下成群，称作 <span class="math inline">n</span> 元<strong>对称群 (symmetric group)</strong>，记作 <span class="math inline">S_n</span></p>
 <ul>
 <li><strong>结合律</strong>：<span class="math inline">(\sigma \circ \tau) \circ \phi = \sigma \circ (\tau \circ \phi)</span></li>
@@ -426,8 +423,7 @@ tk \equiv 0 \pmod n
 <aside class="notes">
 <p>对于结合律的进一步说明：等式两边都是 <span class="math inline">\sigma(\tau(\phi(x)))</span></p>
 </aside>
-</section>
-
+</section></section>
 <section>
 <section id="group-action" class="title-slide slide level1">
 <h1>群在集合上的作用</h1>
@@ -473,28 +469,34 @@ M &amp; = \{ \text{不考虑同构时的染色方案} \}
 </section>
 <section class="slide level2">
 
+<div class="fragment fade-out" style="height:0" data-fragment-index="1">
 <figure>
 <img data-src="assets/ga-example-3.png" class="plain" style="background:transparent" alt="" /><figcaption><span class="math inline">G \times M</span></figcaption>
 </figure>
-<aside class="notes">
-<p>可以看到 <span class="math inline">G \times M</span> 后并不会产生新的元素，也就是说 <span class="math inline">G \times M</span> 和 <span class="math inline">M</span> 是一样大的。</p>
-<p>存在单位置换（旋转 <span class="math inline">0^\circ</span>）使得它与任何一个染色方案作用都不发生变化；多个旋转作用于染色方案也是满足结合律的。所以这里我们称 <span class="math inline">G</span> 对 <span class="math inline">M</span> 有群作用。</p>
-</aside>
-</section>
-<section class="slide level2">
-
+</div>
+<div class="fragment current-visible" style="height:0" data-fragment-index="1">
 <figure>
 <img data-src="assets/ga-example-4.png" class="plain" style="background:transparent" alt="" /><figcaption>等价类？</figcaption>
 </figure>
-<aside class="notes">
-<p>比如所有置换作用于第二个染色方案，我们实际上得到的就是与第二个方案等价的染色方案，并且我们得到的这些染色方案都是存在于原始集合里面的。</p>
-</aside>
-</section>
-<section class="slide level2">
-
+</div>
+<div class="fragment current-visible" style="height:0" data-fragment-index="2">
 <figure>
 <img data-src="assets/ga-example-5.png" class="plain" style="background:transparent" alt="" /><figcaption>等价类？</figcaption>
 </figure>
+</div>
+<aside class="notes">
+<ul>
+<li>图1：
+<ul>
+<li>可以看到 <span class="math inline">G \times M</span> 后并不会产生新的元素，也就是说 <span class="math inline">G \times M</span> 和 <span class="math inline">M</span> 是一样大的。</li>
+<li>存在单位置换（旋转 <span class="math inline">0^\circ</span>）使得它与任何一个染色方案作用都不发生变化；多个旋转作用于染色方案也是满足结合律的。所以这里我们称 <span class="math inline">G</span> 对 <span class="math inline">M</span> 有群作用。</li>
+</ul></li>
+<li>图2：
+<ul>
+<li>比如所有置换作用于第二个染色方案，我们实际上得到的就是与第二个方案等价的染色方案，并且我们得到的这些染色方案都是存在于原始集合里面的。</li>
+</ul></li>
+</ul>
+</aside>
 </section>
 <section class="slide level2">
 
@@ -504,10 +506,9 @@ M &amp; = \{ \text{不考虑同构时的染色方案} \}
 <li>借助该等价关系对集合进行划分？</li>
 <li>有多少不同的等价类？</li>
 </ul>
-</section></section>
-<section>
-<section id="orbit" class="title-slide slide level1">
-<h1>轨道</h1>
+</section>
+<section id="orbit" class="slide level2">
+<h2>轨道</h2>
 <p>群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span> 上，<span class="math inline">x \in M</span>，称 <span class="math inline">M</span> 的子集</p>
 <p><span class="math display">
 \text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}
@@ -551,10 +552,9 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </span></p>
 <p>并且此中各 <span class="math inline">\text{orb}_G(x)</span> 互不相交。</p></li>
 </ul>
-</section></section>
-<section>
-<section id="stabilizer" class="title-slide slide level1">
-<h1>稳定子</h1>
+</section>
+<section id="stabilizer" class="slide level2">
+<h2>稳定子</h2>
 <p>设群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span>，对 <span class="math inline">x \in M</span>，称</p>
 <p><span class="math display">
 \text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \}
@@ -659,12 +659,9 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </section>
 <section class="slide level2">
 
-<div class="fragment fade-out" style="height:0" data-fragment-index="1">
 <ul>
-<li>每个轨道对答案的贡献为 <span class="math inline">1</span>，故元素 <span class="math inline">x \in M</span> 对答案的贡献为 <span class="math inline">\frac{1}{\mid \text{orb}_G(x) \mid}</span>；</li>
+<li>每个轨道对轨道数贡献为 <span class="math inline">1</span>，故 <span class="math inline">x \in M</span> 对答案的贡献为 <span class="math inline">\frac{1}{\mid \text{orb}_G(x) \mid}</span>：</li>
 </ul>
-</div>
-<div class="fragment" data-fragment-index="1">
 <p><span class="math display">
   \begin{aligned}
   | M/G | 
@@ -673,7 +670,6 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
   &amp; = \frac{1}{|G|}\sum\limits_{\sigma \in G} \mid \text{fix}(\sigma) \mid
   \end{aligned}
 </span></p>
-</div>
 </section>
 <section class="slide level2">
 
@@ -774,6 +770,26 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 </aside>
 </section>
 
+<section id="a-breif-summary" class="title-slide slide level1">
+<h1>小结</h1>
+<ul>
+<li><a href="#/relation">关系</a> | <a href="#/equivalence-relation">等价关系</a> | <a href="#/equivalence-class">等价类</a>
+<ul>
+<li>对集合分类：等价类 <span class="math inline">[a]</span> 内的元素都与存在 <span class="math inline">a</span> 等价关系；</li>
+</ul></li>
+<li><a href="#/group">群</a> | <a href="#/subgroup">子群</a> | <a href="#/coset">陪集</a>
+<ul>
+<li>对群分类：陪集 <span class="math inline">gH</span> 里的所有元素都与 <span class="math inline">g</span> 存在等价关系；</li>
+</ul></li>
+<li><a href="#/group-action">群在集合上的作用</a>
+<ul>
+<li><a href="#/orbit">轨道</a>：<span class="math inline">M</span> 的子集，在 <span class="math inline">G</span> 作用下与 <span class="math inline">x</span> 等价的元素；</li>
+<li><a href="#/stabilizer">稳定子</a>：<span class="math inline">G</span> 的子群，对于 <span class="math inline">x</span> 而言 <span class="math inline">G</span> 中等价的置换；</li>
+<li><a href="#/orbit-stabilizer-theorem">轨道-稳定子定理</a> | <a href="#/burnside-lemma">Burnside 引理</a> | <a href="#/polya-enumeration-theorem">Pólya 计数法</a></li>
+</ul></li>
+</ul>
+</section>
+
 <section>
 <section id="coloring-necklace" class="title-slide slide level1">
 <h1>项链染色</h1>
@@ -783,8 +799,8 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 <p>这里将之前对多边形顶点染色问题一般化。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="cn-analysis" class="slide level2">
+<h2>分析</h2>
 <p><span class="math display">
 \begin{aligned}
 G &amp; = \{ \text{顺时针旋转} \frac{2\pi}{n}, \dots, (n - 1)\frac{2\pi}{n}, 2\pi, \\
@@ -830,9 +846,8 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 <p>可能有点不严密，大家自己推一推应该也能发现是正确的（逃</p>
 </aside>
 </section>
-<section class="slide level2">
-
-<h3 id="旋转">旋转</h3>
+<section id="cn-rotation" class="slide level2">
+<h2>旋转</h2>
 <ul>
 <li>旋转置换一共 <span class="math inline">n</span> 种；</li>
 <li>旋转 <span class="math inline">\frac{2\pi}{n}</span> 时只能分解成一个不交轮换；</li>
@@ -861,9 +876,8 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 <p>复杂度变成了 <span class="math inline">\mathcal{O}(\sqrt{N})</span></p>
 </aside>
 </section>
-<section class="slide level2">
-
-<h3 id="翻转">翻转</h3>
+<section id="cn-flipping" class="slide level2">
+<h2>翻转</h2>
 <ul>
 <li>翻转置换一共 <span class="math inline">n</span> 种。</li>
 <li><span class="math inline">n</span> 为偶数：
@@ -889,8 +903,8 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 </span></li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="cn-finale" class="slide level2">
+<h2>结论</h2>
 <p><span class="math display">
 \begin{aligned}
 | M/G | &amp; = \frac{\sum\limits_{\sigma} \mid \text{fix}(\sigma) \mid + \sum\limits_{\tau} \mid \text{fix}(\tau) \mid}{2n} \\
@@ -947,8 +961,8 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 <p>可以考虑 DP。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="ncj-dp" class="slide level2">
+<h2>DP 求不动元数量</h2>
 <ul>
 <li>记 <span class="math inline">\text{v} \langle a, b, c, d \rangle</span> 代表是否允许 <span class="math inline">a, b, c, d</span> 四种颜色相邻；</li>
 </ul>
@@ -983,8 +997,8 @@ M &amp; = \{ \text{满足限制且不计同构的染色方案} \}
 <p>看看能不能用矩阵快速幂优化。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="ncj-matrix-fastpow" class="slide level2">
+<h2>矩阵快速幂优化 DP</h2>
 <p><span class="math display">
   \text{dp} \langle i, a, b, c \rangle = \sum\limits_{k} \text{v} \langle k, a, b, c \rangle \cdot \text{dp} \langle i - 1, k, a, b \rangle
 </span></p>
@@ -1059,8 +1073,8 @@ T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 <p>置换 <span class="math inline">\sigma</span> 下不动元的个数只跟其能被分解成不交轮换乘积的轮换个数有关。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="ncj-finale" class="slide level2">
+<h2>结论</h2>
 <div class="fragment fade-out" data-fragment-index="1" style="height:0">
 <ul>
 <li>记 <span class="math inline">T^i</span> 对角线元素之和为 <span class="math inline">f(i)</span></li>
@@ -1077,8 +1091,7 @@ T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 \end{aligned}
 </span></p>
 <ul>
-<li>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})</span></li>
-<li>其实因数个数在数据范围内是远小于 <span class="math inline">\sqrt{n}</span> 的，所以…… <span class="math inline">\mathcal{O}(\text{能过})</span>。</li>
+<li>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})</span>，但因数个数远小于 <span class="math inline">\sqrt{n}</span>。</li>
 </ul>
 </div>
 </section></section>
@@ -1094,7 +1107,7 @@ T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 </ul>
 </div>
 </section>
-<section id="ugph-analysis" class="slide level2">
+<section id="cug-analysis" class="slide level2">
 <h2>分析</h2>
 <p><span class="math display">
 \begin{aligned}
@@ -1111,8 +1124,8 @@ M &amp; = \{ \text{不计同构的无向图染色方案} \}
 <p>后面会用类似 “点置换”、“点轮换” 和 “边置换”、“边轮换” 等用词对两者进行区分。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="cug-edge-case-1" class="slide level2">
+<h2>两端在同一轮换内的边</h2>
 <p><span class="math display">
 \sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 </span></p>
@@ -1203,8 +1216,8 @@ j + t \equiv i \pmod l
 </ul>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="cug-edge-case-2" class="slide level2">
+<h2>两端在不同轮换内的边</h2>
 <p><span class="math display">
 \sigma = (1 \enspace 3 \enspace 5 \enspace 6) \cdot (2 \enspace 4)
 </span></p>
@@ -1236,8 +1249,8 @@ j + t \equiv j \pmod s
 </ul>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="cug-vertex-edge-relation" class="slide level2">
+<h2>点轮换与边轮换的关系</h2>
 <p><span class="math display">
 \sigma = \prod\limits_{i = 1}^{k} c_i \quad (\text{轮换 } c_i \text{ 长度为 } l_i)
 </span></p>
@@ -1262,8 +1275,8 @@ j + t \equiv j \pmod s
 <p>想办法剪枝。我们并不关系每个边置换里面有哪些边或者有多少边…… 既然每个边轮换内的边颜色都要一样，我们只关心边轮换的个数就行了。</p>
 </aside>
 </section>
-<section class="slide level2">
-
+<section id="cug-pruning" class="slide level2">
+<h2>剪枝</h2>
 <ul>
 <li><p>枚举 <span class="math inline">n</span> 的拆分方案：</p>
 <p><span class="math display">
@@ -1302,8 +1315,8 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
 </ul>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="ucg-finale" class="slide level2">
+<h2>结论</h2>
 <ul>
 <li>对 <span class="math inline">n</span> 的每一种拆分方案：<span class="math inline">n = \sum\limits_{i = 1}^{k} l_i</span>
 <ul>
@@ -1391,18 +1404,20 @@ n = \sum\limits_{i = 1}^{k} l_i \ (l_1 \le l_2 \le \dots \le l_k)
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
-        // Transition style
-        transition: 'fade', // none/fade/slide/convex/concave/zoom
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
         width: 1366,
         height: 768,
-
+        menu: {
+            titleSelector: 'h1, h2',
+            hideMissingTitles: true
+        },
         // Optional reveal.js plugins
         dependencies: [
           { src: 'assets/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'assets/revealjs/plugin/zoom-js/zoom.js', async: true },
+          { src: 'assets/revealjs/plugin/menu/menu.js', async: true },
           { src: 'assets/revealjs/plugin/notes/notes.js', async: true }
         ]
       });
