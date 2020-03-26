@@ -385,7 +385,7 @@ i + tk \equiv i \pmod n
 <p><span class="math display">
 tk \equiv 0 \pmod n
 </span></p>
-<p>最小非负解：<span class="math inline">k = \frac{n}{\gcd(n, t)}</span></p>
+<p>最小正整数解：<span class="math inline">k = \frac{n}{\gcd(n, t)}</span></p>
 </div>
 </section>
 <section class="slide level2">
@@ -407,7 +407,7 @@ tk \equiv 0 \pmod n
 <p>两个推论的证明不难（用初等数论就可以解决），大家可以自行思考……</p>
 <p>💡 提示：</p>
 <ol type="1">
-<li><span class="math inline">\because \gcd(n, t) \mid t, \ \therefore \ i + jt \equiv i \pmod \gcd(n, t)</span></li>
+<li><span class="math inline">\because \gcd(n, t) \mid t, \ \therefore \ i + jt \equiv i \pmod {\gcd(n, t)}</span></li>
 <li>可看作上一条的推论。</li>
 </ol>
 </aside>
@@ -614,14 +614,17 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </span></p>
 </div>
 <div class="fragment" data-fragment-index="4">
+<p><span class="math display">
+|G| = |\text{stab}_G(x)| \cdot [G:\text{stab}_G(x)]
+</span></p>
 <ul>
-<li><span class="math inline">\text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}</span> 表示作用于 <span class="math inline">x</span> 时互不等价的置换，即上述不同左陪集的数量。</li>
+<li><span class="math inline">\text{orb}_G(x)</span> 即 <span class="math inline">G</span> 中置换作用于 <span class="math inline">x</span> 时所有不同结果：
+<ul>
+<li>其大小等于作用于 <span class="math inline">x</span> 时 <span class="math inline">G</span> 中本质不同的置换数；</li>
+<li>即本质不同的陪集个数。</li>
+</ul></li>
 </ul>
 </div>
-<aside class="notes">
-<p><span class="math inline">\beta \text{stab}_G(x)</span> 里面的元素相当于 <span class="math inline">G</span> 中与 <span class="math inline">\beta</span> 等价的置换；那么陪集的数量就代表本质不同的置换的个数…… 这不就是轨道数吗~</p>
-<p>想想拉格朗日定理…… 于是我们便得到了轨道-稳定子定理。</p>
-</aside>
 </section>
 <section id="orbit-stabilizer-theorem" class="slide level2">
 <h2>轨道-稳定子定理</h2>
@@ -751,7 +754,7 @@ A_1 = A_4, \ A_2 = A_5, \ A_3 = A_6
 <section id="polya-enumeration-theorem" class="title-slide slide level1">
 <h1>Pólya 计数定理</h1>
 <ul>
-<li><p>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元……</p></li>
+<li><p>将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元（这样才能保证每一个点变成新点后的颜色与原先一致）；</p></li>
 <li><p>记染色可选的颜色数为 <span class="math inline">m</span>， <span class="math inline">c(\sigma)</span> 为置换 <span class="math inline">\sigma</span> 被分解为不交轮换乘积的个数，则：</p>
 <div class="fragment current-visible" style="height:0">
 <p><span class="math display">
@@ -826,6 +829,11 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 \end{cases}
 </span></li>
 </ul>
+<div class="fragment current-visible" style="height:0">
+<ul>
+<li>注：若 <span class="math inline">n</span> 为偶数，则翻转对称轴可能同时过两条边的中点。这等同于共有 <span class="math inline">2n</span> 个点且不考虑此类对称轴的情况，故下面暂不考虑这种对称轴。</li>
+</ul>
+</div>
 <div class="fragment current-visible" style="height:0">
 <ul>
 <li>考虑 <span class="math inline">i \neq a</span> 的情况（<span class="math inline">i = a</span> 显然封闭），若 <span class="math inline">2 \mid k</span>： <span class="math display">
@@ -1160,7 +1168,7 @@ j + t \equiv j \pmod l
 <p><span class="math display">
 t \equiv 0 \pmod m
 </span></p>
-<p>最小非负 <span class="math inline">t = l</span>，则边轮换长度至多为 <span class="math inline">l</span>。</p>
+<p>最小正整数解 <span class="math inline">t = l</span>，则边轮换长度至多为 <span class="math inline">l</span>。</p>
 </div>
 </section>
 <section class="slide level2">

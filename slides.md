@@ -396,7 +396,7 @@ $$
 tk \equiv 0 \pmod n
 $$
 
-最小非负解：$k = \frac{n}{\gcd(n, t)}$
+最小正整数解：$k = \frac{n}{\gcd(n, t)}$
 :::
 
 ---
@@ -419,7 +419,7 @@ $$
 
 💡 提示：
 
-1. $\because \gcd(n, t) \mid t, \ \therefore \ i + jt \equiv i \pmod \gcd(n, t)$ 
+1. $\because \gcd(n, t) \mid t, \ \therefore \ i + jt \equiv i \pmod {\gcd(n, t)}$ 
 2. 可看作上一条的推论。
 
 :::
@@ -660,15 +660,13 @@ $$
 
 ::: { .fragment data-fragment-index="4" }
 
-- $\text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}$ 表示作用于 $x$ 时互不等价的置换，即上述不同左陪集的数量。
+$$
+|G| = |\text{stab}_G(x)| \cdot [G:\text{stab}_G(x)]
+$$
 
-:::
-
-::: { .notes }
-
-$\beta \text{stab}_G(x)$ 里面的元素相当于 $G$ 中与 $\beta$ 等价的置换；那么陪集的数量就代表本质不同的置换的个数…… 这不就是轨道数吗~
-
-想想拉格朗日定理…… 于是我们便得到了轨道-稳定子定理。
+- $\text{orb}_G(x)$ 即 $G$ 中置换作用于 $x$ 时所有不同结果：
+  - 其大小等于作用于 $x$ 时 $G$ 中本质不同的置换数；
+  - 即本质不同的陪集个数。
 
 :::
 
@@ -825,7 +823,7 @@ $$
 
 # Pólya 计数定理 { #polya-enumeration-theorem }
 
-- 将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元……
+- 将置换表示为若干轮换乘积，若轮换内元素颜色均相同即为不动元（这样才能保证每一个点变成新点后的颜色与原先一致）；
 - 记染色可选的颜色数为 $m$， $c(\sigma)$ 为置换 $\sigma$ 被分解为不交轮换乘积的个数，则：
 
   ::: { .fragment .current-visible style="height:0" }
@@ -907,6 +905,12 @@ $G$ 中复合运算封闭吗？
   (2a - i) \bmod n & \text{ otherwise } 
   \end{cases}
   $$
+
+::: { .fragment .current-visible style="height:0" }
+
+- 注：若 $n$ 为偶数，则翻转对称轴可能同时过两条边的中点。这等同于共有 $2n$ 个点且不考虑此类对称轴的情况，故下面暂不考虑这种对称轴。
+
+:::
 
 ::: { .fragment .current-visible style="height:0" }
 
@@ -1294,7 +1298,7 @@ $$
 t \equiv 0 \pmod m
 $$
 
-最小非负 $t = l$，则边轮换长度至多为 $l$。
+最小正整数解 $t = l$，则边轮换长度至多为 $l$。
 
 :::
 
