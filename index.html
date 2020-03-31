@@ -395,7 +395,7 @@ tk \equiv 0 \pmod n
 </span></p>
 <ul>
 <li><p><span class="math inline">\sigma^t</span> 可表示为 <span class="math inline">\gcd(n, t)</span> 个长为 <span class="math inline">\frac{n}{\gcd(n, t)}</span> 的轮换；</p></li>
-<li><p><span class="math inline">a_i</span> 所在轮换里第 <span class="math inline">j \ (0 \le j &lt; \gcd(n, t) )</span> 个元素为 <span class="math inline">a_{(i + jt) \bmod n}</span>。</p>
+<li><p><span class="math inline">a_i</span> 所在轮换里第 <span class="math inline">j</span> 个元素为 <span class="math inline">a_{(i + jt) \bmod n}</span>。</p>
 <div class="fragment">
 <ul>
 <li><span class="math inline">a_i</span> 所在轮换内元素下标模 <span class="math inline">\gcd(n, t)</span> 均为 <span class="math inline">i</span>；</li>
@@ -514,6 +514,12 @@ M &amp; = \{ \text{不考虑同构时的染色方案} \}
 \text{orb}_G(x) = \{ \sigma \circ x \mid \sigma \in G \}
 </span></p>
 <p>为 <span class="math inline">x</span> 在 <span class="math inline">G</span> 作用下的<strong>轨道 (orbit)</strong>，简称过 <span class="math inline">x</span> 的轨道。</p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">G</span> 中置换作用于元素 <span class="math inline">x</span> 所能得到的不同结果；</li>
+<li><span class="math inline">|\text{orb}_G(x)|</span>： 对于元素 <span class="math inline">x</span> 而言，<span class="math inline">G</span> 中本质不同置换的种数。</li>
+</ul>
+</div>
 <aside class="notes">
 <p>就比如刚刚对三角形着色的例子里，对于第二个染色方案分别用 <span class="math inline">0^\circ, 120^\circ, 240^\circ</span> 的旋转作用于它，便可以得到过它的轨道。</p>
 <p>其实本质上就是等价类…… 部分地方记作 <span class="math inline">\mathcal{O}_G(x)</span>，也有的地方直接用等价类的符号 <span class="math inline">[x]</span>。</p>
@@ -557,9 +563,14 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 <h2>稳定子</h2>
 <p>设群 <span class="math inline">G</span> 作用于集合 <span class="math inline">M</span>，对 <span class="math inline">x \in M</span>，称</p>
 <p><span class="math display">
-\text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \}
+\text{stab}_G(x) = \{ \sigma \mid \sigma \in G, \sigma \circ x = x \}
 </span></p>
 <p>为群 <span class="math inline">G</span> 作用下 <span class="math inline">x</span> 的<strong>稳定子 (stabilizer)</strong>。</p>
+<div class="fragment">
+<ul>
+<li>所有作用于 <span class="math inline">x</span> 后结果仍然为 <span class="math inline">x</span> 的置换。</li>
+</ul>
+</div>
 <aside class="notes">
 <p>稳定子里面的元素都是置换，集合 <span class="math inline">M</span> 里面某个元素的稳定子包含所有使它不发生变化的置换。</p>
 <p>又称固定子群、稳定子群、稳定化子…… 有的地方也写成 <span class="math inline">G_m</span> 或 <span class="math inline">G^m</span>。</p>
@@ -618,10 +629,9 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 |G| = |\text{stab}_G(x)| \cdot [G:\text{stab}_G(x)]
 </span></p>
 <ul>
-<li><span class="math inline">\text{orb}_G(x)</span> 即 <span class="math inline">G</span> 中置换作用于 <span class="math inline">x</span> 时所有不同结果：
+<li><span class="math inline">|\text{orb}_G(x)|</span>：对 <span class="math inline">x</span> 而言，<span class="math inline">G</span> 中所有本质不同置换种数。
 <ul>
-<li>其大小等于作用于 <span class="math inline">x</span> 时 <span class="math inline">G</span> 中本质不同的置换数；</li>
-<li>即本质不同的陪集个数。</li>
+<li>也就是不同的上述陪集的种数！</li>
 </ul></li>
 </ul>
 </div>
@@ -642,15 +652,15 @@ M = \bigcup\limits_{x \in R} \text{orb}_G(x)
 </span></p>
 <p>其中 <span class="math inline">\text{fix}(\sigma)</span> 代表 <span class="math inline">\sigma</span> 的不动元构成的集合：</p>
 <p><span class="math display">
-\text{fix}(\sigma) = \{ \sigma \circ x = x \mid x \in M \}
+\text{fix}(\sigma) = \{ x \mid x \in M, \sigma \circ x = x \}
 </span></p>
 </section>
 <section id="proof-of-burnside-lemma" class="slide level2">
 <h2>证明</h2>
 <p><span class="math display">
 \begin{aligned}
-\text{stab}_G(x) &amp; = \{ \sigma \circ x = x \mid \sigma \in G \}\\
-\text{fix}(\sigma) &amp; = \{ \sigma \circ x = x \mid x \in M \}
+\text{stab}_G(x) &amp; = \{ \sigma \mid \sigma \in G, \sigma \circ x = x \} \\
+\text{fix}(\sigma) &amp; = \{ x \mid x \in M, \sigma \circ x = x \}
 \end{aligned}
 </span></p>
 <p><span class="math display">
@@ -880,9 +890,6 @@ i &amp; i = a \text{ \ or \ } a \text{ 对面的点 } \\
 &amp; = \sum\limits_{d \mid n} m^d \cdot \varphi(\frac{n}{d})
 \end{aligned}
 </span></p>
-<aside class="notes">
-<p>复杂度变成了 <span class="math inline">\mathcal{O}(\sqrt{N})</span></p>
-</aside>
 </section>
 <section id="cn-flipping" class="slide level2">
 <h2>翻转</h2>
@@ -923,6 +930,7 @@ n \cdot m^{\frac{n + 1}{2}} &amp; 2 \nmid n
 \end{cases}
 \end{aligned}
 </span></p>
+<p>复杂度：<span class="math inline">\mathcal{O}(d(n) \cdot \sqrt{n})</span>，<span class="math inline">d(n)</span> 代表 <span class="math inline">n</span> 的约数个数。</p>
 </section></section>
 <section>
 <section id="icpc-2019-nanchang-j" class="title-slide slide level1">
@@ -1099,7 +1107,7 @@ T[ a, b, c ][ k, a, b ] = \text{v} \langle k, a, b, c \rangle
 \end{aligned}
 </span></p>
 <ul>
-<li>复杂度： <span class="math inline">\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})</span>，但因数个数远小于 <span class="math inline">\sqrt{n}</span>。</li>
+<li>复杂度： <span class="math inline">\mathcal{O}(d(n) \cdot 64^3\log{n})</span>，其中 <span class="math inline">d(n)</span> 代表 <span class="math inline">n</span> 的约数个数。</li>
 </ul>
 </div>
 </section></section>

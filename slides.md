@@ -406,7 +406,7 @@ $$
 $$
 
 - $\sigma^t$ 可表示为 $\gcd(n, t)$ 个长为 $\frac{n}{\gcd(n, t)}$ 的轮换；
-- $a_i$ 所在轮换里第 $j \ (0 \le j < \gcd(n, t) )$ 个元素为 $a_{(i + jt) \bmod n}$。
+- $a_i$ 所在轮换里第 $j$ 个元素为 $a_{(i + jt) \bmod n}$。
 
   ::: { .fragment }
   - $a_i$ 所在轮换内元素下标模 $\gcd(n, t)$ 均为 $i$；
@@ -535,6 +535,13 @@ $$
 
 为 $x$ 在 $G$ 作用下的**轨道 (orbit)**，简称过 $x$ 的轨道。
 
+::: { .fragment }
+
+- $G$ 中置换作用于元素 $x$ 所能得到的不同结果；
+- $|\text{orb}_G(x)|$： 对于元素 $x$ 而言，$G$ 中本质不同置换的种数。
+
+:::
+
 ::: { .notes }
 
 就比如刚刚对三角形着色的例子里，对于第二个染色方案分别用 $0^\circ, 120^\circ, 240^\circ$ 的旋转作用于它，便可以得到过它的轨道。
@@ -586,10 +593,16 @@ $$
 设群 $G$ 作用于集合 $M$，对 $x \in M$，称
 
 $$
-\text{stab}_G(x) = \{ \sigma \circ x = x \mid \sigma \in G \}
+\text{stab}_G(x) = \{ \sigma \mid \sigma \in G, \sigma \circ x = x \}
 $$
 
 为群 $G$ 作用下 $x$ 的**稳定子 (stabilizer)**。
+
+::: { .fragment }
+
+- 所有作用于 $x$ 后结果仍然为 $x$ 的置换。
+
+:::
 
 ::: { .notes }
 
@@ -664,9 +677,8 @@ $$
 |G| = |\text{stab}_G(x)| \cdot [G:\text{stab}_G(x)]
 $$
 
-- $\text{orb}_G(x)$ 即 $G$ 中置换作用于 $x$ 时所有不同结果：
-  - 其大小等于作用于 $x$ 时 $G$ 中本质不同的置换数；
-  - 即本质不同的陪集个数。
+- $|\text{orb}_G(x)|$：对 $x$ 而言，$G$ 中所有本质不同置换种数。
+  - 也就是不同的上述陪集的种数！
 
 :::
 
@@ -689,15 +701,15 @@ $$
 其中 $\text{fix}(\sigma)$ 代表 $\sigma$ 的不动元构成的集合：
 
 $$
-\text{fix}(\sigma) = \{ \sigma \circ x = x \mid x \in M \}
+\text{fix}(\sigma) = \{ x \mid x \in M, \sigma \circ x = x \}
 $$
 
 ## 证明 { #proof-of-burnside-lemma }
 
 $$
 \begin{aligned}
-\text{stab}_G(x) & = \{ \sigma \circ x = x \mid \sigma \in G \}\\
-\text{fix}(\sigma) & = \{ \sigma \circ x = x \mid x \in M \}
+\text{stab}_G(x) & = \{ \sigma \mid \sigma \in G, \sigma \circ x = x \} \\
+\text{fix}(\sigma) & = \{ x \mid x \in M, \sigma \circ x = x \}
 \end{aligned}
 $$
 
@@ -973,12 +985,6 @@ $$
 \end{aligned}
 $$
 
-::: { .notes }
-
-复杂度变成了 $\mathcal{O}(\sqrt{N})$
-
-:::
-
 ---
 
 ## 翻转 { #cn-flipping }
@@ -1014,6 +1020,8 @@ n \cdot m^{\frac{n + 1}{2}} & 2 \nmid n
 \end{cases}
 \end{aligned}
 $$
+
+复杂度：$\mathcal{O}(d(n) \cdot \sqrt{n})$，$d(n)$ 代表 $n$ 的约数个数。
 
 # 南昌 J. Summon { #icpc-2019-nanchang-j }
 
@@ -1218,7 +1226,7 @@ $$
 \end{aligned}
 $$
 
-- 复杂度： $\mathcal{O}(\sqrt{n} \cdot 64^3\log{n})$，但因数个数远小于 $\sqrt{n}$。
+- 复杂度： $\mathcal{O}(d(n) \cdot 64^3\log{n})$，其中 $d(n)$ 代表 $n$ 的约数个数。
 
 :::
 
